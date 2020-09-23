@@ -39,4 +39,4 @@ select your virtual phone **Pixel 2 API 30**. Then click
 the play button.
 ![play](/images/play.png)
 1. Should see phone with clickable app buttons.
-![phone](/images/phone.png)
+![phone](/images/app.png)
