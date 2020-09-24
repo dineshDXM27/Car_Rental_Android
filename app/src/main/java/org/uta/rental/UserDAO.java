@@ -7,10 +7,31 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.Optional;
+
 public class UserDAO extends SQLiteOpenHelper {
     private static final String dbname = "Users.db";
     public UserDAO( Context context) {
         super(context,dbname , null, 1);
+    }
+
+    public Optional<UserType> getUserType(String username) {
+        Optional<UserType> userTypeOptional = Optional.empty();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] columns = new String[]{"username", "usertype"};
+        Cursor cursor = db.query("tbl_registerUser", columns, "username = '"+username+"'", null, null, null, null);
+        if (cursor.getCount() == 1) {
+            cursor.moveToFirst();
+            String typeString = cursor.getString(1);
+            for (UserType type : UserType.values()) {
+               if (type.getType().equals(typeString)) {
+                   userTypeOptional = Optional.of(type);
+               }
+            }
+        }
+
+        return userTypeOptional;
     }
 
     public Cursor getUserDetails(String username) {
