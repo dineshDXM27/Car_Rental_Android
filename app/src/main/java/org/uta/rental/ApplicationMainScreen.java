@@ -16,10 +16,12 @@ public class ApplicationMainScreen extends AppCompatActivity {
 
         userDAO = new UserDAO(this);
         userDAO.onUpgrade(userDAO.getWritableDatabase(), 0, 0);
-        userDAO.registerUser("foou", "foop", UserType.USER);
+        userDAO.registerUser("user", "password", UserType.USER);
+        userDAO.registerUser("admin", "password", UserType.ADMIN);
+        userDAO.registerUser("manager", "password", UserType.RENTAL_MANAGER);
 
-        boolean passCheck = userDAO.checkPassword("foou", "foop");
-        UserType userType = userDAO.getUserType("foou").get();
+        boolean passCheck = userDAO.checkPassword("user", "password");
+        UserType userType = userDAO.getUserType("user").get();
 
         Log.d("Check", String.format("Password check result is %b", passCheck));
         Log.d("Check", String.format("Usertype is %s", userType.getType()));
