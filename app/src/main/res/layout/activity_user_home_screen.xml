@@ -10,10 +10,11 @@
         android:id="@+id/viewProfileBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="98dp"
         android:text="@string/view_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="154dp" />
+        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar" />
 
     <Button
         android:id="@+id/viewReservationsBtn"
@@ -29,10 +30,11 @@
         android:id="@+id/requestCarBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="286dp"
         android:text="@string/request_car"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="397dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/userScreenToolbar"
