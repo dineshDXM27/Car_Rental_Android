@@ -1,5 +1,14 @@
 # car-rental-android
 
+## Contents
+- [Import Project](#import-project)
+- [Setup Virtual Phone](#setup-virtual-phone)
+- [Setup Sqlite Browser](#setup-sqlitebrowser)
+- [Run Application](#run-application)
+- [Add Users to Sqlite](#add-users-to-sqlite)
+- [Change Users passwords to Sqlite](#change-system-user-passwords-to-sqlite)
+- [Browse Users in Sqlite](#how-to-browse-sqlite-data)
+
 # Setup
 ## Import Project
 After cloning the git repo to your local computer, and opening Android 
