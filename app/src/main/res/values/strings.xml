@@ -12,7 +12,7 @@
     <string name="view_my_reservations">view my reservations</string>
     <string name="view_profile">view profile</string>
     <string name="request_car">request car</string>
-    <string name="search_user">Search User</string>
+    <string name="search_user">Search Users</string>
     <string name="view_my_profile">View my profile</string>
     <string name="admin_screen">Admin Screen</string>
 </resources>
