@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="logoutFunc"
     tools:context=".UserHomeScreen">
 
     <Button
         android:id="@+id/viewProfileBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#6FDDD3"
+        android:background="@color/colorPrimary"
         android:text="@string/view_profile"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -24,8 +24,9 @@
         android:id="@+id/viewReservationsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#89B564"
+        android:background="@color/colorPrimary"
         android:text="@string/view_my_reservations"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +36,9 @@
         android:id="@+id/requestCarBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#F8E750"
+        android:background="@color/colorPrimary"
         android:text="@string/request_car"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,11 +59,10 @@
         app:title="User Home Screen" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/userLogoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#EC8888"
-        android:onClick="logoutFunc"
+        android:background="#F44336"
         android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/userScreenToolbar"
