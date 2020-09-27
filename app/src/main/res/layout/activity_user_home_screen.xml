@@ -35,7 +35,7 @@
         android:id="@+id/requestCarBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#F3E56C"
+        android:background="#F8E750"
         android:text="@string/request_car"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
