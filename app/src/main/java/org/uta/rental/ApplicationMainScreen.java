@@ -60,9 +60,9 @@ public class ApplicationMainScreen extends AppCompatActivity {
         try{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 userType = userDAO.getUserType(username.getText().toString()).get();
-                String s = userType.toString();
-                System.out.println(s);
-                if(checkCredentials && (s == "USER") )
+                String s = userType.getType();
+                Log.i("User type %s logged in.", s);
+                if(checkCredentials && (s == "user") )
                 {
                     Intent intent = new Intent(this,UserHomeScreen.class);
                     startActivity(intent);
