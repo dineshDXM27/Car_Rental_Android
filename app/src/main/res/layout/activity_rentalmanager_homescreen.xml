@@ -6,6 +6,21 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="312dp"
+        android:background="#EC8888"
+        android:onClick="logoutFunc"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/userScreenToolbar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,31 +75,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="27dp"
         android:text="View Car Details"
-        app:layout_constraintEnd_toStartOf="@+id/button9"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="19dp"
-        android:text="LogOut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button7"
+        tools:layout_editor_absoluteX="133dp" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="409dp"
+        android:layout_height="69dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
