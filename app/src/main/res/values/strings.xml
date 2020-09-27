@@ -12,4 +12,11 @@
     <string name="view_my_reservations">view my reservations</string>
     <string name="view_profile">view profile</string>
     <string name="request_car">request car</string>
+    <string name="enter_user_name">Enter User Name</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="logout">Logout</string>
 </resources>
