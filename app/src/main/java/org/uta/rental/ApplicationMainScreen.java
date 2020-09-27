@@ -32,7 +32,7 @@ public class ApplicationMainScreen extends AppCompatActivity {
         }
         catch (Exception e)
         {
-            System.out.println("Version issue due to get method not available in version less than 24");
+            System.out.println(e);
         }
 
 
@@ -52,20 +52,18 @@ public class ApplicationMainScreen extends AppCompatActivity {
             return;
         }
         try{
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                userType = userDAO.getUserType(username.getText().toString()).get();
-                String s = userType.getType();
-                Log.i("User type %s logged in.", s);
-                if(checkCredentials && (s == "user") )
-                {
-                    Intent intent = new Intent(this,UserHomeScreen.class);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(),"You have successfully Logged In as User",Toast.LENGTH_SHORT).show();
-                }
+            userType = userDAO.getUserType(username.getText().toString()).get();
+            String s = userType.getType();
+            Log.i("User type %s logged in.", s);
+            if(checkCredentials && (s == "user") )
+            {
+                Intent intent = new Intent(this,UserHomeScreen.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(),"You have successfully Logged In as User",Toast.LENGTH_SHORT).show();
             }
         }catch (Exception e)
         {
-            Toast.makeText(getApplicationContext()," TODO - Version issue due to get method not available in version less than 24",Toast.LENGTH_SHORT).show();
+           System.out.println(e);
         }
 
     }
