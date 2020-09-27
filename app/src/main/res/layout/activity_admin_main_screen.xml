@@ -15,11 +15,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/serachUsers"
+        app:layout_constraintTop_toBottomOf="@+id/searchUsers"
         app:layout_constraintVertical_bias="0.163" />
 
     <Button
-        android:id="@+id/serachUsers"
+        android:id="@+id/searchUsers"
         android:layout_width="223dp"
         android:layout_height="56dp"
         android:layout_marginTop="30dp"
