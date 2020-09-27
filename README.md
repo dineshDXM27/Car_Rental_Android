@@ -34,7 +34,7 @@ and click **Next**.
 ## Run application
 After loading the project in Android Studio, and 
 creating a virtual phone:
-1. On the top select **MainActivity** (could be app) and 
+1. On the top select **ApplicationMainScreen** (could be app) and 
 select your virtual phone **Pixel 2 API 30**. Then click
 the play button.
 ![play](/images/play.png)
