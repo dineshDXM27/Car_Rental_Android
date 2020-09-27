@@ -23,11 +23,6 @@ public class ApplicationMainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_application_main_screen);
 
         userDAO = new UserDAO(this);
-        userDAO.onUpgrade(userDAO.getWritableDatabase(), 0, 0);
-        userDAO.registerUser("user", "password", UserType.USER);
-        userDAO.registerUser("admin", "password", UserType.ADMIN);
-        userDAO.registerUser("manager", "password", UserType.RENTAL_MANAGER);
-
         boolean passCheck = userDAO.checkPassword("user", "password");
         UserType userType = null;
         try
