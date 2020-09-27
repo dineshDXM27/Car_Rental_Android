@@ -15,6 +15,7 @@ public class ApplicationMainScreen extends AppCompatActivity {
 
     private UserDAO userDAO;
     private EditText username, password;
+    public static final String SUCCESSFUL_LOGIN_MSG = "You have successfully logged in";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -45,21 +46,27 @@ public class ApplicationMainScreen extends AppCompatActivity {
         username = findViewById(R.id.editTextTextPersonName);
         password = findViewById(R.id.editTextTextPassword);
         UserType userType;
+
         boolean checkCredentials = userDAO.checkPassword(username.getText().toString(),password.getText().toString());
         if(!checkCredentials)
         {
             Toast.makeText(getApplicationContext(),"please recheck your user name and password as they do not match",Toast.LENGTH_SHORT).show();
             return;
         }
+
         try{
             userType = userDAO.getUserType(username.getText().toString()).get();
-            String s = userType.getType();
-            Log.i("User type %s logged in.", s);
-            if(checkCredentials && (s == "user") )
+            String user = userType.getType();
+            Log.i("User type %s logged in.", user);
+            if(checkCredentials && user.equals("user"))
             {
                 Intent intent = new Intent(this,UserHomeScreen.class);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(),"You have successfully Logged In as User",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG,Toast.LENGTH_SHORT).show();
+            }
+            else if (checkCredentials && user.equals("admin")){
+                startActivity(new Intent(this, AdminMainScreen.class));
+                Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
             }
         }catch (Exception e)
         {
