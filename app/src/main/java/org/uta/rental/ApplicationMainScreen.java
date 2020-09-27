@@ -1,8 +1,5 @@
 package org.uta.rental;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ApplicationMainScreen extends AppCompatActivity {
 
@@ -23,13 +23,12 @@ public class ApplicationMainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_application_main_screen);
 
         userDAO = new UserDAO(this);
+       // userDAO.registerUser("user", "password", UserType.USER);
         boolean passCheck = userDAO.checkPassword("user", "password");
         UserType userType = null;
         try
         {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                userType = userDAO.getUserType("user").get();
-            }
+            userType = userDAO.getUserType("user").get();
         }
         catch (Exception e)
         {
