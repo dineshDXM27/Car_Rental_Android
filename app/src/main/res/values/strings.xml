@@ -20,5 +20,4 @@
     <string name="password">Password</string>
     <string name="enter_password">Enter Password</string>
     <string name="logout">Logout</string>
-    <string name="logout_admin">Button</string>
 </resources>
