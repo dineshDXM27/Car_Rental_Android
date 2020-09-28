@@ -37,8 +37,8 @@ public class ApplicationMainScreen extends AppCompatActivity {
         }
 
 
-        Log.d("Check", String.format("Password check result is %b", passCheck));
-        Log.d("Check", String.format("Usertype is %s", userType.getType()));
+//        Log.d("Check", String.format("Password check result is %b", passCheck));
+//        Log.d("Check", String.format("Usertype is %s", userType.getType()));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -56,23 +56,26 @@ public class ApplicationMainScreen extends AppCompatActivity {
 
         try{
             userType = userDAO.getUserType(username.getText().toString()).get();
-            String user = userType.getType();
-            Log.i("User type %s logged in.", user);
-            if(checkCredentials && user.equals("user"))
+            Log.i("Logging in", String.format("User type %s logged in.", userType.getType()));
+            if(checkCredentials && userType == UserType.USER)
             {
                 Intent intent = new Intent(this,UserHomeScreen.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG,Toast.LENGTH_SHORT).show();
             }
-            else if (checkCredentials && user.equals("admin")){
+            else if (checkCredentials && userType == UserType.ADMIN){
                 startActivity(new Intent(this, AdminMainScreen.class));
                 Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
             }
-        }catch (Exception e)
-        {
-           System.out.println(e);
-        }
+            else if (checkCredentials && userType == UserType.RENTAL_MANAGER){
+                startActivity(new Intent(this, RentalManagerScreen.class));
+                Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
+            }
 
+        }
+        catch (Exception e) {
+            Log.e("Logging in", e.getMessage());
+        }
     }
 
     public void registerFunc(View view) {

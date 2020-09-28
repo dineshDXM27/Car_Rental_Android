@@ -20,4 +20,9 @@
     <string name="password">Password</string>
     <string name="enter_password">Enter Password</string>
     <string name="logout">Logout</string>
+    <string name="view_reservations">View Reservations</string>
+    <string name="search_cars">Search Cars</string>
+    <string name="view_available_cars">View Available Cars</string>
+    <string name="logout_rm">Logout</string>
+    <string name="rm_homescreen">Rental Manager Home Screen</string>
 </resources>
