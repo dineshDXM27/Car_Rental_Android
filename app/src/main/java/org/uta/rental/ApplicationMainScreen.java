@@ -37,8 +37,8 @@ public class ApplicationMainScreen extends AppCompatActivity {
         }
 
 
-        Log.d("Check", String.format("Password check result is %b", passCheck));
-        Log.d("Check", String.format("Usertype is %s", userType.getType()));
+//        Log.d("Check", String.format("Password check result is %b", passCheck));
+//        Log.d("Check", String.format("Usertype is %s", userType.getType()));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
