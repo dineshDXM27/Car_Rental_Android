@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AdminMainScreen"></activity>
         <activity android:name=".UserHomeScreen" />
+        <activity android:name=".RentalManagerScreen" />
         <activity
             android:name=".ApplicationMainScreen"
             android:label="@string/app_name"
