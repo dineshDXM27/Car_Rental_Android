@@ -68,7 +68,14 @@ public class ApplicationMainScreen extends AppCompatActivity {
                 startActivity(new Intent(this, AdminMainScreen.class));
                 Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
             }
-        }catch (Exception e)
+
+            else if (checkCredentials && user.equals("manager")){
+                startActivity(new Intent(this, AdminMainScreen.class));
+                Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        catch (Exception e)
         {
            System.out.println(e);
         }
