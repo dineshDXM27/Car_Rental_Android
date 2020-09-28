@@ -4,63 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    tools:context=".UserHomeScreen">
-
+    tools:context=".AdminMainScreen">
 
     <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="312dp"
-        android:background="#EC8888"
-        android:onClick="logoutFunc"
-        android:text="@string/logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/userScreenToolbar"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <Button
-        android:id="@+id/viewprofile_button"
+        android:id="@+id/viewprofileBtn_admin"
         android:layout_width="237dp"
         android:layout_height="59dp"
-        android:layout_marginTop="1dp"
         android:text="@string/view_my_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_button"
+        app:layout_constraintTop_toBottomOf="@+id/searchUsers"
         app:layout_constraintVertical_bias="0.163" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/adminScreenToolbar"
-        android:layout_width="410dp"
-        android:layout_height="77dp"
-        android:background="?attr/colorPrimary"
-        android:foregroundGravity="center"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/admin_screen_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/admin_screen"
-        android:textColor="#F8F2F2"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/adminScreenToolbar"
-        app:layout_constraintEnd_toEndOf="@+id/adminScreenToolbar"
-        app:layout_constraintStart_toStartOf="@+id/adminScreenToolbar"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-        android:id="@+id/search_button"
+        android:id="@+id/searchUsers"
         android:layout_width="223dp"
         android:layout_height="56dp"
         android:layout_marginTop="30dp"
@@ -72,4 +31,37 @@
         app:layout_constraintTop_toBottomOf="@+id/adminScreenToolbar"
         app:layout_constraintVertical_bias="0.311" />
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/adminScreenToolbar"
+        android:layout_width="410dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="4dp"
+        android:background="?attr/colorPrimary"
+        android:foregroundGravity="center"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/admin_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/admin_screen"
+        android:textColor="#F8F2F2"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/adminScreenToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logoutBtn_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/logout"
+        app:layout_constraintEnd_toEndOf="@+id/adminScreenToolbar"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
