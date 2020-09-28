@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +18,7 @@ public class UserHomeScreen extends AppCompatActivity {
         viewProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //yet to implement
             }
         });
 
@@ -27,7 +26,7 @@ public class UserHomeScreen extends AppCompatActivity {
         viewReservationsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //yet to implement
             }
         });
         
@@ -35,14 +34,16 @@ public class UserHomeScreen extends AppCompatActivity {
         requestCarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //yet to implement
             }
         });
-    }
 
-    public void logoutFunc(View view) {
-        Intent intent = new Intent(this,ApplicationMainScreen.class);
-        startActivity(intent);
-        Toast.makeText(getApplicationContext(),"You have successfully Logged Out",Toast.LENGTH_SHORT).show();
+        Button userLogoutBtn = (Button) findViewById(R.id.userLogoutBtn);
+        userLogoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserHomeScreen.this, ApplicationMainScreen.class));
+            }
+        });
     }
 }

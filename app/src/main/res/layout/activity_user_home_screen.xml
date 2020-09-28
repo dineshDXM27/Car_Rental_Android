@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="logoutFunc"
     tools:context=".UserHomeScreen">
 
     <Button
         android:id="@+id/viewProfileBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#6FDDD3"
         android:text="@string/view_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +22,6 @@
         android:id="@+id/viewReservationsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#89B564"
         android:text="@string/view_my_reservations"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +32,6 @@
         android:id="@+id/requestCarBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#F8E750"
         android:text="@string/request_car"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,11 +53,10 @@
         app:title="User Home Screen" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/userLogoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#EC8888"
-        android:onClick="logoutFunc"
+        android:background="@android:color/holo_red_dark"
         android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/userScreenToolbar"
