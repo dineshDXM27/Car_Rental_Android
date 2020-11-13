@@ -13,32 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ApplicationMainScreen extends AppCompatActivity {
 
-    private UserDAO userDAO;
     private EditText username, password;
+
     public static final String SUCCESSFUL_LOGIN_MSG = "You have successfully logged in";
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DBManager.getInstance(this);
         setContentView(R.layout.activity_application_main_screen);
-
-        userDAO = new UserDAO(this);
-       // userDAO.registerUser("user", "password", UserType.USER);
-        boolean passCheck = userDAO.checkPassword("user", "password");
-        UserType userType = null;
-        try
-        {
-            userType = userDAO.getUserType("user").get();
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
-
-
-//        Log.d("Check", String.format("Password check result is %b", passCheck));
-//        Log.d("Check", String.format("Usertype is %s", userType.getType()));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -47,7 +31,8 @@ public class ApplicationMainScreen extends AppCompatActivity {
         password = findViewById(R.id.editTextTextPassword);
         UserType userType;
 
-        boolean checkCredentials = userDAO.checkPassword(username.getText().toString(),password.getText().toString());
+        DBManager dbManager = DBManager.getInstance(this);
+        boolean checkCredentials = dbManager.checkPassword(username.getText().toString(),password.getText().toString());
         if(!checkCredentials)
         {
             Toast.makeText(getApplicationContext(),"please recheck your user name and password as they do not match",Toast.LENGTH_SHORT).show();
@@ -55,7 +40,7 @@ public class ApplicationMainScreen extends AppCompatActivity {
         }
 
         try{
-            userType = userDAO.getUserType(username.getText().toString()).get();
+            userType = dbManager.getUserType(username.getText().toString()).get();
             Log.i("Logging in", String.format("User type %s logged in.", userType.getType()));
             if(checkCredentials && userType == UserType.USER)
             {
