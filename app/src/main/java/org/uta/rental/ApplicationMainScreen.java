@@ -11,6 +11,11 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.reservation.Reservation;
+
+import java.time.LocalDateTime;
+import java.util.Random;
+
 public class ApplicationMainScreen extends AppCompatActivity {
 
     private EditText username, password;
@@ -32,6 +37,7 @@ public class ApplicationMainScreen extends AppCompatActivity {
         UserType userType;
 
         DBManager dbManager = DBManager.getInstance(this);
+
         boolean checkCredentials = dbManager.checkPassword(username.getText().toString(),password.getText().toString());
         if(!checkCredentials)
         {
