@@ -1,4 +1,4 @@
 package org.uta.rental;
 
-public class ViewReservationsUser {
+public class ViewReservationsUser extends ViewReservations{
 }
