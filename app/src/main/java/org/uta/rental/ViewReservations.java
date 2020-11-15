@@ -8,10 +8,8 @@ public class ViewReservations {
     private int carNumber;
     private String carName;
     private int capacity;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private String startTime;
-    private String endTime;
+    private LocalDateTime startDateTime;
+    private LocalDateTime endDateTime;
     private double totalCost;
 
     public int getReservationNumber() {
@@ -46,36 +44,20 @@ public class ViewReservations {
         this.capacity = capacity;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    public void setStartDateTime(LocalDateTime startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
+    public LocalDateTime getEndDateTime() {
+        return endDateTime;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setEndDateTime(LocalDateTime endDateTime) {
+        this.endDateTime = endDateTime;
     }
 
     public double getTotalCost() {
@@ -85,6 +67,9 @@ public class ViewReservations {
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
+
+
+
 
 }
 
