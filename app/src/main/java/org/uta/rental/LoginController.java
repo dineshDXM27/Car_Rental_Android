@@ -1,20 +1,14 @@
 package org.uta.rental;
 
-import android.content.Intent;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.Toast;
+
 
 
 public class LoginController {
 
     public String loginFunction(String username, String password, DBManager dbManager)
     {
-//        username = findViewById(R.id.editTextTextPersonName);
-//        password = findViewById(R.id.editTextTextPassword);
         UserType userType;
-
-//        DBManager dbManager = DBManager.getInstance(this);
 
         boolean checkCredentials = dbManager.checkPassword(username,password);
         if(!checkCredentials)

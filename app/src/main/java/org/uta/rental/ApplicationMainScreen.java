@@ -59,40 +59,6 @@ public class ApplicationMainScreen extends AppCompatActivity {
         {
             Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
         }
-
-//        UserType userType;
-//
-//        DBManager dbManager = DBManager.getInstance(this);
-//
-//        boolean checkCredentials = dbManager.checkPassword(username.getText().toString(),password.getText().toString());
-//        if(!checkCredentials)
-//        {
-//            Toast.makeText(getApplicationContext(),"please recheck your user name and password as they do not match",Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        try{
-//            userType = dbManager.getUserType(username.getText().toString()).get();
-//            Log.i("Logging in", String.format("User type %s logged in.", userType.getType()));
-//            if(checkCredentials && userType == UserType.USER)
-//            {
-//                Intent intent = new Intent(this,UserHomeScreen.class);
-//                startActivity(intent);
-//                Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG,Toast.LENGTH_SHORT).show();
-//            }
-//            else if (checkCredentials && userType == UserType.ADMIN){
-//                startActivity(new Intent(this, AdminMainScreen.class));
-//                Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
-//            }
-//            else if (checkCredentials && userType == UserType.RENTAL_MANAGER){
-//                startActivity(new Intent(this, RentalManagerScreen.class));
-//                Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
-//            }
-//
-//        }
-//        catch (Exception e) {
-//            Log.e("Logging in", e.getMessage());
-//        }
     }
 
     public void registerFunc(View view) {
