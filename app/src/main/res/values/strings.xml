@@ -25,4 +25,15 @@
     <string name="view_available_cars">View Available Cars</string>
     <string name="logout_rm">Logout</string>
     <string name="rm_homescreen">Rental Manager Home Screen</string>
+    <string name="capacity">Capacity -</string>
+    <string name="reservation_number">Reservation number -</string>
+    <string name="car_name">Car Name -</string>
+    <string name="car_number">Car number -</string>
+    <string name="startdate">StartDate -</string>
+    <string name="end_time">End Time -</string>
+    <string name="starttime">StartTime -</string>
+    <string name="end_date">End Date -</string>
+    <string name="delete">Delete</string>
+    <string name="aac_member_status">AAC Member status -</string>
+    <string name="totalcost">TotalCost -</string>
 </resources>
