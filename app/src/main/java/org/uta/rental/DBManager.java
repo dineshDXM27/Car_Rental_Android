@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.uta.rental.carsInformation.CarsInformation;
 import org.uta.rental.reservation.Reservation;
 import org.uta.rental.user.RegisterUser;
 import org.uta.rental.user.UserType;
@@ -174,6 +175,8 @@ public class DBManager extends SQLiteOpenHelper
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +
                 "enddatetime text,aamemberid text)";
         db.execSQL(qry);
+        qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, weekendRate int, weekRate int, weekRate int, GPSRate int, OnStarRate int, SiriusXM int, carStatus text)";
+        db.execSQL(qry);
     }
 
 
@@ -182,6 +185,7 @@ public class DBManager extends SQLiteOpenHelper
         Log.i("database", "Upgrading car_rental database.");
         db.execSQL("DROP TABLE IF EXISTS tbl_registerUser");
         db.execSQL("DROP TABLE IF EXISTS tbl_reservation");
+        db.execSQL("DROP TABLE IF EXISTS tbl_cars");
         onCreate(db);
     }
 }

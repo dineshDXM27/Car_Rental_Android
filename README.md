@@ -9,7 +9,7 @@
 - [Change Users passwords to Sqlite](#change-system-user-passwords-to-sqlite)
 - [Browse Users in Sqlite](#how-to-browse-sqlite-data)
 
-# Setup
+## Setup
 ## Import Project
 After cloning the git repo to your local computer, and opening Android 
 Studio:
