@@ -2,13 +2,10 @@ package org.uta.rental;
 
 public class UserReservationDetails extends ReservationDetails {
 
-    private int aaMemberStatus;
+    private boolean aaMemberStatus;
 
-    public int getAaMemberStatus() {
+    public boolean getAaMemberStatus() {
         return aaMemberStatus;
     }
 
-    public void setAaMemberStatus(int aaMemberStatus) {
-        this.aaMemberStatus = aaMemberStatus;
-    }
 }

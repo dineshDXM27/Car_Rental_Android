@@ -12,8 +12,8 @@ public class ReservationDetails {
     private boolean siriusXM;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private String startTime;
-    private String endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private double totalCost;
 
     public int getReservationNumber() {
@@ -88,19 +88,19 @@ public class ReservationDetails {
         this.endDate = endDate;
     }
 
-    public String getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
