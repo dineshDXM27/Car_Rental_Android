@@ -11,10 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.uta.rental.reservation.Reservation;
+import org.uta.rental.user.RegisterUser;
+import org.uta.rental.user.UserType;
 
-import java.time.LocalDateTime;
-import java.util.Random;
+import java.util.Optional;
 
 public class ApplicationMainScreen extends AppCompatActivity {
 
@@ -37,28 +37,30 @@ public class ApplicationMainScreen extends AppCompatActivity {
         UserType userType;
 
         DBManager dbManager = DBManager.getInstance(this);
+        Optional<RegisterUser> registerUserOptional = dbManager.findUserByUsername(username
+                .getText().toString());
 
-        boolean checkCredentials = dbManager.checkPassword(username.getText().toString(),password.getText().toString());
-        if(!checkCredentials)
+        if(!registerUserOptional.isPresent() || !password.getText().toString()
+                .equals(registerUserOptional.get().getPassword()))
         {
             Toast.makeText(getApplicationContext(),"please recheck your user name and password as they do not match",Toast.LENGTH_SHORT).show();
             return;
         }
 
         try{
-            userType = dbManager.getUserType(username.getText().toString()).get();
+            userType = registerUserOptional.get().getRole();
             Log.i("Logging in", String.format("User type %s logged in.", userType.getType()));
-            if(checkCredentials && userType == UserType.USER)
+            if(userType == UserType.USER)
             {
                 Intent intent = new Intent(this,UserHomeScreen.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG,Toast.LENGTH_SHORT).show();
             }
-            else if (checkCredentials && userType == UserType.ADMIN){
+            else if (userType == UserType.ADMIN){
                 startActivity(new Intent(this, AdminMainScreen.class));
                 Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
             }
-            else if (checkCredentials && userType == UserType.RENTAL_MANAGER){
+            else if (userType == UserType.RENTAL_MANAGER){
                 startActivity(new Intent(this, RentalManagerScreen.class));
                 Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
             }
