@@ -175,7 +175,7 @@ public class DBManager extends SQLiteOpenHelper
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +
                 "enddatetime text,aamemberid text)";
         db.execSQL(qry);
-        qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, weekendRate int, weekRate int, weekRate int, GPSRate int, OnStarRate int, SiriusXM int, carStatus text)";
+        qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, weekdayRate int, weekendRate int, weekRate int, GPSRate int, OnStarRate int, SiriusXM int, carStatus text)";
         db.execSQL(qry);
     }
 
