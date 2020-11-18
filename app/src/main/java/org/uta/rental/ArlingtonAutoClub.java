@@ -2,9 +2,9 @@ package org.uta.rental;
 import java.time.LocalDateTime;
 
 public class ArlingtonAutoClub {
-    LocalDateTime OpenTime;
-    LocalDateTime CloseTime;
-    int dayOfWeek;
+    private LocalDateTime OpenTime;
+    private LocalDateTime CloseTime;
+    private int dayOfWeek;
 
     public LocalDateTime getOpenTime() {
         return OpenTime;
