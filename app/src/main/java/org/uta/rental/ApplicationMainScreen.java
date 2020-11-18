@@ -40,24 +40,24 @@ public class ApplicationMainScreen extends AppCompatActivity {
         String usrnametemp = username.getText().toString();
         String pswdtemp = password.getText().toString();
         LoginController lgc = new LoginController();
-        String str = lgc.loginFunction(usrnametemp,pswdtemp,dbManager);
+        UserType ut = lgc.loginFunction(usrnametemp,pswdtemp,dbManager);
 
-        if(str == "USER")
+        if(ut == UserType.USER)
         {
             Intent intent = new Intent(this,UserHomeScreen.class);
             startActivity(intent);
             Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG,Toast.LENGTH_SHORT).show();
-        }else if (str == "ADMIN")
+        }else if (ut == UserType.ADMIN)
         {
             startActivity(new Intent(this, AdminMainScreen.class));
             Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
-        }else if(str == "RENTAL_MANAGER")
+        }else if(ut == UserType.RENTAL_MANAGER)
         {
             startActivity(new Intent(this, RentalManagerScreen.class));
             Toast.makeText(getApplicationContext(), SUCCESSFUL_LOGIN_MSG, Toast.LENGTH_SHORT).show();
         }else
         {
-            Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"please recheck your user name and password as they do not match",Toast.LENGTH_SHORT).show();
         }
     }
 
