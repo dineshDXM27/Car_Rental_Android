@@ -60,6 +60,8 @@ public class ApplicationMainScreen extends AppCompatActivity {
     }
 
     public void registerFunc(View view) {
+        Intent intent = new Intent(this,RegisterScreen.class);
+        startActivity(intent);
         Toast.makeText(getApplicationContext(),"This is under process",Toast.LENGTH_LONG).show();
     }
 }
