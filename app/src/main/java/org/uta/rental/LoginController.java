@@ -2,6 +2,10 @@ package org.uta.rental;
 
 import android.util.Log;
 
+import org.uta.rental.user.RegisterUser;
+import org.uta.rental.user.UserType;
+
+import java.util.Optional;
 
 
 public class LoginController {
@@ -10,7 +14,10 @@ public class LoginController {
     {
         UserType userType;
 
-        boolean checkCredentials = dbManager.checkPassword(username,password);
+        Optional<RegisterUser> registerUserOptional = dbManager.findUserByUsername(username);
+
+        boolean checkCredentials = registerUserOptional.isPresent() &&
+                password.equals(registerUserOptional.get().getPassword());
         if(!checkCredentials)
         {
             //String msg = "please recheck your user name and password as they do not match";
@@ -18,7 +25,7 @@ public class LoginController {
         }
 
         try{
-            userType = dbManager.getUserType(username).get();
+            userType = registerUserOptional.get().getRole();
             Log.i("Logging in", String.format("User type %s logged in.", userType.getType()));
             if(checkCredentials && userType == UserType.USER)
             {

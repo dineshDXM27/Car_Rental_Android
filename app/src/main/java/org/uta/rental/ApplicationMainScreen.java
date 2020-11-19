@@ -11,10 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.uta.rental.reservation.Reservation;
+import org.uta.rental.user.RegisterUser;
+import org.uta.rental.user.UserType;
 
-import java.time.LocalDateTime;
-import java.util.Random;
+import java.util.Optional;
 
 public class ApplicationMainScreen extends AppCompatActivity {
 
@@ -36,11 +36,9 @@ public class ApplicationMainScreen extends AppCompatActivity {
         password = findViewById(R.id.editTextTextPassword);
 
         DBManager dbManager = DBManager.getInstance(this);
-
-        String usrnametemp = username.getText().toString();
-        String pswdtemp = password.getText().toString();
         LoginController lgc = new LoginController();
-        UserType ut = lgc.loginFunction(usrnametemp,pswdtemp,dbManager);
+        UserType ut = lgc.loginFunction(username.getText().toString(),
+                password.getText().toString(),dbManager);
 
         if(ut == UserType.USER)
         {

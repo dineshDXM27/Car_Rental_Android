@@ -10,6 +10,8 @@ import android.util.Log;
 
 import org.uta.rental.carsInformation.CarsInformation;
 import org.uta.rental.reservation.Reservation;
+import org.uta.rental.user.RegisterUser;
+import org.uta.rental.user.UserType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -92,38 +94,82 @@ public class DBManager extends SQLiteOpenHelper
         return reservation;
     }
 
-
-
-    public Optional<UserType> getUserType(String username) {
-        Optional<UserType> userTypeOptional = Optional.empty();
-
+    public void saveUser(RegisterUser registerUser) throws SQLiteException {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] columns = new String[]{"username", "usertype"};
-        Cursor cursor = db.query("tbl_registerUser", columns, "username = '"+username+"'", null, null, null, null);
-        if (cursor.getCount() == 1) {
+        ContentValues cv = new ContentValues();
+        cv.put("username", registerUser.getUserName());
+        cv.put("password", registerUser.getPassword());
+        cv.put("usertype", registerUser.getRole().getType());
+        cv.put("utaid", registerUser.getUtaId());
+        cv.put("lastname", registerUser.getLastName());
+        cv.put("firstname", registerUser.getFirstName());
+        cv.put("phone", registerUser.getPhoneNumber());
+        cv.put("email", registerUser.getEmail());
+        cv.put("streetaddress", registerUser.getStreetAddress());
+        cv.put("city", registerUser.getCity());
+        cv.put("state", registerUser.getState());
+        cv.put("zipcode", registerUser.getZipCode());
+        // put remainder of data stored here
+
+        long res = db.insert("tbl_registerUser", null,cv );
+
+        if(res== -1) {
+            throw new SQLiteException("Unable to insert register user.");
+        }
+    }
+
+    public Optional<RegisterUser> findUserByUsername(String username) {
+        Optional<RegisterUser> registerUserOptional = Optional.empty();
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+        String query = "Select * from tbl_registerUser where username = '" + username + "'";
+        Cursor cursor = sqldb.rawQuery(query, null);
+
+        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            String typeString = cursor.getString(1);
+            String password = cursor.getString(1);
+            String typeString = cursor.getString(2);
+            UserType userType = null;
             for (UserType type : UserType.values()) {
                 if (type.getType().equals(typeString)) {
-                    userTypeOptional = Optional.of(type);
+                    userType = type;
                 }
             }
+
+            String utaId = cursor.getString(3);
+            String lastName = cursor.getString(4);
+            String firstName = cursor.getString(5);
+            String phone = cursor.getString(6);
+            String email = cursor.getString(7);
+            String streetAddress = cursor.getString(8);
+            String city = cursor.getString(9);
+            String state = cursor.getString(10);
+            String zipCode = cursor.getString(11);
+
+            RegisterUser registerUser = new RegisterUser();
+            registerUser.setUserName(username);
+            registerUser.setPassword(password);
+            registerUser.setRole(userType);
+            registerUser.setUtaId(utaId);
+            registerUser.setLastName(lastName);
+            registerUser.setFirstName(firstName);
+            registerUser.setPhoneNumber(phone);
+            registerUser.setEmail(email);
+            registerUser.setStreetAddress(streetAddress);
+            registerUser.setCity(city);
+            registerUser.setState(state);
+            registerUser.setZipCode(zipCode);
+
+            registerUserOptional = Optional.of(registerUser);
         }
 
-        return userTypeOptional;
+        return registerUserOptional;
     }
-
-    public boolean checkPassword(String username, String password) {
-        SQLiteDatabase sqldb = this.getReadableDatabase();
-        String queryForCheckingPassword = "Select * from tbl_registerUser where username = '" + username + "' and password = '"+password+"'";
-        Cursor cursor = sqldb.rawQuery(queryForCheckingPassword, null);
-        return cursor.getCount() > 0;
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i("database", "Creating car_rental database.");
-        String qry = "create table tbl_registerUser(username text primary key,password text, usertype text)";
+        String qry = "create table tbl_registerUser(username text primary key,password text, " +
+                "usertype text,utaid text,lastname text,firstname text,phone text,email text," +
+                "streetaddress text, city text,state text,zipcode text)";
         db.execSQL(qry);
         qry = "create table tbl_reservation(reservationnumber int primary key,carnumber int," +
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +
