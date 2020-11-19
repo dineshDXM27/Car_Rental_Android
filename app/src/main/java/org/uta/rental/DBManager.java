@@ -10,7 +10,10 @@ import android.util.Log;
 
 import org.uta.rental.carsInformation.CarsInformation;
 import org.uta.rental.reservation.Reservation;
+import org.uta.rental.user.Admin;
 import org.uta.rental.user.RegisterUser;
+import org.uta.rental.user.RentalManager;
+import org.uta.rental.user.User;
 import org.uta.rental.user.UserType;
 
 import java.time.LocalDateTime;
@@ -145,10 +148,17 @@ public class DBManager extends SQLiteOpenHelper
             String state = cursor.getString(10);
             String zipCode = cursor.getString(11);
 
-            RegisterUser registerUser = new RegisterUser();
+            RegisterUser registerUser = null;
+            if (userType == UserType.RENTAL_MANAGER) {
+               registerUser = new RentalManager();
+            } else if (userType == UserType.ADMIN) {
+               registerUser = new Admin();
+            } else {
+               registerUser = new User();
+            }
+
             registerUser.setUserName(username);
             registerUser.setPassword(password);
-            registerUser.setRole(userType);
             registerUser.setUtaId(utaId);
             registerUser.setLastName(lastName);
             registerUser.setFirstName(firstName);
