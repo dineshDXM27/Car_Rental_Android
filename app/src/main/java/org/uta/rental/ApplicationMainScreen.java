@@ -28,6 +28,8 @@ public class ApplicationMainScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //DBManager.getInstance(this);
         setContentView(R.layout.activity_application_main_screen);
+        DBManager dbManager = DBManager.getInstance(this);
+        dbManager.getWritableDatabase();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
