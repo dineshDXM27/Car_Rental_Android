@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminMainScreen"></activity>
+        <activity android:name=".ViewAvailableCars"></activity>
+        <activity android:name=".ViewReservationDetailsGUI" />
+        <activity android:name=".RegistrationScreen" />
+        <activity android:name=".AdminMainScreen" />
         <activity android:name=".UserHomeScreen" />
         <activity android:name=".RentalManagerScreen" />
         <activity
