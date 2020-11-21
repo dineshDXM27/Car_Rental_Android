@@ -36,6 +36,4 @@
     <string name="delete">Delete</string>
     <string name="aac_member_status">AAC Member status -</string>
     <string name="totalcost">TotalCost -</string>
-    <string name="date">Date:</string>
-    <string name="time">Time</string>
 </resources>
