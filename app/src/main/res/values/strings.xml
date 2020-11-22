@@ -21,8 +21,15 @@
     <string name="enter_password">Enter Password</string>
     <string name="logout">Logout</string>
     <string name="view_reservations">View Reservations</string>
-    <string name="search_cars">Search Cars</string>
+    <string name="search_cars1">Search Cars</string>
     <string name="view_available_cars">View Available Cars</string>
     <string name="logout_rm">Logout</string>
     <string name="rm_homescreen">Rental Manager Home Screen</string>
+    <string name="search_cars">Search Cars</string>
+    <string name="search">Search</string>
+    <string name="car_name">CAR NAME</string>
+    <string name="pick_date">Pick Date</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="mm_dd_yy">MM/DD/YY</string>
+    <string name="_12_hours_format">12 HOURS FORMAT</string>
 </resources>
