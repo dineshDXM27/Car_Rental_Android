@@ -63,10 +63,12 @@ public class ViewReservationsScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reservations_screen);
         ArrayList<Reservation> list = (ArrayList) generateReservations();
-        AdapterReservation adapterReservation = new AdapterReservation(
-                list);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvReservations);
+        AdapterReservation adapterReservation = new AdapterReservation(recyclerView,
+                list);
         recyclerView.setAdapter(adapterReservation);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setNestedScrollingEnabled(true);
     }
 }

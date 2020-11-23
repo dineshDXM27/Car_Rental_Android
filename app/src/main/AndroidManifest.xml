@@ -18,6 +18,7 @@
         <activity
             android:name=".reservation.ViewReservationsScreen"
             android:label="@string/app_name"
+            android:windowSoftInputMode="adjustNothing"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
