@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import org.uta.rental.carsInformation.CarsInformation;
 import org.uta.rental.reservation.Reservation;
@@ -18,6 +21,9 @@ import org.uta.rental.user.UserType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -52,6 +58,7 @@ public class DBManager extends SQLiteOpenHelper
         cv.put("startdatetime", reservation.getStartDateTime().toString());
         cv.put("enddatetime", reservation.getEndDateTime().toString());
         cv.put("aamemberid", reservation.getAaMemberId());
+        cv.put("username", reservation.getOwningUsername());
         // put remainder of data stored here
 
         long res = db.insert("tbl_reservation", null,cv );
@@ -61,40 +68,69 @@ public class DBManager extends SQLiteOpenHelper
         }
     }
 
-    public Reservation getReservation(long id) throws SQLiteException {
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public List<Reservation> getReservationsFromDateAndTime(LocalDateTime dateTime) {
+        List<Reservation> reservations = new ArrayList<>();
         SQLiteDatabase sqldb = this.getReadableDatabase();
-        String query = "Select * from tbl_reservation where reservationnumber = " + id;
+        String query = "select * from tbl_reservation";
         Cursor cursor = sqldb.rawQuery(query, null);
-        if (cursor.getCount() == 0) {
+        cursor.moveToFirst();
+        while (cursor.moveToNext()) {
+            LocalDateTime startDateTime = LocalDateTime.parse(cursor.getString(7),
+                    DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+
+            if (startDateTime.isBefore(dateTime)) {
+                continue;
+            }
+
+            long id = cursor.getLong(0);
+            long carNumber = cursor.getLong(1);
+            String carName = cursor.getString(2);
+            int capacity = cursor.getInt(3);
+            boolean gps = cursor.getInt(4) == 1;
+            boolean onStar = cursor.getInt(5) == 1;
+            boolean siriusXm = cursor.getInt(6) == 1;
+           LocalDateTime endDateTime = LocalDateTime.parse(cursor.getString(8),
+                    DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            String aaMemberId = cursor.getString(9);
+            String userName = cursor.getString(10);
+
+            Reservation reservation = new Reservation();
+            reservation.setReservationNumber(id);
+            reservation.setCarNumber(carNumber);
+            reservation.setCarName(carName);
+            reservation.setCapacity(capacity);
+            reservation.setGps(gps);
+            reservation.setOnStar(onStar);
+            reservation.setSiriusXm(siriusXm);
+            reservation.setStartDateTime(startDateTime);
+            reservation.setEndDateTime(endDateTime);
+            reservation.setAaMemberId(aaMemberId);
+            reservation.setOwningUsername(userName);
+
+            reservations.add(reservation);
+            cursor.moveToNext();
+        }
+
+        return reservations;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Reservation getReservation(long id) throws SQLiteException {
+        LocalDateTime dateTime = LocalDateTime.MIN;
+        List<Reservation> reservations = getReservationsFromDateAndTime(dateTime);
+        Optional<Reservation> reservationOptional = Optional.empty();
+        for (Reservation reservation: reservations) {
+            if (reservation.getReservationNumber() == id) {
+               reservationOptional = Optional.of(reservation);
+            }
+        }
+
+        if (reservationOptional.isPresent()) {
             throw new SQLiteException("Bad id could not find reservation");
         }
 
-        cursor.moveToFirst();
-        long carNumber = cursor.getLong(1);
-        String carName = cursor.getString(2);
-        int capacity = cursor.getInt(3);
-        boolean gps = cursor.getInt(4) == 1;
-        boolean onStar = cursor.getInt(5) == 1;
-        boolean siriusXm = cursor.getInt(6) == 1;
-        LocalDateTime startDateTime = LocalDateTime.parse(cursor.getString(7),
-                DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-        LocalDateTime endDateTime = LocalDateTime.parse(cursor.getString(8),
-                DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-        String aaMemberId = cursor.getString(9);
-
-        Reservation reservation = new Reservation();
-        reservation.setReservationNumber(id);
-        reservation.setCarNumber(carNumber);
-        reservation.setCarName(carName);
-        reservation.setCapacity(capacity);
-        reservation.setGps(gps);
-        reservation.setOnStar(onStar);
-        reservation.setSiriusXm(siriusXm);
-        reservation.setStartDateTime(startDateTime);
-        reservation.setEndDateTime(endDateTime);
-        reservation.setAaMemberId(aaMemberId);
-
-        return reservation;
+        return reservationOptional.get();
     }
 
     public void saveUser(RegisterUser registerUser) throws SQLiteException {
@@ -183,7 +219,7 @@ public class DBManager extends SQLiteOpenHelper
         db.execSQL(qry);
         qry = "create table tbl_reservation(reservationnumber int primary key,carnumber int," +
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +
-                "enddatetime text,aamemberid text)";
+                "enddatetime text,aamemberid text,username text)";
         db.execSQL(qry);
         qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, weekdayRate int, weekendRate int, weekRate int, GPSRate int, OnStarRate int, SiriusXM int, carStatus text)";
         db.execSQL(qry);

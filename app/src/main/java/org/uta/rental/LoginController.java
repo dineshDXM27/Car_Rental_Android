@@ -10,6 +10,8 @@ import java.util.Optional;
 
 public class LoginController {
 
+    private static String currentUser;
+
     public UserType loginFunction(String username, String password, DBManager dbManager)
     {
         UserType userType;
@@ -27,6 +29,7 @@ public class LoginController {
         try{
             userType = registerUserOptional.get().getRole();
             Log.i("Logging in", String.format("User type %s logged in.", userType.getType()));
+            currentUser = username;
             if(checkCredentials && userType == UserType.USER)
             {
                 return UserType.USER;
@@ -44,5 +47,9 @@ public class LoginController {
         }
         //return "please recheck your user name and password as they do not match";
         return null;
+    }
+
+    public static String getCurrentUser() {
+        return currentUser;
     }
 }

@@ -6,6 +6,8 @@ import java.util.Date;
 public class Reservation {
     private long reservationNumber;
 
+    private String OwningUsername;
+
     private long carNumber;
 
     private String carName;
@@ -25,6 +27,14 @@ public class Reservation {
     private  String aaMemberId;
 
     private double totalCost;
+
+    public String getOwningUsername() {
+        return OwningUsername;
+    }
+
+    public void setOwningUsername(String owningUsername) {
+        OwningUsername = owningUsername;
+    }
 
     public double getTotalCost() {
         return totalCost;

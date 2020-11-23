@@ -5,23 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
-import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
-import org.uta.rental.AdminMainScreen;
 import org.uta.rental.ApplicationMainScreen;
+import org.uta.rental.LoginController;
 import org.uta.rental.R;
 import org.uta.rental.UserHomeScreen;
 
@@ -32,6 +25,7 @@ import java.util.Random;
 
 public class ViewReservationsUserScreen extends AppCompatActivity {
 
+    private ViewReservationsUserController controller;
 
     // TODO delete this when using full controller logic. Placeholder for gui testing
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -57,6 +51,7 @@ public class ViewReservationsUserScreen extends AppCompatActivity {
             reservation.setEndDateTime(end);
             reservation.setTotalCost(totalCost);
             reservations.add(reservation);
+            reservation.setOwningUsername(LoginController.getCurrentUser());
         }
 
         return reservations;
@@ -67,21 +62,43 @@ public class ViewReservationsUserScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reservations_screen);
-        ArrayList<Reservation> list = (ArrayList) generateReservations();
+
+        EditText editTextDate = (EditText) findViewById(R.id.userRvDateInput);
+        EditText editTextTime = (EditText) findViewById(R.id.userRvTimeInput);
+        controller = new ViewReservationsUserController(this.getApplicationContext(), editTextDate,
+                editTextTime);
+        Button searchButton = (Button) findViewById(R.id.searchRvUserBtn);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Reservation> reservations = controller.viewReservations();
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvReservations);
+                AdapterReservation adapterReservation = new AdapterReservation(recyclerView,
+                        reservations, controller);
+                recyclerView.setAdapter(adapterReservation);
+            }
+        });
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvReservations);
-        AdapterReservation adapterReservation = new AdapterReservation(recyclerView,
-                list);
-        recyclerView.setAdapter(adapterReservation);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(true);
 
         Button logoutBtn = (Button)findViewById(R.id.viewReservationslogoutBtn);
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ViewReservationsUserScreen.this,
                         ApplicationMainScreen.class));
+            }
+        });
+
+        ImageButton backBtn = (ImageButton) findViewById(R.id.vrUserBackButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewReservationsUserScreen.this,
+                        UserHomeScreen.class));
             }
         });
     }

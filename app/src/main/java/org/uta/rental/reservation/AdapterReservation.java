@@ -21,6 +21,8 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
 
     private RecyclerView rv;
 
+    private ViewReservationsUserController controller;
+
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
@@ -40,9 +42,10 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
         }
     }
 
-    public AdapterReservation(RecyclerView rv, List<Reservation> reservations) {
+    public AdapterReservation(RecyclerView rv, List<Reservation> reservations, ViewReservationsUserController controller) {
         this.rv = rv;
         this.reservations = reservations;
+        this.controller = controller;
     }
 
     // Create new views (invoked by the layout manager)
@@ -69,7 +72,7 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
             @Override
             public void onClick(View v) {
                 if (rv.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
-                    Toast.makeText(v.getContext(), String.format("%s", reservations.get(position).getReservationNumber()), Toast.LENGTH_SHORT).show();
+                    controller.viewReservationDetails(reservations.get(position));
                 }
             }
         });
