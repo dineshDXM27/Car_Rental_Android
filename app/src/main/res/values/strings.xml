@@ -16,8 +16,8 @@
     <string name="enter_user_name">Enter User Name</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="user_name">User Name</string>
-    <string name="password">Password</string>
+    <string name="user_name">User Name:</string>
+    <string name="password">Password:</string>
     <string name="enter_password">Enter Password</string>
     <string name="logout">Logout</string>
     <string name="view_reservations">View Reservations</string>
@@ -25,4 +25,17 @@
     <string name="view_available_cars">View Available Cars</string>
     <string name="logout_rm">Logout</string>
     <string name="rm_homescreen">Rental Manager Home Screen</string>
+    <string name="title_activity_view_profile">ViewProfileActivity</string>
+
+
+    <string name="last_name">Last name:</string>
+    <string name="uta_id">UTA id:</string>
+    <string name="first_name">First name:</string>
+    <string name="rental_priviledge_status">Rental priviledge status:</string>
+    <string name="phone">Phone:</string>
+    <string name="role">Role:</string>
+    <string name="email">email:</string>
+    <string name="street_address">Street address:</string>
+    <string name="city">City:</string>
+    <string name="zip_code">Zip code:</string>
 </resources>
