@@ -1,4 +1,4 @@
-package org.uta.rental;
+package org.uta.rental.user;
 
 public enum UserType {
 
