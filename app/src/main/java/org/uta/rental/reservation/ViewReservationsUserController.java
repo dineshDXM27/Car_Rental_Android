@@ -35,8 +35,4 @@ public class ViewReservationsUserController {
         return DBManager.getInstance(context).getReservationsFromDateAndTimeAndOwningUser(dateTime,
                 LoginController.getCurrentUser());
     }
-
-    public void viewReservationDetails(Reservation reservation) {
-        Toast.makeText(context, String.format("%s", reservation.getReservationNumber()), Toast.LENGTH_SHORT).show();
-    }
 }

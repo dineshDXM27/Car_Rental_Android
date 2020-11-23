@@ -12,7 +12,7 @@ public class RentalManagerReservationDetails extends ReservationDetails {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Duration getDuration() {
-       return Duration.between(getEndTime().toLocalTime(), getStartTime().toLocalTime());
+        return null;
     }
 
 }

@@ -1,12 +1,12 @@
 package org.uta.rental.reservation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,12 +16,14 @@ import org.uta.rental.R;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.ViewHolder> {
+public class AdapterUserReservation extends RecyclerView.Adapter<AdapterUserReservation.ViewHolder> {
     private List<Reservation> reservations;
 
     private RecyclerView rv;
 
     private ViewReservationsUserController controller;
+
+    private Context context;
 
     /**
      * Provide a reference to the type of views that you are using
@@ -42,7 +44,8 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
         }
     }
 
-    public AdapterReservation(RecyclerView rv, List<Reservation> reservations, ViewReservationsUserController controller) {
+    public AdapterUserReservation(Context context, RecyclerView rv, List<Reservation> reservations, ViewReservationsUserController controller) {
+        this.context = context;
         this.rv = rv;
         this.reservations = reservations;
         this.controller = controller;
@@ -72,7 +75,10 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
             @Override
             public void onClick(View v) {
                 if (rv.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
-                    controller.viewReservationDetails(reservations.get(position));
+                    ViewReservationDetailsUserController.setReservation(reservations.get(position));
+                    Intent intent = new Intent(context, ViewReservationDetailsUserScreen.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
             }
         });

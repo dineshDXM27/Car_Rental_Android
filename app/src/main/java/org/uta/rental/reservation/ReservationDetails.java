@@ -3,32 +3,41 @@ package org.uta.rental.reservation;
 import java.time.LocalDateTime;
 
 public class ReservationDetails {
-    private int reservationNumber;
-    private String carNumber;
+    private long reservationNumber;
+
+    private long carNumber;
+
     private String carName;
+
     private int capacity;
+
     private boolean gps;
+
     private boolean onStar;
-    private boolean siriusXM;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+
+    private boolean siriusXm;
+
+    private LocalDateTime startDateTime;
+
+    private LocalDateTime endDateTime;
+
+    private  String aaMemberId;
+
     private double totalCost;
 
-    public int getReservationNumber() {
+    public long getReservationNumber() {
         return reservationNumber;
     }
 
-    public void setReservationNumber(int reservationNumber) {
+    public void setReservationNumber(long reservationNumber) {
         this.reservationNumber = reservationNumber;
     }
 
-    public String getCarNumber() {
+    public long getCarNumber() {
         return carNumber;
     }
 
-    public void setCarNumber(String carNumber) {
+    public void setCarNumber(long carNumber) {
         this.carNumber = carNumber;
     }
 
@@ -64,44 +73,36 @@ public class ReservationDetails {
         this.onStar = onStar;
     }
 
-    public boolean isSiriusXM() {
-        return siriusXM;
+    public boolean isSiriusXm() {
+        return siriusXm;
     }
 
-    public void setSiriusXM(boolean siriusXM) {
-        this.siriusXM = siriusXM;
+    public void setSiriusXm(boolean siriusXm) {
+        this.siriusXm = siriusXm;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    public void setStartDateTime(LocalDateTime startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
+    public LocalDateTime getEndDateTime() {
+        return endDateTime;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
+    public void setEndDateTime(LocalDateTime endDateTime) {
+        this.endDateTime = endDateTime;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
+    public String getAaMemberId() {
+        return aaMemberId;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
+    public void setAaMemberId(String aaMemberId) {
+        this.aaMemberId = aaMemberId;
     }
 
     public double getTotalCost() {
