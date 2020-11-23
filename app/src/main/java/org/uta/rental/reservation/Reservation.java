@@ -24,6 +24,16 @@ public class Reservation {
 
     private  String aaMemberId;
 
+    private double totalCost;
+
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
+    }
+
     public long getReservationNumber() {
         return reservationNumber;
     }
