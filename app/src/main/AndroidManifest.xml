@@ -19,6 +19,10 @@
         <activity android:name=".UserHomeScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
+        <activity android:name=".DeleteReservationGUI"></activity>
+        <activity android:name=".ViewAvailableCars" />
+        <activity android:name=".ViewReservationDetailsGUI" />
+        <activity android:name=".RegistrationScreen" />
         <activity android:name=".RentalManagerScreen" />
         <activity android:name=".reservation.ViewReservationsUserScreen"
             android:theme="@style/AppTheme.NoActionBar"
