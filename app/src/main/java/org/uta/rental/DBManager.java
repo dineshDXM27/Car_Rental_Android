@@ -22,6 +22,8 @@ import org.uta.rental.user.UserType;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -112,6 +114,21 @@ public class DBManager extends SQLiteOpenHelper
             reservations.add(reservation);
             cursor.moveToNext();
         }
+
+        Collections.sort(reservations, new Comparator<Reservation>() {
+            @Override
+            public int compare(Reservation o1, Reservation o2) {
+                LocalDateTime o1Date = o1.getStartDateTime().withNano(0);
+                LocalDateTime o2Date = o2.getStartDateTime().withNano(0);
+                int result = o2Date.compareTo(o1Date);
+
+                if (result == 0) {
+                    result = new Integer(o1.getCapacity()).compareTo(new Integer(o2.getCapacity()));
+                }
+
+                return result;
+            }
+        });
 
         return reservations;
     }
