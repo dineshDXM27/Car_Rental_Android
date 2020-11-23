@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 
 import org.uta.rental.DBManager;
+import org.uta.rental.LoginController;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -31,7 +32,8 @@ public class ViewReservationsUserController {
         String dateString = date.getText() + " " + time.getText();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm");
         LocalDateTime dateTime = LocalDateTime.parse(dateString, formatter);
-        return DBManager.getInstance(context).getReservationsFromDateAndTime(dateTime);
+        return DBManager.getInstance(context).getReservationsFromDateAndTimeAndOwningUser(dateTime,
+                LoginController.getCurrentUser());
     }
 
     public void viewReservationDetails(Reservation reservation) {

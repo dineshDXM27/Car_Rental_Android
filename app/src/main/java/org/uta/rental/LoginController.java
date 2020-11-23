@@ -29,7 +29,7 @@ public class LoginController {
         try{
             userType = registerUserOptional.get().getRole();
             Log.i("Logging in", String.format("User type %s logged in.", userType.getType()));
-            currentUser = username;
+            this.currentUser = registerUserOptional.get().getUserName();
             if(checkCredentials && userType == UserType.USER)
             {
                 return UserType.USER;

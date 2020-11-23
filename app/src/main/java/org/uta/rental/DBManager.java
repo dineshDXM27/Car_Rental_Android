@@ -69,7 +69,8 @@ public class DBManager extends SQLiteOpenHelper
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public List<Reservation> getReservationsFromDateAndTime(LocalDateTime dateTime) {
+    public List<Reservation> getReservationsFromDateAndTimeAndOwningUser(LocalDateTime dateTime,
+                                                                         String owningUserName) {
         List<Reservation> reservations = new ArrayList<>();
         SQLiteDatabase sqldb = this.getReadableDatabase();
         String query = "select * from tbl_reservation";
@@ -79,7 +80,8 @@ public class DBManager extends SQLiteOpenHelper
             LocalDateTime startDateTime = LocalDateTime.parse(cursor.getString(7),
                     DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
-            if (startDateTime.isBefore(dateTime)) {
+            String userName = cursor.getString(10);
+            if (startDateTime.isBefore(dateTime) || !owningUserName.equals(userName)) {
                 continue;
             }
 
@@ -93,7 +95,6 @@ public class DBManager extends SQLiteOpenHelper
            LocalDateTime endDateTime = LocalDateTime.parse(cursor.getString(8),
                     DateTimeFormatter.ISO_LOCAL_DATE_TIME);
             String aaMemberId = cursor.getString(9);
-            String userName = cursor.getString(10);
 
             Reservation reservation = new Reservation();
             reservation.setReservationNumber(id);
@@ -118,7 +119,8 @@ public class DBManager extends SQLiteOpenHelper
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Reservation getReservation(long id) throws SQLiteException {
         LocalDateTime dateTime = LocalDateTime.MIN;
-        List<Reservation> reservations = getReservationsFromDateAndTime(dateTime);
+        List<Reservation> reservations = getReservationsFromDateAndTimeAndOwningUser(dateTime,
+                LoginController.getCurrentUser());
         Optional<Reservation> reservationOptional = Optional.empty();
         for (Reservation reservation: reservations) {
             if (reservation.getReservationNumber() == id) {
