@@ -1,8 +1,10 @@
-package org.uta.rental;
+package org.uta.rental.reservation;
 
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+
+import org.uta.rental.reservation.ReservationDetails;
 
 import java.time.Duration;
 

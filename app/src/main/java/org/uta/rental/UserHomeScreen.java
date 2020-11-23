@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.reservation.ViewReservationsUserScreen;
+
 public class UserHomeScreen extends AppCompatActivity {
 
     @Override
@@ -26,7 +28,8 @@ public class UserHomeScreen extends AppCompatActivity {
         viewReservationsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //yet to implement
+                    startActivity(new Intent(UserHomeScreen.this,
+                            ViewReservationsUserScreen.class));
             }
         });
         

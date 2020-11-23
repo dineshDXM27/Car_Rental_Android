@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-tools:context=".reservation.ViewReservationsScreen">
+tools:context=".reservation.ViewReservationsUserScreen">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/userScreenToolbar"
@@ -34,8 +34,8 @@ tools:context=".reservation.ViewReservationsScreen">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvReservations"
-        android:layout_width="403dp"
-        android:layout_height="458dp"
+        android:layout_width="379dp"
+        android:layout_height="454dp"
         android:clipChildren="true"
         android:isScrollContainer="true"
         android:nestedScrollingEnabled="true"

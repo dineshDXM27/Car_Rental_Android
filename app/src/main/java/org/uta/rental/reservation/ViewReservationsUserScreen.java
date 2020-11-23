@@ -1,5 +1,6 @@
 package org.uta.rental.reservation;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,16 +23,18 @@ import android.widget.Toast;
 import org.uta.rental.AdminMainScreen;
 import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.R;
+import org.uta.rental.UserHomeScreen;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ViewReservationsScreen extends AppCompatActivity {
+public class ViewReservationsUserScreen extends AppCompatActivity {
 
 
     // TODO delete this when using full controller logic. Placeholder for gui testing
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private List<Reservation> generateReservations() {
         Random random = new Random();
         List<Reservation> reservations = new ArrayList<>();
@@ -58,6 +62,7 @@ public class ViewReservationsScreen extends AppCompatActivity {
         return reservations;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,5 +75,14 @@ public class ViewReservationsScreen extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(true);
+
+        Button logoutBtn = (Button)findViewById(R.id.viewReservationslogoutBtn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ViewReservationsUserScreen.this,
+                        ApplicationMainScreen.class));
+            }
+        });
     }
 }
