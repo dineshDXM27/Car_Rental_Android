@@ -14,7 +14,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.uta.rental.ApplicationMainScreen;
-import org.uta.rental.DBManager;
 import org.uta.rental.R;
 
 import java.time.format.DateTimeFormatter;
