@@ -1,9 +1,14 @@
 package org.uta.rental.reservation;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
+
+import org.uta.rental.DBManager;
 
 public class ViewReservationDetailsManagerController {
 
@@ -30,6 +35,13 @@ public class ViewReservationDetailsManagerController {
         reservation.setSiriusXm(res.isSiriusXm());
 
         return reservation;
+    }
+
+    public void deleteReservation() {
+        DBManager.getInstance(context).deleteReservation(res);
+        Intent intent = new Intent(context, ViewReservationsManagerScreen.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 
     public static void setReservation(Reservation reservation) {

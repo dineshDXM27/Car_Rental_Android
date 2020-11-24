@@ -1,5 +1,7 @@
 package org.uta.rental.reservation;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.uta.rental.ApplicationMainScreen;
+import org.uta.rental.DBManager;
 import org.uta.rental.R;
 
 import java.time.format.DateTimeFormatter;
@@ -25,7 +28,7 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_details_manager_screen);
 
-        controller = new ViewReservationDetailsManagerController(this.getApplicationContext());
+        controller = new ViewReservationDetailsManagerController(ViewReservationDetailsManagerScreen.this);
 
         RentalManagerReservationDetails reservationDetails = controller.viewReservationDetails();
         TextView textView = (TextView) findViewById(R.id.reservationDetailText);
@@ -47,6 +50,32 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
                         ViewReservationsManagerScreen.class));
             }
         });
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getWindow().getContext());
+        builder.setTitle("Delete Reservation");
+        builder.setMessage("Are you sure?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                controller.deleteReservation();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog dialog = builder.create();
+        // Display the alert dialog on interface
+
+        Button deleteButton = (Button) findViewById(R.id.deletervButton);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
