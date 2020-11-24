@@ -71,9 +71,8 @@ public class DBManager extends SQLiteOpenHelper
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public List<Reservation> getReservationsFromDateAndTimeAndOwningUser(LocalDateTime dateTime,
-                                                                         String owningUserName) {
-        List<Reservation> reservations = new ArrayList<>();
+    public List<Reservation> getReservationsFromDateAndTime(LocalDateTime dateTime) {
+        final List<Reservation> reservations = new ArrayList<>();
         SQLiteDatabase sqldb = this.getReadableDatabase();
         String query = "select * from tbl_reservation";
         Cursor cursor = sqldb.rawQuery(query, null);
@@ -83,7 +82,7 @@ public class DBManager extends SQLiteOpenHelper
                     DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 
             String userName = cursor.getString(10);
-            if (startDateTime.isBefore(dateTime) || !owningUserName.equals(userName)) {
+            if (startDateTime.isBefore(dateTime)) {
                 continue;
             }
 
@@ -94,7 +93,7 @@ public class DBManager extends SQLiteOpenHelper
             boolean gps = cursor.getInt(4) == 1;
             boolean onStar = cursor.getInt(5) == 1;
             boolean siriusXm = cursor.getInt(6) == 1;
-           LocalDateTime endDateTime = LocalDateTime.parse(cursor.getString(8),
+            LocalDateTime endDateTime = LocalDateTime.parse(cursor.getString(8),
                     DateTimeFormatter.ISO_LOCAL_DATE_TIME);
             String aaMemberId = cursor.getString(9);
 
@@ -132,12 +131,24 @@ public class DBManager extends SQLiteOpenHelper
 
         return reservations;
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public List<Reservation> getReservationsFromDateAndTimeAndOwningUser(LocalDateTime dateTime,
+                                                                         String owningUserName) {
+        List<Reservation> reservationsFiltered = new ArrayList<>();
+        for (Reservation reservation : getReservationsFromDateAndTime(dateTime)) {
+            if (owningUserName.equals(reservation.getOwningUsername())) {
+                reservationsFiltered.add(reservation);
+            }
+        }
+
+
+        return reservationsFiltered;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Reservation getReservation(long id) throws SQLiteException {
         LocalDateTime dateTime = LocalDateTime.MIN;
-        List<Reservation> reservations = getReservationsFromDateAndTimeAndOwningUser(dateTime,
-                LoginController.getCurrentUser());
+        List<Reservation> reservations = getReservationsFromDateAndTime(dateTime);
         Optional<Reservation> reservationOptional = Optional.empty();
         for (Reservation reservation: reservations) {
             if (reservation.getReservationNumber() == id) {
