@@ -23,8 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SearchCars_Manager extends AppCompatActivity {
 
     Button buttonDate, buttonTime;
-    TextView textViewDate, textViewTime;
-    Spinner typesOfCar;
+    TextView textDate_manager, textTime_manager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,8 @@ public class SearchCars_Manager extends AppCompatActivity {
 
         buttonDate = findViewById(R.id.buttonDate);
         buttonTime = findViewById(R.id.buttonTime);
-        textViewDate = findViewById(R.id.textViewDate);
-        textViewTime = findViewById(R.id.textViewTime);
+        textDate_manager = findViewById(R.id.textDate_manager);
+        textTime_manager = findViewById(R.id.textTime_manager);
 
         buttonDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +67,7 @@ public class SearchCars_Manager extends AppCompatActivity {
                 calendar1.set(Calendar.DATE, date);
                 String dateText = DateFormat.format("EEEE, MMM d, yyyy", calendar1).toString();
 
-                textViewDate.setText(dateText);
+                textDate_manager.setText(dateText);
             }
         }, YEAR, MONTH, DATE);
 
@@ -87,7 +87,7 @@ public class SearchCars_Manager extends AppCompatActivity {
                 calendar1.set(Calendar.HOUR, hour);
                 calendar1.set(Calendar.MINUTE, minute);
                 String dateText = DateFormat.format("h:mm a", calendar1).toString();
-                textViewTime.setText(dateText);
+                textTime_manager.setText(dateText);
             }
         }, HOUR, MINUTE, is24HourFormat);
 
