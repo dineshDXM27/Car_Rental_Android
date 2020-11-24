@@ -1,7 +1,9 @@
 package org.uta.rental.reservation;
 
 import android.content.Context;
+
 import android.content.Intent;
+
 import android.os.Build;
 import android.widget.EditText;
 import android.widget.Toast;

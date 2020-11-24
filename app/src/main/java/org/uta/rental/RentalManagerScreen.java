@@ -7,7 +7,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import org.uta.rental.reservation.ViewReservationsManagerScreen;
 
-
 public class RentalManagerScreen extends AppCompatActivity{
 
     @Override
