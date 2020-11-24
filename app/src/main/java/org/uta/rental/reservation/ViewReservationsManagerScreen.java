@@ -1,5 +1,6 @@
 package org.uta.rental.reservation;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -69,13 +70,14 @@ public class ViewReservationsManagerScreen extends AppCompatActivity {
         controller = new ViewReservationsManagerController(this.getApplicationContext(), editTextDate,
                 editTextTime);
         Button searchButton = (Button) findViewById(R.id.searchRvUserBtn);
+        final Context context = this.getApplicationContext();
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 List<Reservation> reservations = controller.viewReservations();
                 RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvReservations);
                 AdapterManagerReservation adapterReservation = new AdapterManagerReservation(recyclerView,
-                        reservations, controller);
+                        reservations, controller, context);
                 recyclerView.setAdapter(adapterReservation);
             }
         });

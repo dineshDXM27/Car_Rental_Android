@@ -1,6 +1,7 @@
 package org.uta.rental.reservation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import java.util.List;
 
 public class AdapterManagerReservation extends RecyclerView.Adapter<AdapterManagerReservation.ViewHolder> {
     private List<Reservation> reservations;
+
+    private Context context;
 
     private RecyclerView rv;
 
@@ -41,10 +44,12 @@ public class AdapterManagerReservation extends RecyclerView.Adapter<AdapterManag
         }
     }
 
-    public AdapterManagerReservation(RecyclerView rv, List<Reservation> reservations, ViewReservationsManagerController controller) {
+    public AdapterManagerReservation(RecyclerView rv, List<Reservation> reservations, ViewReservationsManagerController controller,
+                                     Context context) {
         this.rv = rv;
         this.reservations = reservations;
         this.controller = controller;
+        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -71,7 +76,10 @@ public class AdapterManagerReservation extends RecyclerView.Adapter<AdapterManag
             @Override
             public void onClick(View v) {
                 if (rv.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
-                    controller.viewReservationDetails(reservations.get(position));
+                    ViewReservationDetailsManagerController.setReservation(reservations.get(position));
+                    Intent intent = new Intent(context, ViewReservationDetailsManagerScreen.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
             }
         });

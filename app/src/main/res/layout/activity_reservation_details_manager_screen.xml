@@ -60,33 +60,15 @@
         app:srcCompat="@drawable/abc_vector_test" />
 
     <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="90dp"
-        android:background="@color/colorPrimary"
-        android:text="Cancel Reservation"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteButton" />
-
-    <Button
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
         android:layout_marginTop="472dp"
         android:layout_marginEnd="132dp"
-        android:layout_marginBottom="14dp"
         android:background="@color/colorPrimary"
-        android:text="Update Reservation"
+        android:text="Delete Reservation"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/cancelButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar" />
