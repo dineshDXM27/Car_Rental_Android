@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.uta.rental.user.RegisterUser;
 import org.uta.rental.user.UserType;
 
@@ -60,8 +59,7 @@ public class ApplicationMainScreen extends AppCompatActivity {
     }
 
     public void registerFunc(View view) {
-        Intent intent = new Intent(this,RegisterScreen.class);
+        Intent intent = new Intent(this, RegistrationScreen.class);
         startActivity(intent);
-        Toast.makeText(getApplicationContext(),"This is under process",Toast.LENGTH_LONG).show();
     }
 }

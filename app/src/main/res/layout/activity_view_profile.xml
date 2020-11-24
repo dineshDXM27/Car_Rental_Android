@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewProfile">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/zip_code"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/uta_id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+        <EditText
+            android:id="@+id/phoneViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:inputType="none"
+            android:textColor="#000000"
+            android:enabled="false"
+            app:layout_constraintStart_toEndOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/firstNameViewProfileET" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <EditText
+            android:id="@+id/RentalPriviledgeStatusViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:inputType="none"
+            android:textColor="#000000"
+            android:enabled="false"
+            app:layout_constraintStart_toEndOf="@+id/textView23"
+            app:layout_constraintTop_toBottomOf="@+id/zipcodeViewProfileET" />
+
+        <EditText
+            android:id="@+id/roleViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:inputType="none"
+            android:textColor="#000000"
+            android:enabled="false"
+            app:layout_constraintStart_toEndOf="@+id/textView17"
+            app:layout_constraintTop_toBottomOf="@+id/phoneViewProfileET" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/street_address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <EditText
+            android:id="@+id/aacMemberIdViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:textColor="#000000"
+            android:enabled="false"
+            android:inputType="none"
+            app:layout_constraintStart_toEndOf="@+id/textView24"
+            app:layout_constraintTop_toBottomOf="@+id/RentalPriviledgeStatusViewProfileET" />
+
+        <EditText
+            android:id="@+id/passwordViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:textColor="#000000"
+            android:enabled="false"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toEndOf="@+id/textView26"
+            app:layout_constraintTop_toBottomOf="@+id/userNameViewProfileET" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="@string/last_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="108dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/user_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/firstNameViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:inputType="none"
+            android:textColor="#000000"
+            android:enabled="false"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/lastNameViewProfileET" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
+            android:text="AAC Member id:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+        <EditText
+            android:id="@+id/utaidViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:textColor="#000000"
+            android:enabled="false"
+            android:inputType="none"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/passwordViewProfileET" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="@string/first_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <EditText
+            android:id="@+id/emailViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:inputType="none"
+            android:textColor="#000000"
+            android:enabled="false"
+            app:layout_constraintStart_toEndOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/roleViewProfileET" />
+
+        <EditText
+            android:id="@+id/lastNameViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:inputType="none"
+            android:textColor="#000000"
+            android:enabled="false"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/utaidViewProfileET" />
+
+        <EditText
+            android:id="@+id/zipcodeViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:textColor="#000000"
+            android:enabled="false"
+            android:inputType="none"
+            app:layout_constraintStart_toEndOf="@+id/textView22"
+            app:layout_constraintTop_toBottomOf="@+id/cityViewProfileET" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/role"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <EditText
+            android:id="@+id/streetAddressViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:textColor="#000000"
+            android:enabled="false"
+            android:inputType="none"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/emailViewProfileET" />
+
+        <EditText
+            android:id="@+id/cityViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:inputType="none"
+            android:textColor="#000000"
+            android:enabled="false"
+            app:layout_constraintStart_toEndOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/streetAddressViewProfileET" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/city"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        <EditText
+            android:id="@+id/userNameViewProfileET"
+            android:layout_width="183dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:clickable="false"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="none"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="107dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/rental_priviledge_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+        <Button
+            android:id="@+id/updateProfileButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="#777777"
+            android:text="Update Profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/userScreenToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="View Profile Screen" />
+
+    <Button
+        android:id="@+id/userLogoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/userScreenToolbar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+</androidx.constraintlayout.widget.ConstraintLayout>
