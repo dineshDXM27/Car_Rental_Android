@@ -40,7 +40,6 @@ public class ViewReservationsManagerScreen extends AppCompatActivity {
             LocalDateTime end = LocalDateTime.now();
             start = start.minusDays(random.nextInt(4));
             end = end.plusDays(1);
-            double totalCost = random.nextDouble();
 
             Reservation reservation = new Reservation();
             reservation.setReservationNumber(random.nextLong());
@@ -49,8 +48,10 @@ public class ViewReservationsManagerScreen extends AppCompatActivity {
             reservation.setCarName(carName);
             reservation.setStartDateTime(start);
             reservation.setEndDateTime(end);
-            reservation.setTotalCost(totalCost);
             reservations.add(reservation);
+            reservation.setGps(false);
+            reservation.setOnStar(false);
+            reservation.setSiriusXm(false);
             reservation.setOwningUsername(LoginController.getCurrentUser());
         }
 

@@ -103,6 +103,6 @@ public class AdapterUserReservation extends RecyclerView.Adapter<AdapterUserRese
                 "Total Cost: %.2f\n";
         return String.format(guiString, reservation.getReservationNumber(), reservation.getCarNumber(),
                 reservation.getCarName(), reservation.getCapacity(), startDate, startTime, endDate,
-                endTime, reservation.getTotalCost());
+                endTime, reservation.calculateTotalCost());
     }
 }

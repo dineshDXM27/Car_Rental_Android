@@ -1,5 +1,9 @@
 package org.uta.rental.reservation;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -26,22 +30,12 @@ public class Reservation {
 
     private  String aaMemberId;
 
-    private double totalCost;
-
     public String getOwningUsername() {
         return OwningUsername;
     }
 
     public void setOwningUsername(String owningUsername) {
         OwningUsername = owningUsername;
-    }
-
-    public double getTotalCost() {
-        return totalCost;
-    }
-
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
     }
 
     public long getReservationNumber() {
@@ -124,7 +118,21 @@ public class Reservation {
         this.aaMemberId = aaMemberId;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public double calculateTotalCost() {
-        return 0.0;
+        double cost = 0.0;
+
+        TotalCostUtility.CarType carType = TotalCostUtility.CarType.valueOf(getCarName().toUpperCase().replaceAll(" ", "_"));
+        TotalCostUtility.Extras extras = new TotalCostUtility.Extras(isGps(), isOnStar(),
+                isSiriusXm());
+        if (getAaMemberId() != null && !getAaMemberId().isEmpty()) {
+            cost = TotalCostUtility.calculateBaseCostWithDiscount(getStartDateTime(), getEndDateTime(),
+                    carType, extras);
+        } else {
+            cost = TotalCostUtility.calculateBaseCostWithoutDiscount(getStartDateTime(), getEndDateTime(),
+                    carType, extras);
+        }
+
+        return cost;
     }
 }

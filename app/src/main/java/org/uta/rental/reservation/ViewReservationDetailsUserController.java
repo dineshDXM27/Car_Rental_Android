@@ -33,7 +33,10 @@ public class ViewReservationDetailsUserController {
         reservation.setCapacity(res.getCapacity());
         reservation.setStartDateTime(res.getStartDateTime());
         reservation.setEndDateTime(res.getEndDateTime());
-        reservation.setTotalCost(res.getTotalCost());
+        reservation.setAaMemberId(res.getAaMemberId());
+        reservation.setGps(res.isGps());
+        reservation.setOnStar(res.isOnStar());
+        reservation.setSiriusXm(res.isSiriusXm());
 
         return reservation;
     }
