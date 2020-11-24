@@ -1,6 +1,9 @@
 package org.uta.rental.reservation;
 
 import android.content.Context;
+
+import android.content.Intent;
+
 import android.os.Build;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -39,6 +42,13 @@ public class ViewReservationDetailsUserController {
         reservation.setSiriusXm(res.isSiriusXm());
 
         return reservation;
+    }
+
+    public void cancelReservation() {
+        DBManager.getInstance(context).deleteReservation(res);
+        Intent intent = new Intent(context, ViewReservationsUserScreen.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 
     public static void setReservation(Reservation reservation) {
