@@ -53,7 +53,7 @@ the play button.
 ![phone](/images/app.png)
 
 
-## Add users to Sqlite
+## Add users and sample data to Sqlite
 After creating a virtual phone, installing Sqlite Browser, and running the application at
 least once:
 1. On the top select **ApplicationMainScreen** (could be app) and 
@@ -77,9 +77,18 @@ and open.
 ![tab](/images/exesql.png)
 1. Paste the following below into the sql text box:
 <pre>
-INSERT INTO `tbl_registerUser`(`username`,`password`,`usertype`) VALUES ("user", "password", "user");
-INSERT INTO `tbl_registerUser`(`username`,`password`,`usertype`) VALUES ("admin", "password", "admin");
-INSERT INTO `tbl_registerUser`(`username`,`password`,`usertype`) VALUES ("manager", "password", "rental_manager");
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('7632446431449997424', '-2117454409', 'Sport', '0', '1', '0', '0', '2020-11-21T13:48:44.642', '2020-11-24T13:48:44.644', '1234', 'user');
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('5794049876230268760', '1931493060', 'Sport', '0', '1', '0', '0', '2020-11-21T13:48:44.646', '2020-11-24T13:48:44.647', '1234', 'user');
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('-5388477166748168499', '-1887331276', 'Sport', '2', '0', '0', '0', '2020-11-23T13:48:44.649', '2020-11-24T13:48:44.650', '1234', 'user');
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('-5320169514147553650', '44903560', 'Sport', '3', '0', '0', '0', '2020-11-23T13:48:44.652', '2020-11-24T13:48:44.653', '1234', 'user');
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('-2026810423496269269', '553020514', 'Sport', '0', '0', '0', '0', '2020-11-20T13:48:44.654', '2020-11-24T13:48:44.654', '1344', 'user');
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('8873188197308195264', '-1655948228', 'Sport', '2', '0', '0', '0', '2020-11-23T13:48:44.655', '2020-11-24T13:48:44.656', '', 'user');
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('9202782440243539233', '1049548057', 'Sport', '0', '0', '0', '0', '2020-11-23T13:48:44.658', '2020-11-24T13:48:44.659', '', 'user');
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('-2046801816645851801', '-995273383', 'Sport', '1', '0', '0', '0', '2020-11-23T13:48:44.659', '2020-11-24T13:48:44.660', '', 'user');
+INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('-4278400149759656163', '2067782975', 'Sport', '1', '0', '0', '0', '2020-11-20T13:48:44.662', '2020-11-24T13:48:44.663', '', 'user');
+INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode") VALUES ('user', 'password', 'user', '1234', 'doe', 'john', '2222222', 'foo@foo.com', 'foostreet', 'fooville', 'tx', '76244');
+INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode") VALUES ('admin', 'password', 'admin', '1234', 'doe', 'john', '2222222', 'foo@foo.com', 'foostreet', 'fooville', 'tx', '76244');
+INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode") VALUES ('manager', 'password', 'password', '1234', 'doe', 'john', '2222222', 'foo@foo.com', 'foostreet', 'fooville', 'tx', '76244');
 </pre>
 Should look like the following
 ![newuser](/images/new_users.png)

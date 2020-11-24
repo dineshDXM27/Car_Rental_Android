@@ -9,10 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterScreen"></activity>
-        <activity android:name=".AdminMainScreen" />
-        <activity android:name=".UserHomeScreen" />
+        <!--activity android:name=".reservation.ListActivity"></activity-->
+        <activity android:name=".RegisterScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".AdminMainScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".UserHomeScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".DeleteReservationGUI"></activity>
+        <activity android:name=".ViewAvailableCars" />
+        <activity android:name=".ViewReservationDetailsGUI" />
+        <activity android:name=".RegistrationScreen" />
         <activity android:name=".RentalManagerScreen" />
+        <activity android:name=".reservation.ViewReservationsUserScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing"
+            />
         <activity
             android:name=".ApplicationMainScreen"
             android:label="@string/app_name"
