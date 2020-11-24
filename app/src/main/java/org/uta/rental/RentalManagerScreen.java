@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.uta.rental.reservation.ViewReservationsManagerScreen;
 
 
@@ -28,7 +27,7 @@ public class RentalManagerScreen extends AppCompatActivity{
         search_cars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ///
+                startActivity(new Intent(RentalManagerScreen.this, SearchCars_Manager.class));
             }
         });
 
