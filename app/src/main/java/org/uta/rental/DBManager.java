@@ -131,6 +131,16 @@ public class DBManager extends SQLiteOpenHelper
 
         return reservations;
     }
+
+    public void deleteReservation(Reservation reservation) {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+        boolean deleted = sqldb.delete("tbl_reservation", "reservationnumber=" + reservation.getReservationNumber(), null) > 0;
+
+        if (!deleted) {
+            throw new SQLiteException("Unable to delete reservation");
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public List<Reservation> getReservationsFromDateAndTimeAndOwningUser(LocalDateTime dateTime,
                                                                          String owningUserName) {

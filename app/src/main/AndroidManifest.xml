@@ -21,8 +21,19 @@
             />
         <activity android:name=".DeleteReservationGUI"></activity>
         <activity android:name=".ViewAvailableCars" />
-        <activity android:name=".ViewReservationDetailsGUI" />
+        <activity android:name=".reservation.ViewReservationDetailsUserScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".reservation.ViewReservationDetailsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".RegistrationScreen" />
+        <activity android:name=".RentalManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".reservation.ViewReservationsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing"
+            />
         <activity android:name=".RentalManagerScreen" />
         <activity android:name="SearchCars_Manager"></activity>
         <activity android:name=".reservation.ViewReservationsUserScreen"

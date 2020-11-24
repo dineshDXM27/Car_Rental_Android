@@ -1,12 +1,12 @@
 package org.uta.rental.reservation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,12 +16,14 @@ import org.uta.rental.R;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.ViewHolder> {
+public class AdapterManagerReservation extends RecyclerView.Adapter<AdapterManagerReservation.ViewHolder> {
     private List<Reservation> reservations;
+
+    private Context context;
 
     private RecyclerView rv;
 
-    private ViewReservationsUserController controller;
+    private ViewReservationsManagerController controller;
 
     /**
      * Provide a reference to the type of views that you are using
@@ -42,10 +44,12 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
         }
     }
 
-    public AdapterReservation(RecyclerView rv, List<Reservation> reservations, ViewReservationsUserController controller) {
+    public AdapterManagerReservation(RecyclerView rv, List<Reservation> reservations, ViewReservationsManagerController controller,
+                                     Context context) {
         this.rv = rv;
         this.reservations = reservations;
         this.controller = controller;
+        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -72,7 +76,10 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
             @Override
             public void onClick(View v) {
                 if (rv.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
-                    controller.viewReservationDetails(reservations.get(position));
+                    ViewReservationDetailsManagerController.setReservation(reservations.get(position));
+                    Intent intent = new Intent(context, ViewReservationDetailsManagerScreen.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
             }
         });
@@ -91,12 +98,12 @@ public class AdapterReservation extends RecyclerView.Adapter<AdapterReservation.
         String startTime = timeFormatter.format(reservation.getStartDateTime());
         String startDate = dateFormatter.format(reservation.getStartDateTime());
         String endTime = timeFormatter.format(reservation.getEndDateTime());
-        String endDate = timeFormatter.format(reservation.getEndDateTime());
+        String endDate = dateFormatter.format(reservation.getEndDateTime());
         String guiString = "Reservation Number: %d\nCar Number: %d\nCar Name: %s\n" +
                 "Capacity: %d\nStart Date: %s\nStart Time: %s\nEnd Date: %s\nEnd Time: %s\n" +
                 "Total Cost: %.2f\n";
         return String.format(guiString, reservation.getReservationNumber(), reservation.getCarNumber(),
                 reservation.getCarName(), reservation.getCapacity(), startDate, startTime, endDate,
-                endTime, reservation.getTotalCost());
+                endTime, reservation.calculateTotalCost());
     }
 }
