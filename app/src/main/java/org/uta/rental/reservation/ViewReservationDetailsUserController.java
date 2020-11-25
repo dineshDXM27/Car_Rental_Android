@@ -51,6 +51,7 @@ public class ViewReservationDetailsUserController {
         context.startActivity(intent);
     }
 
+
     public static void setReservation(Reservation reservation) {
         ViewReservationDetailsUserController.res = reservation;
     }

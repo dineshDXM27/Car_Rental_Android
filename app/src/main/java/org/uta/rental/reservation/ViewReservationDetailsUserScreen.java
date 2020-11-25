@@ -86,9 +86,7 @@ public class ViewReservationDetailsUserScreen extends AppCompatActivity {
         String startTime = timeFormatter.format(reservation.getStartDateTime());
         String startDate = dateFormatter.format(reservation.getStartDateTime());
         String endTime = timeFormatter.format(reservation.getEndDateTime());
-
         String endDate = dateFormatter.format(reservation.getEndDateTime());
-
         String gps = reservation.isGps() ? "Yes" : "No";
         String onStar = reservation.isOnStar() ? "Yes" : "No";
         String siriusXm = reservation.isSiriusXm() ? "Yes" : "No";

@@ -1,7 +1,9 @@
 package org.uta.rental.reservation;
 
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.uta.rental.ApplicationMainScreen;
+
 
 import org.uta.rental.DBManager;
 
@@ -29,8 +32,8 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_details_manager_screen);
-
         controller = new ViewReservationDetailsManagerController(ViewReservationDetailsManagerScreen.this);
+
 
         RentalManagerReservationDetails reservationDetails = controller.viewReservationDetails();
         TextView textView = (TextView) findViewById(R.id.reservationDetailText);
@@ -52,6 +55,7 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
                         ViewReservationsManagerScreen.class));
             }
         });
+
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getWindow().getContext());
@@ -77,7 +81,6 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
                 dialog.show();
             }
         });
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -88,7 +91,6 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
         String startDate = dateFormatter.format(reservation.getStartDateTime());
         String endTime = timeFormatter.format(reservation.getEndDateTime());
         String endDate = dateFormatter.format(reservation.getEndDateTime());
-
         String gps = reservation.isGps() ? "Yes" : "No";
         String onStar = reservation.isOnStar() ? "Yes" : "No";
         String siriusXm = reservation.isSiriusXm() ? "Yes" : "No";
