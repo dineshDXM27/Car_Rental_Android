@@ -67,7 +67,7 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
         final AlertDialog dialog = builder.create();
         // Display the alert dialog on interface
 
-        Button deleteButton = (Button) findViewById(R.id.deletervButton);
+        Button deleteButton = (Button) findViewById(R.id.Save);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
