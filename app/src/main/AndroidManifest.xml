@@ -34,7 +34,6 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing"
             />
-        <activity android:name=".RentalManagerScreen" />
         <activity android:name="SearchCars_Manager"></activity>
         <activity android:name=".reservation.ViewReservationsUserScreen"
             android:theme="@style/AppTheme.NoActionBar"
