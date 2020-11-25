@@ -98,6 +98,7 @@ public class AdapterUserReservation extends RecyclerView.Adapter<AdapterUserRese
         String startDate = dateFormatter.format(reservation.getStartDateTime());
         String endTime = timeFormatter.format(reservation.getEndDateTime());
         String endDate = dateFormatter.format(reservation.getEndDateTime());
+
         String guiString = "Reservation Number: %d\nCar Number: %d\nCar Name: %s\n" +
                 "Capacity: %d\nStart Date: %s\nStart Time: %s\nEnd Date: %s\nEnd Time: %s\n" +
                 "Total Cost: %.2f\n";

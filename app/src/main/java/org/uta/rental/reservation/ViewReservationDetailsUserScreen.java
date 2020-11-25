@@ -1,5 +1,9 @@
 package org.uta.rental.reservation;
 
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,6 +50,31 @@ public class ViewReservationDetailsUserScreen extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ViewReservationDetailsUserScreen.this,
                         ViewReservationsUserScreen.class));
+            }
+        });
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getWindow().getContext());
+        builder.setTitle("Cancel Reservation");
+        builder.setMessage("Are you sure?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                controller.cancelReservation();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog dialog = builder.create();
+        // Display the alert dialog on interface
+
+        Button cancelButton = (Button) findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
             }
         });
     }
