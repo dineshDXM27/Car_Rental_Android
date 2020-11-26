@@ -52,21 +52,29 @@
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="68dp"
         android:background="@color/colorPrimary"
         android:text="Cancel"
         android:textColor="#FFFFFF"
-        tools:layout_editor_absoluteX="255dp"
-        tools:layout_editor_absoluteY="644dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/updateButton"
+        app:layout_constraintTop_toBottomOf="@+id/endTime" />
 
     <Button
-        android:id="@+id/Save"
+        android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="54dp"
         android:background="@color/colorPrimary"
         android:text="Save"
         android:textColor="#FFFFFF"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="644dp" />
+        app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endTime" />
 
     <EditText
         android:id="@+id/reservationNumber"
@@ -77,11 +85,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="9dp"
         android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/carNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/resNumber"
-        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar" />
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/carNumber"
@@ -90,9 +94,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="9dp"
         android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/resNumber2"
-        app:layout_constraintTop_toBottomOf="@+id/reservationNumber" />
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/resNumber"
@@ -101,11 +103,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="7dp"
+        android:layout_marginBottom="31dp"
         android:text="Reservation Number"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/reservationNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber2"
@@ -114,172 +114,181 @@
         android:layout_marginStart="66dp"
         android:layout_marginTop="31dp"
         android:layout_marginEnd="23dp"
+        android:layout_marginBottom="23dp"
         android:text="Car Number"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/carNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resNumber" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="14dp"
         android:text="Car Name"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="195dp" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="34dp"
         android:text="Capacity"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="233dp" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="72dp"
         android:text="Gps"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="284dp" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="49dp"
         android:text="OnStar"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="340dp" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="32dp"
         android:text="SiriusXM"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="382dp" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="31dp"
         android:text="End Date"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="523dp" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="25dp"
         android:text="Start Date"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="444dp" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="28dp"
         android:text="End Time"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="568dp" />
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/resNumber11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:text="Start Time"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="478dp" />
+        android:textSize="18sp"/>
 
     <EditText
         android:id="@+id/carName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="180dp" />
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/gps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="277dp" />
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/onStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="330dp" />
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/siriusXm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="7dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="382dp" />
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/capacity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginBottom="7dp"
         android:ems="10"
-        android:inputType="number"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="225dp" />
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/startDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="6dp"
         android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="433dp" />
+        android:inputType="date"/>
 
     <EditText
         android:id="@+id/endDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="523dp" />
+        android:inputType="date"/>
 
     <EditText
         android:id="@+id/startTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:ems="10"
-        android:inputType="time"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="478dp" />
+        android:inputType="time"/>
 
     <EditText
         android:id="@+id/endTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
-        android:inputType="time"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="568dp" />
+        android:inputType="time"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

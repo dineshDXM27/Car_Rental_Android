@@ -18,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.uta.rental.ApplicationMainScreen;
 
 
-import org.uta.rental.DBManager;
-
 import org.uta.rental.R;
 
 import java.time.format.DateTimeFormatter;
@@ -74,7 +72,7 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
         final AlertDialog dialog = builder.create();
         // Display the alert dialog on interface
 
-        Button deleteButton = (Button) findViewById(R.id.Save);
+        Button deleteButton = (Button) findViewById(R.id.updateButton);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

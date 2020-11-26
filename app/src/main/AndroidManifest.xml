@@ -21,6 +21,9 @@
             />
         <activity android:name=".DeleteReservationGUI"></activity>
         <activity android:name=".ViewAvailableCars" />
+        <activity android:name=".reservation.UpdateReservationDetailsUserScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity android:name=".reservation.ViewReservationDetailsUserScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />

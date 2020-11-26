@@ -44,6 +44,13 @@ public class ViewReservationDetailsUserController {
         return reservation;
     }
 
+    public void updateReservation(ReservationDetails reservationDetails) {
+        Intent intent = new Intent(context, UpdateReservationDetailsUserScreen.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("UserReservationDetails", reservationDetails);
+        context.startActivity(intent);
+    }
+
     public void cancelReservation() {
         DBManager.getInstance(context).deleteReservation(res);
         Intent intent = new Intent(context, ViewReservationsUserScreen.class);
