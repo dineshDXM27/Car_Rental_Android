@@ -1,7 +1,9 @@
 package org.uta.rental.reservation;
 
 import android.content.Context;
+
 import android.content.Intent;
+
 import android.os.Build;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +50,7 @@ public class ViewReservationDetailsUserController {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
+
 
     public static void setReservation(Reservation reservation) {
         ViewReservationDetailsUserController.res = reservation;
