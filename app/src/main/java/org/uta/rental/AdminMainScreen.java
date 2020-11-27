@@ -2,6 +2,7 @@ package org.uta.rental;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -18,7 +19,7 @@ public class AdminMainScreen extends AppCompatActivity {
         searchUsersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //yet to implement functionality
+                startActivity(new Intent(AdminMainScreen.this, SearchUsers_Admin.class));
             }
         });
 
@@ -26,7 +27,6 @@ public class AdminMainScreen extends AppCompatActivity {
         viewMyProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //yet to implement functionality
             }
         });
 

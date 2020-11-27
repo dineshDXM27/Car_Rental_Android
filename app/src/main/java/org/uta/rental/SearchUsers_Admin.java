@@ -1,6 +1,10 @@
 package org.uta.rental;
 
-public class SearchUsers_Admin {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SearchUsers_Admin extends AppCompatActivity {
 
     private String userName;
     private String lastName;
@@ -28,6 +32,12 @@ public class SearchUsers_Admin {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_admin_search_user_screen);
     }
 
 }
