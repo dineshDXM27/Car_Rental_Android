@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
 
 
     <androidx.appcompat.widget.Toolbar
@@ -34,5 +31,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011" />
+
+    <EditText
+        android:id="@+id/lastNameTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toEndOf="@+id/searchUser_usrScreen"
+        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <TextView
+        android:id="@+id/searchUser_usrScreen"
+        android:layout_width="69dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/lastname"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar"
+        app:layout_constraintVertical_bias="0.012" />
+
+    <Button
+        android:id="@+id/searchBtnUserSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameTxtView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_searchUsers"
+        android:layout_width="411dp"
+        android:layout_height="473dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,4 +59,6 @@
     <string name="duration">Duration</string>
     <string name="logout">Logout</string>
     <string name="textview">TextView</string>
+    <string name="lastname">LastName:</string>
+    <string name="search">Search</string>
 </resources>
