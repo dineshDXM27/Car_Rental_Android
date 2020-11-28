@@ -3,7 +3,6 @@ package org.uta.rental.user;
 import android.content.Context;
 
 import org.uta.rental.ViewProfile;
-import org.uta.rental.ViewProfileAdmin;
 
 public class AdminSearchUserDetailsController {
     private static ViewProfile users;
@@ -13,8 +12,8 @@ public class AdminSearchUserDetailsController {
         this.context = context;
     }
 
-    public ViewProfileAdmin userDetails(){
-        ViewProfileAdmin user = new ViewProfileAdmin();
+    public ViewProfile userDetails(){
+        ViewProfile user = new ViewProfile();
         user.setUserName(users.getUserName());
         user.setPassword(users.getPassword());
         user.setUtaID(users.getUtaID());

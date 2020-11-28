@@ -82,9 +82,9 @@ public class AdapterAdminSearchUsers extends RecyclerView.Adapter<AdapterAdminSe
         String firstName = user.getFirstName();
         String userName = user.getUserName();
 
-        String displayText = "LastName: %d\nFirstName: %d\nUserName: %s\n";
+        String displayText = "LastName: %s\nFirstName: %s\nUserName: %s\n";
 
-        return String.format(displayText);
+        return String.format(displayText, lastName, firstName, userName);
     }
 
 }

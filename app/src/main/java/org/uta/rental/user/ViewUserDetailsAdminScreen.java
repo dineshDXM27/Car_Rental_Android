@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.R;
 import org.uta.rental.SearchUsers_AdminScreen;
-import org.uta.rental.ViewProfileAdmin;
+import org.uta.rental.ViewProfile;
 
 public class ViewUserDetailsAdminScreen extends AppCompatActivity {
 
@@ -23,11 +23,11 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_user_details_admin_screen);
         searchUsersController = new AdminSearchUserDetailsController(ViewUserDetailsAdminScreen.this);
-        ViewProfileAdmin userDetails = searchUsersController.userDetails();
+        ViewProfile userDetails = searchUsersController.userDetails();
 
-        TextView textView = (TextView) findViewById(R.id.userList);
+        TextView textView = (TextView) findViewById(R.id.UserDetailsTxt);
         textView.setText(userDetailsToString(userDetails));
-        Button logoutBtn = (Button)findViewById(R.id.logoutBtn);
+        Button logoutBtn = (Button)findViewById(R.id.logoutBtn2);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,7 +36,7 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
             }
         });
 
-        ImageButton backBtn = (ImageButton) findViewById(R.id.vrUserBackButton);
+        ImageButton backBtn = (ImageButton) findViewById(R.id.vrUserBackButton2);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +47,7 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
     }
 
 
-    private String userDetailsToString(ViewProfileAdmin user){
+    private String userDetailsToString(ViewProfile user){
         String userName = user.getUserName();
         String password = user.getPassword();
         String utaID = user.getUtaID();
@@ -62,8 +62,8 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
         String zip = user.getZipCode();
         String rentalPrivilege = user.getRentalprivilegeStatus();
 
-        String guiString = "UserName: %d\nPassword: %d\nUTA ID: %s\n" +
-                           "LastName: %d\nFirstName: %s\nPhone: %s\nRole: %s\n" +
+        String guiString = "UserName: %s\nPassword: %s\nUTA ID: %s\n" +
+                           "LastName: %s\nFirstName: %s\nPhone: %s\nRole: %s\n" +
                            "Email: %s\nAddress: %s\nCity: %s\nState: %s\n" +
                            "Zip: %s\nRental Privilege Status: %s\n";
 

@@ -134,7 +134,7 @@ public class DBManager extends SQLiteOpenHelper
     public List<ViewProfile> getUsersFromLastName(String lastName){
         List<ViewProfile> users = new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();
-        String query = "select * from tbl_registerUser";
+        String query = "Select * from tbl_registerUser where lastname = '" + lastName + "'";;
         Cursor cursor = database.rawQuery(query, null);
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
@@ -245,6 +245,7 @@ public class DBManager extends SQLiteOpenHelper
         }
     }
 
+    //write a method that returns userDetails (ViewProfile object) when given userName
 
     public Optional<RegisterUser> findUserByUsername(String username) {
         Optional<RegisterUser> registerUserOptional = Optional.empty();
