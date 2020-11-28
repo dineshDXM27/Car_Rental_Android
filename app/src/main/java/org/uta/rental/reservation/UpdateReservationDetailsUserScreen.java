@@ -96,9 +96,11 @@ public class UpdateReservationDetailsUserScreen extends AppCompatActivity {
                         + startTimeText.getText(), dateTimeFormatter));
                 reservation.setEndDateTime(LocalDateTime.parse(endDateText.getText() + " "
                         + endTimeText.getText(), dateTimeFormatter));
-                reservation.setGps(gpsText.getText().equals("Yes") ? true : false);
-                reservation.setOnStar(onStartText.getText().equals("Yes") ? true : false);
-                reservation.setSiriusXm(xmText.getText().equals("Yes") ? true : false);
+                String gpsString = gpsText.getText().toString();
+                String gpsString2 = String.format("%s", gpsText.getText());
+                reservation.setGps(gpsText.getText().toString().equals("Yes"));
+                reservation.setOnStar(onStartText.getText().toString().equals("Yes"));
+                reservation.setSiriusXm(xmText.getText().toString().equals("Yes"));
                 controller.updateReservation(reservation);
             }
         });
