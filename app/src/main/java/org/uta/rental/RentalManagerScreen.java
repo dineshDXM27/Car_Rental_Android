@@ -46,4 +46,8 @@ public class RentalManagerScreen extends AppCompatActivity{
             }
         });
     }
+
+    public void ViewProfileFunc(View view) {
+        startActivity(new Intent(RentalManagerScreen.this, UpdateProfileScreen.class));
+    }
 }
