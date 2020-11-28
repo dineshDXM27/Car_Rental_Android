@@ -11,7 +11,6 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import org.uta.rental.carsInformation.CarsInformation;
 import org.uta.rental.reservation.Reservation;
 import org.uta.rental.user.Admin;
 import org.uta.rental.user.RegisterUser;
@@ -24,7 +23,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -132,6 +130,56 @@ public class DBManager extends SQLiteOpenHelper
         return reservations;
     }
 
+
+    public List<ViewProfile> getUsersFromLastName(String lastName){
+        List<ViewProfile> users = new ArrayList<>();
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "select * from tbl_registerUser";
+        Cursor cursor = database.rawQuery(query, null);
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            String userName = cursor.getString(0);
+            String password = cursor.getString(1);
+            String userType = cursor.getString(2);
+            String utaID = cursor.getString(3);
+            String lastN = cursor.getString(4);
+            String firstName = cursor.getString(5);
+            String phone = cursor.getString(6);
+            String email = cursor.getString(7);
+            String address = cursor.getString(8);
+            String city = cursor.getString(9);
+            String state = cursor.getString(10);
+            String zip = cursor.getString(11);
+
+            ViewProfile user = new ViewProfile();
+            user.setUserName(userName);
+            user.setPassword(password);
+            user.setUtaID(utaID);
+            user.setLastName(lastN);
+            user.setFirstName(firstName);
+            user.setPhone(phone);
+            user.setEmail(email);
+            user.setStreetAddress(address);
+            user.setCity(city);
+            user.setState(state);
+            user.setZipCode(zip);
+
+            users.add(user);
+            cursor.moveToNext();
+        }
+
+        Collections.sort(users, new Comparator<ViewProfile>() {
+            @Override
+            public int compare(ViewProfile o1, ViewProfile o2) {
+                String o1LName = o1.getLastName();
+                String o2LName = o2.getLastName();
+                return o1LName.compareTo(o2LName);
+            }
+        });
+
+        return users;
+    }
+
     public void deleteReservation(Reservation reservation) {
         SQLiteDatabase sqldb = this.getReadableDatabase();
         boolean deleted = sqldb.delete("tbl_reservation", "reservationnumber=" + reservation.getReservationNumber(), null) > 0;
@@ -197,6 +245,7 @@ public class DBManager extends SQLiteOpenHelper
         }
     }
 
+
     public Optional<RegisterUser> findUserByUsername(String username) {
         Optional<RegisterUser> registerUserOptional = Optional.empty();
         SQLiteDatabase sqldb = this.getReadableDatabase();
@@ -250,6 +299,9 @@ public class DBManager extends SQLiteOpenHelper
 
         return registerUserOptional;
     }
+
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i("database", "Creating car_rental database.");

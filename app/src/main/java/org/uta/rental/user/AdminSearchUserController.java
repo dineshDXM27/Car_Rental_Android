@@ -3,6 +3,7 @@ package org.uta.rental.user;
 import android.content.Context;
 import android.widget.EditText;
 
+import org.uta.rental.DBManager;
 import org.uta.rental.ViewProfile;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class AdminSearchUserController {
     }
 
     public List<ViewProfile> displayUsers(){
-        return null;    //yet to implement
+       return DBManager.getInstance(context).getUsersFromLastName(lastName.toString());
     }
 }
 
