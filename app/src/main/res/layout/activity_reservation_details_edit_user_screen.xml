@@ -1,0 +1,229 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".reservation.UpdateReservationDetailsUserScreen">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/userScreenToolbar"
+        android:layout_width="429dp"
+        android:layout_height="64dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="                     Reservation Details" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/vrUserBackButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
+
+    <ImageButton
+        android:id="@+id/vrUserBackButton"
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="260dp"
+        android:layout_marginBottom="226dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/rvReservations"
+        app:layout_constraintEnd_toStartOf="@+id/viewReservationslogoutBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="21dp"
+        android:background="@color/colorPrimary"
+        android:text="Cancel"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/updateButton"
+        app:layout_constraintTop_toBottomOf="@+id/endTime" />
+
+    <EditText
+        android:id="@+id/gps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/resNumber5"
+        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar" />
+
+    <EditText
+        android:id="@+id/siriusXm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/resNumber7"
+        app:layout_constraintTop_toBottomOf="@+id/onStar" />
+
+    <TextView
+        android:id="@+id/resNumber9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="28dp"
+        android:text="End Time"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resNumber8" />
+
+    <TextView
+        android:id="@+id/resNumber7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="56dp"
+        android:text="SiriusXM"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resNumber6" />
+
+    <TextView
+        android:id="@+id/startText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:text="Start Time"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resNumber10" />
+
+    <EditText
+        android:id="@+id/startTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintStart_toEndOf="@+id/startText"
+        app:layout_constraintTop_toBottomOf="@+id/startDate" />
+
+    <TextView
+        android:id="@+id/resNumber10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="44dp"
+        android:text="Start Date"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resNumber7" />
+
+    <EditText
+        android:id="@+id/endDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintStart_toEndOf="@+id/resNumber8"
+        app:layout_constraintTop_toBottomOf="@+id/startTime" />
+
+    <TextView
+        android:id="@+id/resNumber5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="80dp"
+        android:text="Gps"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar" />
+
+    <TextView
+        android:id="@+id/resNumber8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="40dp"
+        android:text="End Date"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startText" />
+
+    <EditText
+        android:id="@+id/endTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="time"
+        app:layout_constraintStart_toEndOf="@+id/resNumber9"
+        app:layout_constraintTop_toBottomOf="@+id/endDate" />
+
+    <TextView
+        android:id="@+id/resNumber6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="68dp"
+        android:text="OnStar"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resNumber5" />
+
+    <EditText
+        android:id="@+id/startDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintStart_toEndOf="@+id/resNumber10"
+        app:layout_constraintTop_toBottomOf="@+id/siriusXm" />
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorPrimary"
+        android:text="Save"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resNumber9" />
+
+    <EditText
+        android:id="@+id/onStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/resNumber6"
+        app:layout_constraintTop_toBottomOf="@+id/gps" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
