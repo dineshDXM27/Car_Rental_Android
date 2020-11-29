@@ -48,6 +48,7 @@ public class DBManager extends SQLiteOpenHelper
         return dbManager;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void saveReservation(Reservation reservation) throws SQLiteException {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -56,14 +57,14 @@ public class DBManager extends SQLiteOpenHelper
         cv.put("carname", reservation.getCarName());
         cv.put("capacity", reservation.getCapacity());
         cv.put("onstar", reservation.isOnStar());
+        cv.put("gps", reservation.isGps());
         cv.put("siriusxm", reservation.isSiriusXm());
-        cv.put("startdatetime", reservation.getStartDateTime().toString());
-        cv.put("enddatetime", reservation.getEndDateTime().toString());
+        cv.put("startdatetime", DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(reservation.getStartDateTime()));
+        cv.put("enddatetime", DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(reservation.getEndDateTime()));
         cv.put("aamemberid", reservation.getAaMemberId());
         cv.put("username", reservation.getOwningUsername());
         // put remainder of data stored here
-
-        long res = db.insert("tbl_reservation", null,cv );
+        long res = db.replace("tbl_reservation", null, cv);
 
         if(res== -1) {
             throw new SQLiteException("Unable to insert reservation");
@@ -166,7 +167,7 @@ public class DBManager extends SQLiteOpenHelper
             }
         }
 
-        if (reservationOptional.isPresent()) {
+        if (!reservationOptional.isPresent()) {
             throw new SQLiteException("Bad id could not find reservation");
         }
 

@@ -32,7 +32,7 @@ public class ViewReservationDetailsUserScreen extends AppCompatActivity {
 
         controller = new ViewReservationDetailsUserController(this.getApplicationContext());
 
-        UserReservationDetails userReservationDetails = controller.viewReservationDetails();
+        final UserReservationDetails userReservationDetails = controller.viewReservationDetails();
         TextView textView = (TextView) findViewById(R.id.reservationDetailText);
         textView.setText(reservationDetailsToString(userReservationDetails));
         Button logoutBtn = (Button)findViewById(R.id.logoutBtn);
@@ -77,6 +77,14 @@ public class ViewReservationDetailsUserScreen extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        Button updateButton = (Button) findViewById(R.id.updateButton);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                controller.updateReservation(userReservationDetails);
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -86,9 +94,7 @@ public class ViewReservationDetailsUserScreen extends AppCompatActivity {
         String startTime = timeFormatter.format(reservation.getStartDateTime());
         String startDate = dateFormatter.format(reservation.getStartDateTime());
         String endTime = timeFormatter.format(reservation.getEndDateTime());
-
         String endDate = dateFormatter.format(reservation.getEndDateTime());
-
         String gps = reservation.isGps() ? "Yes" : "No";
         String onStar = reservation.isOnStar() ? "Yes" : "No";
         String siriusXm = reservation.isSiriusXm() ? "Yes" : "No";

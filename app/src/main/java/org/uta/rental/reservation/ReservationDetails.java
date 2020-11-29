@@ -4,9 +4,10 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ReservationDetails {
+public class ReservationDetails implements Serializable {
     private long reservationNumber;
 
     private long carNumber;
