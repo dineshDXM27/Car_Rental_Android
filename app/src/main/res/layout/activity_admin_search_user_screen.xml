@@ -54,17 +54,18 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toEndOf="@+id/searchUser_usrScreen"
         app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.12" />
 
     <TextView
         android:id="@+id/searchUser_usrScreen"
-        android:layout_width="69dp"
-        android:layout_height="31dp"
+        android:layout_width="104dp"
+        android:layout_height="32dp"
         android:layout_marginTop="68dp"
         android:text="@string/lastname"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar"

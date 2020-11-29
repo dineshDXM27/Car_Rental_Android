@@ -27,6 +27,7 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
 
         TextView textView = (TextView) findViewById(R.id.UserDetailsTxt);
         textView.setText(userDetailsToString(userDetails));
+        textView.setTextSize(24);
 
         Button logoutBtn = (Button)findViewById(R.id.logoutBtn2);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
