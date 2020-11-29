@@ -27,6 +27,7 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
 
         TextView textView = (TextView) findViewById(R.id.UserDetailsTxt);
         textView.setText(userDetailsToString(userDetails));
+
         Button logoutBtn = (Button)findViewById(R.id.logoutBtn2);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +43,24 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ViewUserDetailsAdminScreen.this,
                         SearchUsers_AdminScreen.class));
+            }
+        });
+
+        Button editProfileBtn = (Button) findViewById(R.id.editProfile);
+        editProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewUserDetailsAdminScreen.this,
+                        AdminEditProfile.class));
+            }
+        });
+
+        Button changeRoleBtn = (Button) findViewById(R.id.chnageRole);
+        changeRoleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewUserDetailsAdminScreen.this,
+                        AdminEditProfile.class));
             }
         });
     }
