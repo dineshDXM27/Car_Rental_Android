@@ -26,7 +26,7 @@ public class AdminMainScreen extends AppCompatActivity {
         viewMyProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //yet to implement functionality
+                startActivity(new Intent(AdminMainScreen.this, UpdateProfileScreen.class));
             }
         });
 

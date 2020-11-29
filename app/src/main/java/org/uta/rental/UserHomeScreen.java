@@ -20,7 +20,7 @@ public class UserHomeScreen extends AppCompatActivity {
         viewProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //yet to implement
+                startActivity(new Intent(UserHomeScreen.this, UpdateProfileScreen.class));
             }
         });
 

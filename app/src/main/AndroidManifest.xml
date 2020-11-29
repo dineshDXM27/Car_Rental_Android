@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".UpdateProfileScreen"></activity>
+        <!-- activity android:name=".reservation.ListActivity"></activity -->
+
+
         <activity android:name=".RegisterScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
@@ -29,20 +33,22 @@
             />
         <activity android:name=".reservation.ViewReservationDetailsManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".RegistrationScreen" />
-        <activity android:name=".RentalManagerScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".reservation.ViewReservationsManagerScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustNothing"
-            />
-        <activity android:name="SearchCars_Manager"></activity>
-        <activity android:name=".reservation.ViewReservationsUserScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustNothing"
-            />
 
+        <activity android:name=".RegistrationScreen" />
+        <activity
+            android:name=".RentalManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".reservation.ViewReservationsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".SearchCars_Manager" />
+        <activity
+            android:name=".reservation.ViewReservationsUserScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing"
+            />
+      
         <activity
         android:name=".ApplicationMainScreen"
         android:label="@string/app_name"

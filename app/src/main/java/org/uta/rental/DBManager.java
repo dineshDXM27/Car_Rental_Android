@@ -198,6 +198,32 @@ public class DBManager extends SQLiteOpenHelper
         }
     }
 
+    public ViewProfile findUserByUsernameforRentalPrivilegeStatus(String username) {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+        String query = "Select * from tbl_registerUser where username = '" + username + "'";
+        Cursor cursor = sqldb.rawQuery(query, null);
+
+        ViewProfile vp = new ViewProfile();
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            String password = cursor.getString(1);
+            String typeString = cursor.getString(2);
+            UserType userType = null;
+            for (UserType type : UserType.values()) {
+                if (type.getType().equals(typeString)) {
+                    userType = type;
+                }
+            }
+
+            String rentalPrivStatus = cursor.getString(12);
+
+            vp.setRentalprivilegeStatus(rentalPrivStatus);
+
+        }
+        return vp;
+    }
+
     public Optional<RegisterUser> findUserByUsername(String username) {
         Optional<RegisterUser> registerUserOptional = Optional.empty();
         SQLiteDatabase sqldb = this.getReadableDatabase();
@@ -251,12 +277,14 @@ public class DBManager extends SQLiteOpenHelper
 
         return registerUserOptional;
     }
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i("database", "Creating car_rental database.");
         String qry = "create table tbl_registerUser(username text primary key,password text, " +
                 "usertype text,utaid text,lastname text,firstname text,phone text,email text," +
-                "streetaddress text, city text,state text,zipcode text)";
+                "streetaddress text, city text,state text,zipcode text , Rentalprivilegestatus text )";
         db.execSQL(qry);
         qry = "create table tbl_reservation(reservationnumber int primary key,carnumber int," +
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +
@@ -264,6 +292,37 @@ public class DBManager extends SQLiteOpenHelper
         db.execSQL(qry);
         qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, weekdayRate int, weekendRate int, weekRate int, GPSRate int, OnStarRate int, SiriusXM int, carStatus text)";
         db.execSQL(qry);
+    }
+
+    public void updateProfileDataonDataBase(ViewProfile viewProfile)
+    {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+
+//      String query1 =  "update tbl_registerUser set username , password, usertype, utaid, lastname, firstname, phone, email, streetaddress, city, state, zipcode)        values ('username' , 'password', 'usertype', 'utaid', 'lastname', 'firstname', 'phone', 'email', 'streetaddress', 'city', 'state', 'zipcode')";
+        String query = "update tbl_registerUser set utaid = '" + viewProfile.getUtaID() + "', " +
+                        "password = '" + viewProfile.getPassword() + "', " +
+                        //"usertype = '" + viewProfile.getRole() + "' " +
+                        "utaid = '" + viewProfile.getUtaID() + "', " +
+                        "lastname = '" + viewProfile.getLastName() + "', " +
+                        "firstname = '" + viewProfile.getFirstName() + "', " +
+                        "phone = '" + viewProfile.getPhone() + "', " +
+                        "email = '" + viewProfile.getEmail() + "', " +
+                        "streetaddress = '" + viewProfile.getStreetAddress() + "', " +
+                        "city = '" + viewProfile.getCity() + "', " +
+                        "state = '" + viewProfile.getState() + "', " +
+                        "zipcode = '" + viewProfile.getZipCode() + "', " +
+                        "Rentalprivilegestatus = '" + viewProfile.getRentalprivilegeStatus() + "' " +
+                        "where username = '" + viewProfile.getUserName() + "' ";
+        System.err.println("0809 update profile Db manager L 272 query = "+ query);
+        try {
+            sqldb.execSQL(query);
+        }
+        catch (Exception ex){
+            System.err.println("0809 update profile Db manager L 277 exception thrown");
+            ex.printStackTrace();
+        }
+        System.err.println(viewProfile.getUserName());
+
     }
 
 
@@ -275,4 +334,5 @@ public class DBManager extends SQLiteOpenHelper
         db.execSQL("DROP TABLE IF EXISTS tbl_cars");
         onCreate(db);
     }
+
 }
