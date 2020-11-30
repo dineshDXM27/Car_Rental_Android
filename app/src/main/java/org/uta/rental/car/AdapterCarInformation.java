@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import org.uta.rental.R;
-import org.uta.rental.reservation.ViewReservationsUserController;
+import org.uta.rental.reservation.TotalCostUtility;
 import java.util.List;
 
 public class AdapterCarInformation extends RecyclerView.Adapter<AdapterCarInformation.ViewHolder> {
@@ -86,6 +86,15 @@ public class AdapterCarInformation extends RecyclerView.Adapter<AdapterCarInform
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private String carInformationToString(CarsInformation carsInformation) {
-        return "";
+        long carNumber = carsInformation.getCarNumber();
+        String carName = carsInformation.getCarName();
+        int capacity = carsInformation.getCapacity();
+        TotalCostUtility.CarType carType = TotalCostUtility.CarType.valueOf(carName
+                .replaceAll(" ", "_").toUpperCase());
+        double weekendRate = TotalCostUtility.getWeekRate(carType);
+        CarStatus carStatus = carsInformation.getCarStatus();
+
+        return String.format("Car Number: %d\nCar Name: %s\nCapacity: %d\nWeekend Rate: $%.2f\n" +
+                "Car Status: %s", carNumber, carName, capacity, weekendRate, carStatus.getStatus());
     }
 }

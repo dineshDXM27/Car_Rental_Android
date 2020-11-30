@@ -63,7 +63,7 @@ public class SearchCarsManagerScreen extends AppCompatActivity {
         });
 
         final EditText carName = findViewById(R.id.carName_manager);
-        Button searchButton = findViewById(R.id.search_cars);
+        Button searchButton = findViewById(R.id.searchCarsButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
