@@ -74,12 +74,13 @@ public class DBManager extends SQLiteOpenHelper
         cursor.moveToFirst();
         while (cursor.moveToNext()) {
             CarStatus carStatus = CarStatus.valueOf(cursor.getString(3).toUpperCase());
+            String carName = cursor.getString(1);
 
-            if (carStatus == CarStatus.AVAILABLE) {
+            if (carStatus == CarStatus.RESERVED || !carType.getType().equals(carName)) {
                 continue;
             }
+
             long carNumber = cursor.getInt(0);
-            String carName = cursor.getString(1);
             int capacity = cursor.getInt(2);
 
             Car car = new Car();

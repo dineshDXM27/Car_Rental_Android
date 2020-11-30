@@ -2,6 +2,7 @@ package org.uta.rental.car;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -27,9 +29,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.R;
+import org.uta.rental.RentalManagerScreen;
 import org.uta.rental.reservation.AdapterManagerReservation;
 import org.uta.rental.reservation.TotalCostUtility;
+import org.uta.rental.reservation.ViewReservationDetailsManagerScreen;
+import org.uta.rental.reservation.ViewReservationsManagerScreen;
 
 public class SearchCarsManagerScreen extends AppCompatActivity {
 
@@ -48,6 +54,25 @@ public class SearchCarsManagerScreen extends AppCompatActivity {
         buttonTime = findViewById(R.id.buttonTime);
         textDate_manager = findViewById(R.id.textDate_manager);
         textTime_manager = findViewById(R.id.textTime_manager);
+
+
+        Button logoutBtn = (Button)findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SearchCarsManagerScreen.this,
+                        ApplicationMainScreen.class));
+            }
+        });
+
+        ImageButton backBtn = (ImageButton) findViewById(R.id.backButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SearchCarsManagerScreen.this,
+                        RentalManagerScreen.class));
+            }
+        });
 
         buttonDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,25 +93,29 @@ public class SearchCarsManagerScreen extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, MMM d, yyyy h:mm a");
-                String date = textDate_manager.getText().toString();
-                String time = textTime_manager.getText().toString();
-                TotalCostUtility.CarType carType = TotalCostUtility.CarType.valueOf(carName.getText().toString()
-                        .replaceAll(" ", "_")
-                        .toUpperCase());
-                LocalDateTime dateTime = LocalDateTime.parse(date + " " + time, dateTimeFormatter);
-                List<CarsInformation> carsInformations = controller.search(carType, dateTime);
+                try {
+                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, MMM d, yyyy h:mm a");
+                    String date = textDate_manager.getText().toString();
+                    String time = textTime_manager.getText().toString();
+                    TotalCostUtility.CarType carType = TotalCostUtility.CarType.valueOf(carName.getText().toString()
+                            .replaceAll(" ", "_")
+                            .toUpperCase());
+                    LocalDateTime dateTime = LocalDateTime.parse(date + " " + time, dateTimeFormatter);
+                    List<CarsInformation> carsInformations = controller.search(carType, dateTime);
 
-                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.carDetails);
-                AdapterCarInformation adapterCarInformation = new AdapterCarInformation(SearchCarsManagerScreen.this,
-                        recyclerView, carsInformations, controller);
-                recyclerView.setAdapter(adapterCarInformation);
+                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.carDetails);
+                    AdapterCarInformation adapterCarInformation = new AdapterCarInformation(SearchCarsManagerScreen.this,
+                            recyclerView, carsInformations, controller);
+                    recyclerView.setAdapter(adapterCarInformation);
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(SearchCarsManagerScreen.this, "Invalid car name.", Toast.LENGTH_SHORT)
+                    .show();
+                }
             }
         });
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.carDetails);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setNestedScrollingEnabled(true);
     }
 
     private void handleDateButton() {

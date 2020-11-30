@@ -41,7 +41,10 @@
             android:name=".reservation.ViewReservationsManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing" />
-        <activity android:name=".car.SearchCarsManagerScreen" />
+        <activity android:name=".car.SearchCarsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing"
+            />
         <activity
             android:name=".reservation.ViewReservationsUserScreen"
             android:theme="@style/AppTheme.NoActionBar"
