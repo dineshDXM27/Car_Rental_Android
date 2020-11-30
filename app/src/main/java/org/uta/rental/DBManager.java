@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi;
 
 import org.uta.rental.car.Car;
 import org.uta.rental.car.CarStatus;
+import org.uta.rental.profile.ViewProfile;
 import org.uta.rental.reservation.Reservation;
 import org.uta.rental.reservation.TotalCostUtility;
 import org.uta.rental.user.Admin;
@@ -350,6 +351,7 @@ public class DBManager extends SQLiteOpenHelper
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +
                 "enddatetime text,aamemberid text,username text)";
         db.execSQL(qry);
+
         qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, carStatus text)";
         db.execSQL(qry);
     }

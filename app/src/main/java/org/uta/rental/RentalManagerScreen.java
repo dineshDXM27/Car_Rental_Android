@@ -7,6 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.uta.rental.car.SearchCarsManagerScreen;
+import org.uta.rental.profile.UpdateProfileScreen;
 import org.uta.rental.reservation.ViewReservationsManagerScreen;
 
 public class RentalManagerScreen extends AppCompatActivity{

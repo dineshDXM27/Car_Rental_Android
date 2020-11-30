@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.profile.UpdateProfileScreen;
+
 public class AdminMainScreen extends AppCompatActivity {
 
     @Override

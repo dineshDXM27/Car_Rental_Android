@@ -1,4 +1,4 @@
-package org.uta.rental;
+package org.uta.rental.profile;
 
 public class ViewProfileUser extends ViewProfile {
     private int aacMemberStatus;

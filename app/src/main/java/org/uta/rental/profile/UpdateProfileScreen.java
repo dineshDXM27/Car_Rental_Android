@@ -1,4 +1,4 @@
-package org.uta.rental;
+package org.uta.rental.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 //import org.uta.rental.ApplicationMainScreen;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.uta.rental.ApplicationMainScreen;
+import org.uta.rental.DBManager;
+import org.uta.rental.R;
+import org.uta.rental.Session;
+import org.uta.rental.StringConstants;
 import org.uta.rental.user.RegisterUser;
 
 import java.util.Optional;

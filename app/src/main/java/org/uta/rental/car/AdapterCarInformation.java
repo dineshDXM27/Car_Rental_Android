@@ -1,6 +1,7 @@
 package org.uta.rental.car;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import org.uta.rental.R;
 import org.uta.rental.reservation.TotalCostUtility;
+import org.uta.rental.reservation.ViewReservationDetailsUserScreen;
+
 import java.util.List;
 
 public class AdapterCarInformation extends RecyclerView.Adapter<AdapterCarInformation.ViewHolder> {
@@ -72,7 +75,11 @@ public class AdapterCarInformation extends RecyclerView.Adapter<AdapterCarInform
             @Override
             public void onClick(View v) {
                 if (rv.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
-                    Toast.makeText(context.getApplicationContext(), "Car: " + carsInformations.get(position).getCarName(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, ViewCarDetailsManagerScreen.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    CarsInformation carsInformation = carsInformations.get(position);
+                    intent.putExtra("CarsInformation", carsInformation);
+                    context.startActivity(intent);
                 }
             }
         });
