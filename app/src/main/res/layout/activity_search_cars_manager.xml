@@ -127,4 +127,19 @@
         android:importantForAccessibility="no"
         android:autofillHints="" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/carDetails"
+        android:layout_width="353dp"
+        android:layout_height="429dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="4dp"
+        android:clipChildren="true"
+        android:isScrollContainer="true"
+        android:nestedScrollingEnabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

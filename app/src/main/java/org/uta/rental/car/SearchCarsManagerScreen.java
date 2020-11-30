@@ -1,7 +1,8 @@
-package org.uta.rental;
+package org.uta.rental.car;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -9,28 +10,40 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class SearchCars_Manager extends AppCompatActivity {
+import org.uta.rental.R;
+import org.uta.rental.reservation.AdapterManagerReservation;
+import org.uta.rental.reservation.TotalCostUtility;
 
-    Button buttonDate, buttonTime;
-    TextView textDate_manager, textTime_manager;
+public class SearchCarsManagerScreen extends AppCompatActivity {
 
+    private Button buttonDate, buttonTime;
+    private TextView textDate_manager, textTime_manager;
+
+    private SearchCarManagerController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_cars_manager);
 
+        controller = new SearchCarManagerController(SearchCarsManagerScreen.this);
         buttonDate = findViewById(R.id.buttonDate);
         buttonTime = findViewById(R.id.buttonTime);
         textDate_manager = findViewById(R.id.textDate_manager);
@@ -49,6 +62,31 @@ public class SearchCars_Manager extends AppCompatActivity {
             }
         });
 
+        final EditText carName = findViewById(R.id.carName_manager);
+        Button searchButton = findViewById(R.id.search_cars);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, MMM d, yyyy h:mm a");
+                String date = textDate_manager.getText().toString();
+                String time = textTime_manager.getText().toString();
+                TotalCostUtility.CarType carType = TotalCostUtility.CarType.valueOf(carName.getText().toString()
+                        .replaceAll(" ", "_")
+                        .toUpperCase());
+                LocalDateTime dateTime = LocalDateTime.parse(date + " " + time, dateTimeFormatter);
+                List<CarsInformation> carsInformations = controller.search(carType, dateTime);
+
+                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.carDetails);
+                AdapterCarInformation adapterCarInformation = new AdapterCarInformation(SearchCarsManagerScreen.this,
+                        recyclerView, carsInformations, controller);
+                recyclerView.setAdapter(adapterCarInformation);
+            }
+        });
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.carDetails);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setNestedScrollingEnabled(true);
     }
 
     private void handleDateButton() {

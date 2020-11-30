@@ -59,7 +59,7 @@ public class TotalCostUtility {
         }
     }
 
-    private static double getWeekdayRate(CarType carType) {
+    public static double getWeekdayRate(CarType carType) {
         double rate = 0.0;
         switch(carType) {
             case SMART:
@@ -94,7 +94,7 @@ public class TotalCostUtility {
         return rate;
     }
 
-    private static double getWeekendRate(CarType carType) {
+    public static double getWeekendRate(CarType carType) {
         double rate = 0.0;
         switch(carType) {
             case SMART:
@@ -129,7 +129,7 @@ public class TotalCostUtility {
         return rate;
     }
 
-    private static double getSiriusXmDayRate(CarType carType) {
+    public static double getSiriusXmDayRate(CarType carType) {
         double rate = 0.0;
         switch(carType) {
             case SMART:
@@ -164,7 +164,7 @@ public class TotalCostUtility {
         return rate;
     }
 
-    private static double getOnStarDayRate(CarType carType) {
+    public static double getOnStarDayRate(CarType carType) {
         double rate = 0.0;
         switch(carType) {
             case SMART:
@@ -199,7 +199,7 @@ public class TotalCostUtility {
         return rate;
     }
 
-    private static double getGpsDayRate(CarType carType) {
+    public static double getGpsDayRate(CarType carType) {
         double rate = 0.0;
         switch(carType) {
             case SMART:
@@ -234,7 +234,7 @@ public class TotalCostUtility {
         return rate;
     }
 
-    private static double getWeekRate(CarType carType) {
+    public static double getWeekRate(CarType carType) {
         double rate = 0.0;
         switch(carType) {
             case SMART:
