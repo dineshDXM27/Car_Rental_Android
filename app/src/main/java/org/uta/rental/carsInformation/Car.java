@@ -1,10 +1,10 @@
 package org.uta.rental.carsInformation;
 
-public class CarsInformation {
+public class Car {
 
     private int carNumber;
     private String carName;
-    private String capacity;
+    private int capacity;
     private int weekdayRate;
     private int weekendRate;
     private int weekRate;
@@ -12,6 +12,13 @@ public class CarsInformation {
     private int OnStarRate;
     private int SiriusXMRate;
 
+    private String carStatus;
+
+
+
+    public void setCarStatus(String carStatus) {
+        this.carStatus = carStatus;
+    }
 
     public int getCarNumber() {
         return carNumber;
@@ -29,11 +36,12 @@ public class CarsInformation {
         this.carName = carName;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 

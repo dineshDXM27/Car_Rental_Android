@@ -11,7 +11,7 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import org.uta.rental.carsInformation.CarsInformation;
+import org.uta.rental.carsInformation.Car;
 import org.uta.rental.reservation.Reservation;
 import org.uta.rental.user.Admin;
 import org.uta.rental.user.RegisterUser;
@@ -24,7 +24,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -251,6 +250,58 @@ public class DBManager extends SQLiteOpenHelper
 
         return registerUserOptional;
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public List<Car> getCarFromDateAndTime(LocalDateTime dateTime) {
+        final List<Car> cars = new ArrayList<>();
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+        String query = "select tbl_cars.carName from tbl_reservation inner join tbl_cars on tbl_reservation.carname = tbl_cars.carName where tbl_cars.carName = '' and tbl_reservation.startdatetime= '';";
+        Cursor cursor = sqldb.rawQuery(query, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            int carNumber = cursor.getInt(0);
+            String carName = cursor.getString(1);
+            int capacity = cursor.getInt(2);
+            int WeekdayRate = cursor.getInt(3);
+            int WeekendRate = cursor.getInt(4);
+            int WeekRate = cursor.getInt(5);
+            int GPSRate = cursor.getInt(6);
+            int OnStarRate = cursor.getInt(7);
+            int SiriusXMRate = cursor.getInt(8);
+            String carStatus = cursor.getString(9);
+
+
+            Car carsInformation = new Car();
+            carsInformation.setCarNumber(carNumber);
+            carsInformation.setCarName(carName);
+            carsInformation.setCapacity(capacity);
+            carsInformation.setWeekdayRate(WeekdayRate);
+            carsInformation.setWeekendRate(WeekendRate);
+            carsInformation.setWeekRate(WeekRate);
+            carsInformation.setGPSRate(GPSRate);
+            carsInformation.setOnStarRate(OnStarRate);
+            carsInformation.setSiriusXMRate(SiriusXMRate);
+            carsInformation.setCarStatus(carStatus);
+
+            cars.add(carsInformation);
+            cursor.moveToNext();
+        }
+
+        Collections.sort(cars, new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                String o1Name = o1.getCarName();
+                String o2Name = o2.getCarName();
+                return o1Name.compareTo(o2Name);
+
+            }
+        });
+
+        return cars;
+    }
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.i("database", "Creating car_rental database.");
@@ -263,6 +314,11 @@ public class DBManager extends SQLiteOpenHelper
                 "enddatetime text,aamemberid text,username text)";
         db.execSQL(qry);
         qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, weekdayRate int, weekendRate int, weekRate int, GPSRate int, OnStarRate int, SiriusXM int, carStatus text)";
+        db.execSQL(qry);
+        qry = " INSERT INTO \"main\".\"tbl_cars\" (\"carNumber\" , \"carName\", \"capacity\", \"weekdayRate\", \"weekendRate\", \"weekRate\", \"GPSRate\", \"OnStarRate\", \"SiriusXM\", \"carStatus\") VALUES (\"1\" ,\"Smart\", \"1\", \"32.99\",\"37.99\",\"230.93\",\"3.00\",\"5.00\",\"7.00\", \"Available\"), " +
+                "(\"2\" ,\"Economy\", \"3\", \"39.99\",\"44.99\",\"279.93\",\"3.00\",\"5.00\",\"7.00\", \"Available\")," + "(\"3\" ,\"Compact\", \"4\", \"44.99\",\"49.99\",\"314.93\",\"3.00\",\"5.00\",\"7.00\", \"Available\")," + "(\"4\" ,\"Intermediate\", \"4\", \"45.99\",\"50.99\",\"321.93\",\"3.00\",\"5.00\",\"7.00\", \"Available\")," +
+                "(\"5\" ,\"Standard\", \"5\", \"48.99\",\"53.99\",\"342.93\",\"3.00\",\"5.00\",\"7.00\", \"Available\")," + "(\"6\" ,\"Full Size\",\"6\", \"52.99\",\"57.99\",\"370.93\",\"3.00\",\"5.00\",\"7.00\", \"Available\")," + "(\"7\" ,\"SUV\", \"8\", \"59.99\",\"64.99\",\"419.93\",\"3.00\",\"5.00\",\"7.00\", \"Available\"), " +
+                "(\"8\" ,\"MiniVan\", \"9\", \"59.99\",\"64.99\",\"419.93\",\"3.00\",\"5.00\",\"7.00\", \"Available\")," + "(\"9\" ,\"Ultra Sports\", \"2\", \"199.99\",\"204.99\",\"1,399.93\",\"5.00\",\"7.00\",\"9.00\", \"AVailable\");";
         db.execSQL(qry);
     }
 

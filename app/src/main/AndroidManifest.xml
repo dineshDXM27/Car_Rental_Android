@@ -19,8 +19,10 @@
         <activity android:name=".UserHomeScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
-        <activity android:name=".DeleteReservationGUI"></activity>
-        <activity android:name=".ViewAvailableCars" />
+        <activity android:name=".DeleteReservationGUI"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ViewAvailableCars"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".reservation.UpdateReservationDetailsUserScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
@@ -29,7 +31,6 @@
             />
         <activity android:name=".reservation.ViewReservationDetailsManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".RegistrationScreen" />
         <activity android:name=".RentalManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
@@ -38,6 +39,13 @@
             android:windowSoftInputMode="adjustNothing"
             />
         <activity android:name="SearchCars_Manager"></activity>
+        <activity android:name=".carsInformation.RequestCar_user"
+            android:parentActivityName=".RentalManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".carsInformation.SearchCars_Manager_Screen"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".carsInformation.ViewAvailableCars_Manager_Screen"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".reservation.ViewReservationsUserScreen"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing"

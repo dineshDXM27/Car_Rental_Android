@@ -20,7 +20,7 @@
         app:title="Register Screen" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextTextUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,7 +34,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextUTAID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.198" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/editTextLasName"
         android:layout_width="182dp"
         android:layout_height="49dp"
         android:ems="10"
@@ -74,7 +74,7 @@
         app:layout_constraintVertical_bias="0.369" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/editTextFirstName"
         android:layout_width="177dp"
         android:layout_height="52dp"
         android:ems="10"
@@ -88,7 +88,7 @@
         app:layout_constraintVertical_bias="0.371" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/editTextAAC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.469" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -115,7 +115,7 @@
         app:layout_constraintVertical_bias="0.543" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/editTextRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -141,7 +141,7 @@
         app:layout_constraintVertical_bias="0.69" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/editTextStreetAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -154,7 +154,7 @@
         app:layout_constraintVertical_bias="0.763" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName10"
+        android:id="@+id/editTextCity"
         android:layout_width="176dp"
         android:layout_height="58dp"
         android:ems="10"
@@ -168,7 +168,7 @@
         app:layout_constraintVertical_bias="0.849" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName11"
+        android:id="@+id/editTextState"
         android:layout_width="176dp"
         android:layout_height="60dp"
         android:ems="10"
@@ -182,7 +182,7 @@
         app:layout_constraintVertical_bias="0.852" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName12"
+        android:id="@+id/editTextZIPCode"
         android:layout_width="174dp"
         android:layout_height="47dp"
         android:ems="10"
@@ -196,7 +196,7 @@
         app:layout_constraintVertical_bias="0.941" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/regButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"

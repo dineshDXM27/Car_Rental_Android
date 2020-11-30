@@ -26,6 +26,8 @@ public class ApplicationMainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //DBManager.getInstance(this);
+        DBManager dbManager = DBManager.getInstance(this);
+        dbManager.getWritableDatabase();
         setContentView(R.layout.activity_application_main_screen);
     }
 
@@ -59,7 +61,7 @@ public class ApplicationMainScreen extends AppCompatActivity {
     }
 
     public void registerFunc(View view) {
-        Intent intent = new Intent(this, RegistrationScreen.class);
+        Intent intent = new Intent(this, RegisterScreen.class);
         startActivity(intent);
     }
 }
