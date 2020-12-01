@@ -1,6 +1,8 @@
 package org.uta.rental.car;
 
-public class CarsInformation {
+import java.io.Serializable;
+
+public class CarsInformation implements Serializable  {
 
     private int carNumber;
     private String carName;

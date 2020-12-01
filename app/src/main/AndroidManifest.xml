@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".UpdateProfileScreen"></activity>
+        <activity android:name=".profile.UpdateProfileScreen"></activity>
         <!-- activity android:name=".reservation.ListActivity"></activity -->
 
 
@@ -41,6 +41,9 @@
             android:name=".reservation.ViewReservationsManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing" />
+
+        <activity android:name=".car.ViewCarDetailsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".car.SearchCarsManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing"

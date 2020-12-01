@@ -1,4 +1,4 @@
-package org.uta.rental;
+package org.uta.rental.profile;
 
 public class UpdateProfileRentalManager extends UpdateProfileScreen {
 }
