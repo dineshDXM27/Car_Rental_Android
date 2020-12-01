@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.uta.rental.AdminMainScreen;
 import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.DBManager;
 import org.uta.rental.R;
+import org.uta.rental.RentalManagerScreen;
 import org.uta.rental.Session;
 import org.uta.rental.StringConstants;
+import org.uta.rental.UserHomeScreen;
 import org.uta.rental.user.RegisterUser;
+import org.uta.rental.user.UserType;
 
 import java.util.Optional;
 
@@ -71,7 +75,7 @@ public class UpdateProfileScreen extends AppCompatActivity {
         lastNameUpdateProfileETups.setText(regUser.getLastName());
         firstNameUpdateProfileETups.setText(regUser.getFirstName());
         phoneUpdateProfileETups.setText(regUser.getPhoneNumber());
-        roleUpdateProfileETups.setText(regUser.getRole().toString());
+        roleUpdateProfileETups.setText(regUser.getRole().getType());
         emailUpdateProfileETups.setText(regUser.getEmail());
         streetAddressUpdateProfileETups.setText(regUser.getStreetAddress());
         cityUpdateProfileETups.setText(regUser.getCity());
@@ -230,8 +234,17 @@ public class UpdateProfileScreen extends AppCompatActivity {
 
         DBManager dbManager = DBManager.getInstance(getApplicationContext());
         dbManager.updateProfileDataonDataBase(viewProfile);
-        Toast.makeText(getApplicationContext(),"underProcess",Toast.LENGTH_SHORT).show();
-
+        if (viewProfile.getRole().equals("user")) {
+            Intent intent = new Intent(UpdateProfileScreen.this, UserHomeScreen.class);
+            startActivity(intent);
+        } else if (viewProfile.getRole().equals("rental_manager")) {
+            Intent intent = new Intent(UpdateProfileScreen.this, RentalManagerScreen.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(UpdateProfileScreen.this, AdminMainScreen.class);
+            startActivity(intent);
+        }
+        Toast.makeText(getApplicationContext(),"New user registered.",Toast.LENGTH_SHORT).show();
     }
 
     public void logoutFunc(View view) {
