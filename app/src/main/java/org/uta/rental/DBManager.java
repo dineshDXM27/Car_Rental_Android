@@ -296,6 +296,8 @@ public class DBManager extends SQLiteOpenHelper
         cv.put("city", registerUser.getCity());
         cv.put("state", registerUser.getState());
         cv.put("zipcode", registerUser.getZipCode());
+        cv.put("Rentalprivilegestatus", registerUser.getRentalPrivilegeStatus());
+        cv.put("aacmemberId", registerUser.getAacMemberId());
         // put remainder of data stored here
 
         long res = db.insert("tbl_registerUser", null,cv );
@@ -357,6 +359,8 @@ public class DBManager extends SQLiteOpenHelper
             String city = cursor.getString(9);
             String state = cursor.getString(10);
             String zipCode = cursor.getString(11);
+            String rentalPrivlege = cursor.getString(12);
+            String aacMemberId = cursor.getString(13);
 
             RegisterUser registerUser = null;
             if (userType == UserType.RENTAL_MANAGER) {
@@ -378,6 +382,8 @@ public class DBManager extends SQLiteOpenHelper
             registerUser.setCity(city);
             registerUser.setState(state);
             registerUser.setZipCode(zipCode);
+            registerUser.setRentalPrivilegeStatus(rentalPrivlege);
+            registerUser.setAacMemberId(aacMemberId);
 
             registerUserOptional = Optional.of(registerUser);
         }
@@ -391,7 +397,8 @@ public class DBManager extends SQLiteOpenHelper
         Log.i("database", "Creating car_rental database.");
         String qry = "create table tbl_registerUser(username text primary key,password text, " +
                 "usertype text,utaid text,lastname text,firstname text,phone text,email text," +
-                "streetaddress text, city text,state text,zipcode text , Rentalprivilegestatus text )";
+                "streetaddress text, city text,state text,zipcode text , Rentalprivilegestatus text," +
+                "aacmemberId text)";
         db.execSQL(qry);
         qry = "create table tbl_reservation(reservationnumber int primary key,carnumber int," +
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +
