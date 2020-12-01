@@ -34,6 +34,9 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".RegistrationScreen" />
+        <activity android:name=".car.ViewAvailableCarsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".RentalManagerScreen"
             android:theme="@style/AppTheme.NoActionBar" />
