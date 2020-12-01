@@ -33,6 +33,9 @@
         <activity android:name=".reservation.ViewReservationDetailsManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity android:name=".RegistrationScreen" />
+        <activity android:name=".car.ViewAvailableCarsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".register.RegistrationScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />

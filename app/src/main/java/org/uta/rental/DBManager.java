@@ -65,6 +65,52 @@ public class DBManager extends SQLiteOpenHelper
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public List<Car> findCarsByAvailabilityDateAndTime(LocalDateTime availableTime) {
+        final List<Car> cars = new ArrayList<>();
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+        String query = "select * from tbl_cars";
+        Cursor cursor = sqldb.rawQuery(query, null);
+        cursor.moveToFirst();
+        while (cursor.moveToNext()) {
+            CarStatus carStatus = CarStatus.valueOf(cursor.getString(3).toUpperCase());
+
+            if (carStatus == CarStatus.RESERVED) {
+                continue;
+            }
+
+            long carNumber = cursor.getInt(0);
+            String carName = cursor.getString(1);
+            int capacity = cursor.getInt(2);
+
+
+            Car car = new Car();
+            car.setCarNumber(carNumber);
+            car.setCarName(carName);
+            car.setCarStatus(carStatus);
+            car.setCapacity(capacity);
+
+            cars.add(car);
+        }
+
+        Collections.sort(cars, new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                int result = o1.getCarName().compareTo(o2.getCarName());
+
+                if (result == 0) {
+                    result = new Integer(o1.getCapacity()).compareTo(o2.getCapacity());
+                }
+
+                return result;
+            }
+        });
+
+        return cars;
+    }
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public List<Car> findCarsByAvailabilityDateAndCarName(TotalCostUtility.CarType carType, LocalDateTime availableTime) {
