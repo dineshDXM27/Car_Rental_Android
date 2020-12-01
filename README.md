@@ -86,18 +86,29 @@ INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname
 INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('9202782440243539233', '1049548057', 'Sport', '0', '0', '0', '0', '2020-11-23T13:48:44.658', '2020-11-24T13:48:44.659', '', 'user');
 INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('-2046801816645851801', '-995273383', 'Sport', '1', '0', '0', '0', '2020-11-23T13:48:44.659', '2020-11-24T13:48:44.660', '', 'user');
 INSERT INTO "main"."tbl_reservation" ("reservationnumber", "carnumber", "carname", "capacity", "gps", "onstar", "siriusxm", "startdatetime", "enddatetime", "aamemberid", "username") VALUES ('-4278400149759656163', '2067782975', 'Sport', '1', '0', '0', '0', '2020-11-20T13:48:44.662', '2020-11-24T13:48:44.663', '', 'user');
-INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode") VALUES ('user', 'password', 'user', '1234', 'doe', 'john', '2222222', 'foo@foo.com', 'foostreet', 'fooville', 'tx', '76244');
-INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode") VALUES ('admin', 'password', 'admin', '1234', 'doe', 'john', '2222222', 'foo@foo.com', 'foostreet', 'fooville', 'tx', '76244');
-INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode") VALUES ('manager', 'password', 'password', '1234', 'doe', 'john', '2222222', 'foo@foo.com', 'foostreet', 'fooville', 'tx', '76244');
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("1" ,"Smart", "1", "32.99","37.99","230.93","3.00","5.00","7.00", "0");
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("2" ,"Economy", "3", "39.99","44.99","279.93","3.00","5.00","7.00", "0");
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("3" ,"Compact", "4", "44.99","49.99","314.93","3.00","5.00","7.00", "0");
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("4" ,"Intermediate", "4", "45.99","50.99","321.93","3.00","5.00","7.00", "0");
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("5" ,"Standard", "5", "48.99","53.99","342.93","3.00","5.00","7.00", "0");
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("6" ,"Full Size","6", "52.99","57.99","370.93","3.00","5.00","7.00", "0");
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("7" ,"SUV", "8", "59.99","64.99","419.93","3.00","5.00","7.00", "0");
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("8" ,"MiniVan", "9", "59.99","64.99","419.93","3.00","5.00","7.00", "0");
-INSERT INTO "main"."tbl_cars" ("carNumber" , "carName", "capacity", "weekdayRate", "weekendRate", "weekRate", "GPSRate", "OnStarRate", "SiriusXM", "carStatus") VALUES ("9" ,"Ultra Sports", "2", "199.99","204.99","1,399.93","5.00","7.00","9.00", "0");
+INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode", "Rentalprivilegestatus") VALUES ('user', 'password', 'user', '1234', 'foo', 'john', '8177777177', 'foo@gmail.com', 'foo street', 'fooville', 'tx', '72666', '1');
+INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode", "Rentalprivilegestatus") VALUES ('manager', 'password', 'rental_manager', '1234', 'foo', 'john', '8177777177', 'foo@gmail.com', 'foo street', 'fooville', 'tx', '72666', '0');
+INSERT INTO "main"."tbl_registerUser" ("username", "password", "usertype", "utaid", "lastname", "firstname", "phone", "email", "streetaddress", "city", "state", "zipcode", "Rentalprivilegestatus") VALUES ('admin', 'password', 'admin', '1234', 'foo', 'john', '8177777177', 'foo@gmail.com', 'foo street', 'fooville', 'tx', '72666', '0');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('1', 'Smart', '1', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('2', 'Economy', '3', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('3', 'Compact', '4', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('4', 'Intermediate', '4', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('5', 'Standard', '5', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('6', 'Full Size', '6', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('7', 'SUV', '8', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('8', 'MiniVan', '9', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('9', 'Ultra Sports', '2', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('10', 'Ultra Sports', '2', 'reserved');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('11', 'Smart', '1', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('12', 'Economy', '3', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('13', 'Compact', '4', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('14', 'Intermediate', '4', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('15', 'Standard', '5', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('16', 'Full Size', '6', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('17', 'SUV', '10', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('18', 'MiniVan', '9', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('19', 'Ultra Sports', '2', 'available');
+INSERT INTO "main"."tbl_cars" ("carNumber", "carName", "capacity", "carStatus") VALUES ('20', 'Ultra Sports', '2', 'reserved');
 </pre>
 Should look like the following
 ![newuser](/images/new_users.png)

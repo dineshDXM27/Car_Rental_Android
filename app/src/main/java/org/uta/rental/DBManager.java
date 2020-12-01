@@ -11,8 +11,10 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import org.uta.rental.carsInformation.CarsInformation;
+import org.uta.rental.car.Car;
+import org.uta.rental.car.CarStatus;
 import org.uta.rental.reservation.Reservation;
+import org.uta.rental.reservation.TotalCostUtility;
 import org.uta.rental.user.Admin;
 import org.uta.rental.user.RegisterUser;
 import org.uta.rental.user.RentalManager;
@@ -24,7 +26,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,65 @@ public class DBManager extends SQLiteOpenHelper
         }
 
         return dbManager;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void saveCar(Car car) throws SQLiteException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("carNumber", car.getCarNumber());
+        cv.put("carName", car.getCarName());
+        cv.put("capacity", car.getCapacity());
+        cv.put("carStatus", car.getCarStatus().getStatus());
+        long res = db.replace("tbl_cars", null, cv);
+
+        if(res== -1) {
+            throw new SQLiteException("Unable to insert car");
+        }
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public List<Car> findCarsByAvailabilityDateAndCarName(TotalCostUtility.CarType carType, LocalDateTime availableTime) {
+        final List<Car> cars = new ArrayList<>();
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+        String query = "select * from tbl_cars";
+        Cursor cursor = sqldb.rawQuery(query, null);
+        cursor.moveToFirst();
+        while (cursor.moveToNext()) {
+            CarStatus carStatus = CarStatus.valueOf(cursor.getString(3).toUpperCase());
+            String carName = cursor.getString(1);
+
+            if (carStatus == CarStatus.RESERVED || !carType.getType().equals(carName)) {
+                continue;
+            }
+
+            long carNumber = cursor.getInt(0);
+            int capacity = cursor.getInt(2);
+
+            Car car = new Car();
+            car.setCarNumber(carNumber);
+            car.setCarName(carName);
+            car.setCarStatus(carStatus);
+            car.setCapacity(capacity);
+
+            cars.add(car);
+        }
+
+        Collections.sort(cars, new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                int result = o1.getCarName().compareTo(o2.getCarName());
+
+                if (result == 0) {
+                    result = new Integer(o1.getCapacity()).compareTo(o2.getCapacity());
+                }
+
+                return result;
+            }
+        });
+
+        return cars;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -290,7 +350,7 @@ public class DBManager extends SQLiteOpenHelper
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +
                 "enddatetime text,aamemberid text,username text)";
         db.execSQL(qry);
-        qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, weekdayRate int, weekendRate int, weekRate int, GPSRate int, OnStarRate int, SiriusXM int, carStatus text)";
+        qry ="create table tbl_cars(carNumber int primary key, carName text, capacity int, carStatus text)";
         db.execSQL(qry);
     }
 
