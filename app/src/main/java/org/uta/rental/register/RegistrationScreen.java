@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.R;
+import org.uta.rental.RentalManagerScreen;
+import org.uta.rental.car.SearchCarsManagerScreen;
 import org.uta.rental.user.RegisterUser;
 import org.uta.rental.user.UserType;
 
@@ -22,6 +25,14 @@ public class RegistrationScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_screen);
+        ImageButton backBtn = (ImageButton) findViewById(R.id.backButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegistrationScreen.this,
+                        ApplicationMainScreen.class));
+            }
+        });
 
         Button regButton = (Button) findViewById(R.id.regButton);
         registerController = new RegisterController(RegistrationScreen.this);
