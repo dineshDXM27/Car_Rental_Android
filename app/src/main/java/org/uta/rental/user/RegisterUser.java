@@ -26,6 +26,26 @@ public class RegisterUser {
 
     private String zipCode;
 
+    private String aacMemberId;
+
+    private String rentalPrivilegeStatus;
+
+    public String getAacMemberId() {
+        return aacMemberId;
+    }
+
+    public void setAacMemberId(String aacMemberId) {
+        this.aacMemberId = aacMemberId;
+    }
+
+    public String getRentalPrivilegeStatus() {
+        return rentalPrivilegeStatus;
+    }
+
+    public void setRentalPrivilegeStatus(String rentalPrivilegeStatus) {
+        this.rentalPrivilegeStatus = rentalPrivilegeStatus;
+    }
+
     public String getUserName() {
         return userName;
     }
