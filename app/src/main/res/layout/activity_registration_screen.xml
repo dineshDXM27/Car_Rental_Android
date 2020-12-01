@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationScreen">
+    tools:context=".register.RegistrationScreen">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/regScreenToolBar"
@@ -69,10 +69,10 @@
 
     <EditText
         android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="47dp"
         android:ems="10"
-        android:hint="AAC Member Status"
+        android:hint="AAC Member Id (Optional)"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
         app:layout_constraintEnd_toEndOf="parent"

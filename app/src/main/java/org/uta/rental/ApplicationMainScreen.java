@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.register.RegistrationScreen;
 import org.uta.rental.user.UserType;
 
 public class ApplicationMainScreen extends AppCompatActivity {

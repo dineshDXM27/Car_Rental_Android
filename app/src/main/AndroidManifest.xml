@@ -14,7 +14,7 @@
         <!-- activity android:name=".reservation.ListActivity"></activity -->
 
 
-        <activity android:name=".RegisterScreen"
+        <activity android:name=".register.RegisterScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
         <activity android:name=".AdminMainScreen"
@@ -33,7 +33,7 @@
         <activity android:name=".reservation.ViewReservationDetailsManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".RegistrationScreen" />
+        <activity android:name=".register.RegistrationScreen" />
         <activity
             android:name=".RentalManagerScreen"
             android:theme="@style/AppTheme.NoActionBar" />
