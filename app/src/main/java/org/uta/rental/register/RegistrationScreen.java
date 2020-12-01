@@ -75,6 +75,7 @@ public class RegistrationScreen extends AppCompatActivity {
                 registerUser.setCity(city);
                 registerUser.setZipCode(zip);
                 registerUser.setState(state);
+                registerUser.setRentalPrivilegeStatus("1");
 
                 registerController.register(registerUser);
             }
