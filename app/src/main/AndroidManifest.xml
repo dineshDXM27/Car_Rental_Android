@@ -51,6 +51,11 @@
             android:name=".AdminChangeUserRole"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".AdminChangeRentalPriviledge"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ApplicationMainScreen"
             android:label="@string/app_name"

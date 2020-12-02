@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.AdminChangeRentalPriviledge;
 import org.uta.rental.AdminChangeUserRole;
 import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.R;
@@ -57,12 +58,23 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
             }
         });
 
+
+
         Button changeRoleBtn = (Button) findViewById(R.id.chnageRole);
         changeRoleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ViewUserDetailsAdminScreen.this,
                         AdminChangeUserRole.class));
+            }
+        });
+
+        Button changeCRP = (Button) findViewById(R.id.ChangeRentalPriviledge);
+        changeCRP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewUserDetailsAdminScreen.this,
+                        AdminChangeRentalPriviledge.class));
             }
         });
     }

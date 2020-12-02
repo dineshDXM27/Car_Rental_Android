@@ -244,6 +244,21 @@ public class DBManager extends SQLiteOpenHelper
 
     }
 
+    public void admin_change_rental_priviledge(ViewProfile viewProfile)
+    {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+
+        String query = "update tbl_registerUser set Rentalprivilegestatus = '" + viewProfile.getRentalprivilegeStatus() + "' " +
+                "where username = '" + viewProfile.getUserName() + "' ";
+        try {
+            sqldb.execSQL(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
