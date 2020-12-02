@@ -23,20 +23,27 @@ public class RequestCarUserController {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public List<CarsInformation> request(LocalDateTime timeSelected) {
+    public List<CarsInformation> request(LocalDateTime timeSelected, int capacity, int items) {
         DBManager dbManager = DBManager.getInstance(context);
         List<Car> cars = dbManager.findCarsByCapacityAndDateAndTime(timeSelected);
         List<CarsInformation> informationList = new ArrayList<>();
         for (Car car : cars) {
-            CarsInformation carsInformation = new CarsInformation();
-            carsInformation.setCarNumber((int) car.getCarNumber());
-            carsInformation.setCarName(car.getCarName());
-            carsInformation.setCapacity(car.getCapacity());
-            carsInformation.setWeekRate(TotalCostUtility.getWeekRate(TotalCostUtility.CarType.valueOf(car.getCarName()
-                    .replaceAll(" ", "_").toUpperCase())));
-            carsInformation.setCarStatus(car.getCarStatus());
 
-            informationList.add(carsInformation);
+            if (informationList.size() == items) {
+                break;
+            }
+
+            if (car.getCapacity() >= capacity) {
+                CarsInformation carsInformation = new CarsInformation();
+                carsInformation.setCarNumber((int) car.getCarNumber());
+                carsInformation.setCarName(car.getCarName());
+                carsInformation.setCapacity(car.getCapacity());
+                carsInformation.setWeekRate(TotalCostUtility.getWeekRate(TotalCostUtility.CarType.valueOf(car.getCarName()
+                        .replaceAll(" ", "_").toUpperCase())));
+                carsInformation.setCarStatus(car.getCarStatus());
+
+                informationList.add(carsInformation);
+            }
         }
 
         return informationList;

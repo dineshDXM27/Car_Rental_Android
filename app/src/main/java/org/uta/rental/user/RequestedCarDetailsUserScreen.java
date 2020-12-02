@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import org.uta.rental.reservation.TotalCostUtility;
 import org.uta.rental.reservation.UserReservationDetails;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class RequestedCarDetailsUserScreen extends AppCompatActivity {
 
@@ -39,7 +41,7 @@ public class RequestedCarDetailsUserScreen extends AppCompatActivity {
             }
         });
 
-        ImageButton backButton = (ImageButton) findViewById(R.id.backButton);
+        ImageButton backButton = (ImageButton) findViewById(R.id.vrUserBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,25 +67,13 @@ public class RequestedCarDetailsUserScreen extends AppCompatActivity {
             }
         });
 
-        /*
-        Car number
-        Car Name
-        Capacity
-        Number of riders
-        GPS (Yes/No)
-        OnStar (Yes/No)
-        SiriusXM (Yes/No)
-        Start date
-        Start time
-        End date
-        End time
-        Total cost
-        AA member status
-                */
-
+        TextView details = findViewById(R.id.requestedCarDetails);
+        details.setText(carInformationToString(carsInformation, startDateTime, endDateTime));
     }
 
     private String carInformationToString(CarsInformation carsInformation, LocalDateTime start, LocalDateTime end) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         DBManager dbManager = DBManager.getInstance(RequestedCarDetailsUserScreen.this);
         Session session = new Session(RequestedCarDetailsUserScreen.this);
         String userName = session.getValue(StringConstants.USERNAME);
@@ -101,6 +91,8 @@ public class RequestedCarDetailsUserScreen extends AppCompatActivity {
         return String.format("Car Number: %d\nCar Name: %s\nCapacity: %d\nNumber of Riders: %d\n" +
                 "GPS: No\nOnStar: No\nSiriusXM: No\nStart Date: %s\nStart Time: %s\nEnd Date: %s\nEnd Time: %s\nTotal Cost: $%.2f\n" +
                 "AA Member Status: %s", carsInformation.getCarNumber(), carsInformation.getCarName(),
-                carsInformation.getCapacity(), carsInformation.getCapacity(), cost, registerUser.getAacMemberId());
+                carsInformation.getCapacity(), carsInformation.getCapacity(), dateFormatter.format(start),
+                timeFormatter.format(start), dateFormatter.format(end), timeFormatter.format(end),
+                cost, registerUser.getAacMemberId());
     }
 }

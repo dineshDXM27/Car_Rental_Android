@@ -9,6 +9,7 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -41,6 +42,7 @@ public class RequestCarUserScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_car_user);
 
+        controller = new RequestCarUserController(RequestCarUserScreen.this);
         startDate = findViewById(R.id.startDate_user);
         endDate = findViewById(R.id.finalDate_user);
         startTime =  findViewById(R.id.startTime_user);
@@ -106,7 +108,11 @@ public class RequestCarUserScreen extends AppCompatActivity {
                     String date = textStartDate.getText().toString();
                     String time = textStartTime.getText().toString();
                     LocalDateTime dateTime = LocalDateTime.parse(date + " " + time, dateTimeFormatter);
-                    List<CarsInformation> carsInformations = controller.request(dateTime);
+                    EditText editText = findViewById(R.id.editTextNumber4);
+                    int items = Integer.parseInt(editText.getText().toString());
+                    EditText editTextCapacity = findViewById(R.id.editTextNumber5);
+                    int capacity = Integer.parseInt(editTextCapacity.getText().toString());
+                    List<CarsInformation> carsInformations = controller.request(dateTime, capacity, items);
 
                     String endDate = textEndDate.getText().toString();
                     String endTime = textEndTime.getText().toString();
