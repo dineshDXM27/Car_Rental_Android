@@ -27,6 +27,7 @@ public class AdminSearchUserDetailsController {
         user.setState(users.getState());
         user.setZipCode(users.getZipCode());
         user.setRentalprivilegeStatus(users.getRentalprivilegeStatus());
+        user.setAacMemberid(users.getAacMemberid());
 
         return user;
     }

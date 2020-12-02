@@ -58,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <EditText
-            android:id="@+id/RentalPriviledgeStatusUpdateProfileET"
+            android:id="@+id/stateUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
@@ -99,7 +99,7 @@
             android:clickable="false"
             android:ems="10"
             app:layout_constraintStart_toEndOf="@+id/textView24"
-            app:layout_constraintTop_toBottomOf="@+id/RentalPriviledgeStatusUpdateProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/stateUpdateProfileET" />
 
         <EditText
             android:id="@+id/passwordUpdateProfileET"

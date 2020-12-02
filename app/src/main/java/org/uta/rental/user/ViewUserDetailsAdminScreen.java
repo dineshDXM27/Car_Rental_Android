@@ -81,12 +81,13 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
         String state = user.getState();
         String zip = user.getZipCode();
         String rentalPrivilege = user.getRentalprivilegeStatus();
+        String aacMemberid = user.getAacMemberid();
 
         String guiString = "UserName: %s\nPassword: %s\nUTA ID: %s\n" +
                            "LastName: %s\nFirstName: %s\nPhone: %s\nRole: %s\n" +
                            "Email: %s\nAddress: %s\nCity: %s\nState: %s\n" +
-                           "Zip: %s\nRental Privilege Status: %s\n";
+                           "Zip: %s\nRental Privilege Status: %s\nAAC Member id: %s\n";
 
-        return String.format(guiString, userName, password, utaID, lastName, firstName, phone, role, email, address, city, state, zip, rentalPrivilege);
+        return String.format(guiString, userName, password, utaID, lastName, firstName, phone, role, email, address, city, state, zip, rentalPrivilege, aacMemberid);
     }
 }

@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.AdminMainScreen;
+import org.uta.rental.DBManager;
 import org.uta.rental.R;
 import org.uta.rental.ViewProfile;
 
@@ -28,6 +30,7 @@ public class AdminEditProfile extends AppCompatActivity {
     private EditText zip;
     private EditText rentalStatus;
     private Button updateBtn;
+    private EditText aacMemberid;
 
     private AdminSearchUserDetailsController searchUsersController;
 
@@ -38,37 +41,37 @@ public class AdminEditProfile extends AppCompatActivity {
         searchUsersController = new AdminSearchUserDetailsController(AdminEditProfile.this);
         ViewProfile userDetails = searchUsersController.userDetails();
 
-        userName = (EditText) findViewById(R.id.usrNameAdmin);
-        password = (EditText) findViewById(R.id.pwdAdmin);
-        utaID = (EditText) findViewById(R.id.utaIDAdmin);
-        lastName = (EditText) findViewById(R.id.firstNameAdmin);
-        firstName = (EditText) findViewById(R.id.phoneAdmin);
-        role = (EditText) findViewById(R.id.roleAdmin);
-        email = (EditText) findViewById(R.id.emailAdmin);
-        address = (EditText) findViewById(R.id.addressAdmin);
-        city = (EditText) findViewById(R.id.cityAdmin);
-        state = (EditText) findViewById(R.id.stateAdmin);
-        zip = (EditText) findViewById(R.id.zipAdmin);
-        rentalStatus = (EditText) findViewById(R.id.rentalStatusAdmin);
+        userName = (EditText) findViewById(R.id.userNameUpdateProfileET);
+        password = (EditText) findViewById(R.id.passwordUpdateProfileET);
+        utaID = (EditText) findViewById(R.id.utaidUpdateProfileET);
+        lastName = (EditText) findViewById(R.id.lastNameUpdateProfileET);
+        firstName = (EditText) findViewById(R.id.firstNameUpdateProfileET);
+        phone=(EditText) findViewById(R.id.phoneUpdateProfileET);
+        role = (EditText) findViewById(R.id.roleUpdateProfileET);
+        email = (EditText) findViewById(R.id.emailUpdateProfileET);
+        address = (EditText) findViewById(R.id.streetAddressUpdateProfileET);
+        city = (EditText) findViewById(R.id.cityUpdateProfileET);
+        zip = (EditText) findViewById(R.id.zipcodeUpdateProfileET);
+        state = (EditText) findViewById(R.id.stateUpdateProfileET);
+        aacMemberid = (EditText) findViewById(R.id.aacMemberIdUpdateProfileET);
+
 
         setFieldValues(userDetails);
 
-        updateBtn = (Button) findViewById(R.id.updateAdminBtn);
+        updateBtn = (Button) findViewById(R.id.updateProfileButton);
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //call update function here
+                try{
+                    UpdateProfileFunc();
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 
-        ImageButton backBtn = (ImageButton) findViewById(R.id.vrUserBackButton4);
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdminEditProfile.this,
-                        ViewUserDetailsAdminScreen.class));
-            }
-        });
+
     }
 
 
@@ -79,12 +82,42 @@ public class AdminEditProfile extends AppCompatActivity {
         utaID.setText(user.getUtaID());
         lastName.setText(user.getLastName());
         firstName.setText(user.getFirstName());
+
+        phone.setText(user.getPhone());
         role.setText(user.getRole());
         email.setText(user.getEmail());
         address.setText(user.getStreetAddress());
         city.setText(user.getCity());
         state.setText(user.getState());
         zip.setText(user.getZipCode());
-        rentalStatus.setText(user.getRentalprivilegeStatus());
+        aacMemberid.setText(user.getAacMemberid());
+    }
+
+    public  void UpdateProfileFunc() {
+
+        ViewProfile viewProfile = new ViewProfile();
+        viewProfile.setUserName(userName.getText().toString());
+
+        viewProfile.setPassword(password.getText().toString());
+        viewProfile.setUtaID(utaID.getText().toString());
+        viewProfile.setLastName(lastName.getText().toString());
+        viewProfile.setFirstName(firstName.getText().toString());
+        viewProfile.setPhone(phone.getText().toString());
+        viewProfile.setRole(role.getText().toString());
+        viewProfile.setEmail(email.getText().toString());
+        viewProfile.setStreetAddress(address.getText().toString());
+        viewProfile.setCity(city.getText().toString());
+        viewProfile.setState(state.getText().toString());
+        viewProfile.setZipCode(zip.getText().toString());
+        viewProfile.setAacMemberid(aacMemberid.getText().toString());
+
+
+        //System.err.println(passwordUpdateProfileETups.getText().toString());
+
+        DBManager dbManager = DBManager.getInstance(getApplicationContext());
+        dbManager.admin_update_profile(viewProfile);
+
+        startActivity(new Intent(AdminEditProfile.this, AdminMainScreen.class));
+        Toast.makeText(getApplicationContext(),"Profile Update Successful.",Toast.LENGTH_SHORT).show();
     }
 }

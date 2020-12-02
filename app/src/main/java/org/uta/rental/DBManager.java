@@ -154,6 +154,7 @@ public class DBManager extends SQLiteOpenHelper
             String state = cursor.getString(10);
             String zip = cursor.getString(11);
             String rentalStatus = cursor.getString(12);
+            String aacMemberid = cursor.getString(13);
 
             ViewProfile user = new ViewProfile();
             user.setUserName(userName);
@@ -169,6 +170,7 @@ public class DBManager extends SQLiteOpenHelper
             user.setZipCode(zip);
             user.setRole(userType);
             user.setRentalprivilegeStatus(rentalStatus);
+            user.setAacMemberid(aacMemberid);
 
             users.add(user);
             cursor.moveToNext();
@@ -198,6 +200,40 @@ public class DBManager extends SQLiteOpenHelper
             throw new SQLiteException("Unable to delete reservation");
         }
     }
+
+
+    public void admin_update_profile(ViewProfile viewProfile)
+    {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+
+//      String query1 =  "update tbl_registerUser set username , password, usertype, utaid, lastname, firstname, phone, email, streetaddress, city, state, zipcode)        values ('username' , 'password', 'usertype', 'utaid', 'lastname', 'firstname', 'phone', 'email', 'streetaddress', 'city', 'state', 'zipcode')";
+        String query = "update tbl_registerUser set utaid = '" + viewProfile.getUtaID() + "', " +
+                "password = '" + viewProfile.getPassword() + "', " +
+                //"usertype = '" + viewProfile.getRole() + "' " +
+                "utaid = '" + viewProfile.getUtaID() + "', " +
+                "lastname = '" + viewProfile.getLastName() + "', " +
+                "firstname = '" + viewProfile.getFirstName() + "', " +
+                "phone = '" + viewProfile.getPhone() + "', " +
+                "email = '" + viewProfile.getEmail() + "', " +
+                "streetaddress = '" + viewProfile.getStreetAddress() + "', " +
+                "city = '" + viewProfile.getCity() + "', " +
+                "state = '" + viewProfile.getState() + "', " +
+                "zipcode = '" + viewProfile.getZipCode() + "', " +
+                "aacmemberId = '" + viewProfile.getAacMemberid() + "' " +
+                "where username = '" + viewProfile.getUserName() + "' ";
+        System.err.println("0809 update profile Db manager L 272 query = "+ query);
+        try {
+            sqldb.execSQL(query);
+        }
+        catch (Exception ex){
+            System.err.println("0809 update profile Db manager L 277 exception thrown");
+            ex.printStackTrace();
+        }
+        System.err.println(viewProfile.getUserName());
+
+    }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public List<Reservation> getReservationsFromDateAndTimeAndOwningUser(LocalDateTime dateTime,

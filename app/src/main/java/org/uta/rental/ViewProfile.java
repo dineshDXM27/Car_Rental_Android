@@ -14,6 +14,7 @@ public class ViewProfile {
     private String state;
     private String zipCode;
     private String rentalprivilegeStatus;
+    private String aacMemberid;
 
     public String getUserName() {
         return userName;
@@ -25,6 +26,14 @@ public class ViewProfile {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getAacMemberid() {
+        return aacMemberid;
+    }
+
+    public void setAacMemberid(String aacMemberid) {
+        this.aacMemberid = aacMemberid;
     }
 
     public void setPassword(String password) {

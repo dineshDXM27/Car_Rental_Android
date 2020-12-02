@@ -6,165 +6,335 @@
     android:layout_height="match_parent"
     tools:context=".user.AdminEditProfile">
 
-    <ImageButton
-        android:id="@+id/vrUserBackButton4"
-        android:layout_width="46dp"
-        android:layout_height="41dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="@+id/userScreenToolbar3"
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DDDADA"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="70dp"
+            android:background="#DDDADA"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/zip_code"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/uta_id"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <EditText
+                android:id="@+id/phoneUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView15"
+                app:layout_constraintTop_toBottomOf="@+id/firstNameUpdateProfileET" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+            <EditText
+                android:id="@+id/stateUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/zipcodeUpdateProfileET" />
+
+            <EditText
+                android:id="@+id/roleUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="none"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/phoneUpdateProfileET" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/street_address"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <EditText
+                android:id="@+id/aacMemberIdUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView24"
+                app:layout_constraintTop_toBottomOf="@+id/stateUpdateProfileET" />
+
+            <EditText
+                android:id="@+id/passwordUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toEndOf="@+id/textView26"
+                app:layout_constraintTop_toBottomOf="@+id/userNameUpdateProfileET" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@string/last_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="108dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="@string/user_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/firstNameUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
+                app:layout_constraintTop_toBottomOf="@+id/lastNameUpdateProfileET" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:gravity="center"
+                android:text="AAC Member id:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <EditText
+                android:id="@+id/utaidUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/passwordUpdateProfileET" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@string/first_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <EditText
+                android:id="@+id/emailUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView19"
+                app:layout_constraintTop_toBottomOf="@+id/roleUpdateProfileET" />
+
+            <EditText
+                android:id="@+id/lastNameUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/utaidUpdateProfileET" />
+
+            <EditText
+                android:id="@+id/zipcodeUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView22"
+                app:layout_constraintTop_toBottomOf="@+id/cityUpdateProfileET" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/role"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <EditText
+                android:id="@+id/streetAddressUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView20"
+                app:layout_constraintTop_toBottomOf="@+id/emailUpdateProfileET" />
+
+            <EditText
+                android:id="@+id/cityUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView21"
+                app:layout_constraintTop_toBottomOf="@+id/streetAddressUpdateProfileET" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/city"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            <EditText
+                android:id="@+id/userNameUpdateProfileET"
+                android:layout_width="183dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:clickable="false"
+                android:ems="10"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="107dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="State"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+            <Button
+                android:id="@+id/updateProfileButton"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:background="#777777"
+                android:text="Update Profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aacMemberIdUpdateProfileET" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/userScreenToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test" />
-
-    <EditText
-        android:id="@+id/usrNameAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="userName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/pwdAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usrNameAdmin" />
-
-    <EditText
-        android:id="@+id/utaIDAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="utaID"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pwdAdmin" />
-
-    <EditText
-        android:id="@+id/lastNameAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="lastName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/utaIDAdmin" />
-
-    <EditText
-        android:id="@+id/firstNameAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="firstName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameAdmin" />
-
-    <EditText
-        android:id="@+id/phoneAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameAdmin" />
-
-    <EditText
-        android:id="@+id/roleAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="role"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneAdmin" />
-
-    <EditText
-        android:id="@+id/emailAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roleAdmin" />
-
-    <EditText
-        android:id="@+id/addressAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="address"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailAdmin" />
-
-    <EditText
-        android:id="@+id/cityAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="city"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressAdmin" />
-
-    <EditText
-        android:id="@+id/stateAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="state"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityAdmin" />
-
-    <EditText
-        android:id="@+id/zipAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="zip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stateAdmin" />
-
-    <EditText
-        android:id="@+id/rentalStatusAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="rentalStatus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zipAdmin" />
+        app:title="Update Profile Screen" />
 
     <Button
-        android:id="@+id/updateAdminBtn"
+        android:id="@+id/userLogoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/userScreenToolbar"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rentalStatusAdmin" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
 </androidx.constraintlayout.widget.ConstraintLayout>
