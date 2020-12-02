@@ -244,7 +244,7 @@ public class UpdateProfileScreen extends AppCompatActivity {
             Intent intent = new Intent(UpdateProfileScreen.this, AdminMainScreen.class);
             startActivity(intent);
         }
-        Toast.makeText(getApplicationContext(),"New user registered.",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Profile Update Successful.",Toast.LENGTH_SHORT).show();
     }
 
     public void logoutFunc(View view) {
