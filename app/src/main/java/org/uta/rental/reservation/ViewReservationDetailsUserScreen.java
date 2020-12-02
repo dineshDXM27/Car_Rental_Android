@@ -19,7 +19,6 @@ import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.R;
 
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public class ViewReservationDetailsUserScreen extends AppCompatActivity {
 
@@ -33,7 +32,7 @@ public class ViewReservationDetailsUserScreen extends AppCompatActivity {
         controller = new ViewReservationDetailsUserController(this.getApplicationContext());
 
         final UserReservationDetails userReservationDetails = controller.viewReservationDetails();
-        TextView textView = (TextView) findViewById(R.id.reservationDetailText);
+        TextView textView = (TextView) findViewById(R.id.requestedCarDetails);
         textView.setText(reservationDetailsToString(userReservationDetails));
         Button logoutBtn = (Button)findViewById(R.id.logoutBtn);
         logoutBtn.setOnClickListener(new View.OnClickListener() {

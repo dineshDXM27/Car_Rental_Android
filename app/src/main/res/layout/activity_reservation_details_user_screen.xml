@@ -34,7 +34,7 @@
 
 
     <TextView
-        android:id="@+id/reservationDetailText"
+        android:id="@+id/requestedCarDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
