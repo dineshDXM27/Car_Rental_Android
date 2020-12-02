@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/userScreenToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="          Search User Screen" />
+
+    <ImageButton
+        android:id="@+id/vrUserBackButton3"
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="260dp"
+        android:layout_marginBottom="226dp"
+        android:background="@color/colorPrimary"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toTopOf="@+id/rvReservations"
+        app:layout_constraintEnd_toStartOf="@+id/viewReservationslogoutBtn"
+        app:layout_constraintStart_toStartOf="@+id/userScreenToolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <Button
+        android:id="@+id/userLogoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/userScreenToolbar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
+
+    <EditText
+        android:id="@+id/lastNameTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toEndOf="@+id/searchUser_usrScreen"
+        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar"
+        app:layout_constraintVertical_bias="0.12" />
+
+    <TextView
+        android:id="@+id/searchUser_usrScreen"
+        android:layout_width="104dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/lastname"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar"
+        app:layout_constraintVertical_bias="0.012" />
+
+    <Button
+        android:id="@+id/searchBtnUserSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:onClick="search"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameTxtView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_searchUsers"
+        android:layout_width="411dp"
+        android:layout_height="473dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBtnUserSearch" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

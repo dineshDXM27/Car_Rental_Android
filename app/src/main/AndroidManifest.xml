@@ -9,44 +9,52 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".user.AdminEditProfile"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".user.ViewUserDetailsAdminScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".register.RegisterScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AdminMainScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UserHomeScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ViewAvailableCars"
+        android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".reservation.ViewReservationDetailsUserScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".reservation.ViewReservationDetailsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".register.RegistrationScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
 
         <activity android:name=".profile.UpdateProfileScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
-        <!-- activity android:name=".reservation.ListActivity"></activity -->
 
-
-        <activity android:name=".register.RegisterScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".AdminMainScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".UserHomeScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".ViewAvailableCars" />
         <activity android:name=".reservation.UpdateReservationDetailsUserScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
-        <activity android:name=".reservation.ViewReservationDetailsUserScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".reservation.ViewReservationDetailsManagerScreen"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".RegistrationScreen" />
         <activity android:name=".car.ViewAvailableCarsManagerScreen"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".register.RegistrationScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
 
         <activity
             android:name=".RentalManagerScreen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".reservation.ViewReservationsManagerScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".reservation.ViewReservationsUserScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing" />
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing" />
 
@@ -56,24 +64,30 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing"
             />
-        <activity
-            android:name=".reservation.ViewReservationsUserScreen"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustNothing"
-            />
-      
-        <activity
-        android:name=".ApplicationMainScreen"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme.NoActionBar">
 
+        <activity
+            android:name=".SearchUsers_AdminScreen"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AdminChangeUserRole"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".AdminChangeRentalPriviledge"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ApplicationMainScreen"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

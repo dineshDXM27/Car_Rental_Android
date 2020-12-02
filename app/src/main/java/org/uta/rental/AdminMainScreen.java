@@ -20,7 +20,7 @@ public class AdminMainScreen extends AppCompatActivity {
         searchUsersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //yet to implement functionality
+                startActivity(new Intent(AdminMainScreen.this, SearchUsers_AdminScreen.class));
             }
         });
 
