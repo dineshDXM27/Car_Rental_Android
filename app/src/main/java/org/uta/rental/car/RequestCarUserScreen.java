@@ -108,9 +108,12 @@ public class RequestCarUserScreen extends AppCompatActivity {
                     LocalDateTime dateTime = LocalDateTime.parse(date + " " + time, dateTimeFormatter);
                     List<CarsInformation> carsInformations = controller.request(dateTime);
 
+                    String endDate = textEndDate.getText().toString();
+                    String endTime = textEndTime.getText().toString();
+                    LocalDateTime endDateTime = LocalDateTime.parse(endDate + " " + endTime, dateTimeFormatter);
                     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.viewCarRequest_User);
                    AdapterCarInformationUser adapterCarInformation = new AdapterCarInformationUser(RequestCarUserScreen.this,
-                            recyclerView, carsInformations, controller);
+                            recyclerView, carsInformations, controller, dateTime, endDateTime);
                     recyclerView.setAdapter(adapterCarInformation);
                 } catch (IllegalArgumentException e) {
                     Toast.makeText(RequestCarUserScreen.this, "Invalid input", Toast.LENGTH_SHORT)

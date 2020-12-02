@@ -70,7 +70,7 @@ public class ViewCarDetailsManagerScreen extends AppCompatActivity {
         double xmRate = TotalCostUtility.getSiriusXmDayRate(carType);
         CarStatus carStatus = carsInformation.getCarStatus();
 
-        return String.format("Car Number: %d\nCar Name: %s\nCapacity: %d\nWeekday Rate: $%.2f,\nWeekend Rate: $%.2f\n" +
+        return String.format("Car Number: %d\nCar Name: %s\nCapacity: %d\nWeekday Rate: $%.2f\nWeekend Rate: $%.2f\n" +
                         "Week Rate: $%.2f\nGps Daily Rate: $%.2f\nOnStar Daily Rate: $%.2f\nSiriusXM Daily Rate: $%.2f\n" +
                         "Car Status: %s",
                 carNumber, carName, capacity, weekdayRate, weekendRate, weekRate, gpsRate, onStarRate, xmRate, carStatus.getStatus());

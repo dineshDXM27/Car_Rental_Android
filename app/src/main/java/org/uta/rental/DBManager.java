@@ -288,6 +288,68 @@ public class DBManager extends SQLiteOpenHelper
         return reservations;
     }
 
+
+    public List<ViewProfile> getUsersFromLastName(String lastName){
+        List<ViewProfile> users = new ArrayList<>();
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "Select * from tbl_registerUser where lastname = '" + lastName + "'";;
+        Cursor cursor = database.rawQuery(query, null);
+
+        cursor.moveToFirst();
+        System.out.println("Cursor count "+cursor.getCount());
+        int querycount = cursor.getCount();
+        while (querycount!=0) {
+            String userName = cursor.getString(0);
+            String password = cursor.getString(1);
+            String userType = cursor.getString(2);
+            String utaID = cursor.getString(3);
+            String lastN = cursor.getString(4);
+            String firstName = cursor.getString(5);
+            String phone = cursor.getString(6);
+            String email = cursor.getString(7);
+            String address = cursor.getString(8);
+            String city = cursor.getString(9);
+            String state = cursor.getString(10);
+            String zip = cursor.getString(11);
+            String rentalStatus = cursor.getString(12);
+            String aacMemberid = cursor.getString(13);
+
+            ViewProfile user = new ViewProfile();
+            user.setUserName(userName);
+            user.setPassword(password);
+            user.setUtaID(utaID);
+            user.setLastName(lastN);
+            user.setFirstName(firstName);
+            user.setPhone(phone);
+            user.setEmail(email);
+            user.setStreetAddress(address);
+            user.setCity(city);
+            user.setState(state);
+            user.setZipCode(zip);
+            user.setRole(userType);
+            user.setRentalprivilegeStatus(rentalStatus);
+            user.setAacMemberid(aacMemberid);
+
+            users.add(user);
+            cursor.moveToNext();
+            querycount=querycount-1;
+        }
+
+        Collections.sort(users, new Comparator<ViewProfile>() {
+            @Override
+            public int compare(ViewProfile o1, ViewProfile o2) {
+                String o1LName = o1.getLastName();
+                String o2LName = o2.getLastName();
+
+
+
+                return o1LName.compareTo(o2LName);
+            }
+        });
+
+        return users;
+    }
+
     public void deleteReservation(Reservation reservation) {
         SQLiteDatabase sqldb = this.getReadableDatabase();
         boolean deleted = sqldb.delete("tbl_reservation", "reservationnumber=" + reservation.getReservationNumber(), null) > 0;
@@ -296,6 +358,66 @@ public class DBManager extends SQLiteOpenHelper
             throw new SQLiteException("Unable to delete reservation");
         }
     }
+
+
+    public void admin_update_profile(ViewProfile viewProfile)
+    {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+
+
+        String query = "update tbl_registerUser set utaid = '" + viewProfile.getUtaID() + "', " +
+                "password = '" + viewProfile.getPassword() + "', " +
+                "utaid = '" + viewProfile.getUtaID() + "', " +
+                "lastname = '" + viewProfile.getLastName() + "', " +
+                "firstname = '" + viewProfile.getFirstName() + "', " +
+                "phone = '" + viewProfile.getPhone() + "', " +
+                "email = '" + viewProfile.getEmail() + "', " +
+                "streetaddress = '" + viewProfile.getStreetAddress() + "', " +
+                "city = '" + viewProfile.getCity() + "', " +
+                "state = '" + viewProfile.getState() + "', " +
+                "zipcode = '" + viewProfile.getZipCode() + "', " +
+                "aacmemberId = '" + viewProfile.getAacMemberid() + "' " +
+                "where username = '" + viewProfile.getUserName() + "' ";
+        try {
+            sqldb.execSQL(query);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void admin_change_user_role(ViewProfile viewProfile)
+    {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+
+        String query = "update tbl_registerUser set usertype = '" + viewProfile.getRole() + "' " +
+                "where username = '" + viewProfile.getUserName() + "' ";
+        try {
+            sqldb.execSQL(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void admin_change_rental_priviledge(ViewProfile viewProfile)
+    {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+
+        String query = "update tbl_registerUser set Rentalprivilegestatus = '" + viewProfile.getRentalprivilegeStatus() + "' " +
+                "where username = '" + viewProfile.getUserName() + "' ";
+        try {
+            sqldb.execSQL(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public List<Reservation> getReservationsFromDateAndTimeAndOwningUser(LocalDateTime dateTime,
@@ -344,6 +466,8 @@ public class DBManager extends SQLiteOpenHelper
         cv.put("city", registerUser.getCity());
         cv.put("state", registerUser.getState());
         cv.put("zipcode", registerUser.getZipCode());
+        cv.put("Rentalprivilegestatus", registerUser.getRentalPrivilegeStatus());
+        cv.put("aacmemberId", registerUser.getAacMemberId());
         // put remainder of data stored here
 
         long res = db.insert("tbl_registerUser", null,cv );
@@ -353,6 +477,7 @@ public class DBManager extends SQLiteOpenHelper
         }
     }
 
+    //write a method that returns userDetails (ViewProfile object) when given userName
     public ViewProfile findUserByUsernameforRentalPrivilegeStatus(String username) {
         SQLiteDatabase sqldb = this.getReadableDatabase();
         String query = "Select * from tbl_registerUser where username = '" + username + "'";
@@ -405,6 +530,8 @@ public class DBManager extends SQLiteOpenHelper
             String city = cursor.getString(9);
             String state = cursor.getString(10);
             String zipCode = cursor.getString(11);
+            String rentalPrivlege = cursor.getString(12);
+            String aacMemberId = cursor.getString(13);
 
             RegisterUser registerUser = null;
             if (userType == UserType.RENTAL_MANAGER) {
@@ -426,6 +553,8 @@ public class DBManager extends SQLiteOpenHelper
             registerUser.setCity(city);
             registerUser.setState(state);
             registerUser.setZipCode(zipCode);
+            registerUser.setRentalPrivilegeStatus(rentalPrivlege);
+            registerUser.setAacMemberId(aacMemberId);
 
             registerUserOptional = Optional.of(registerUser);
         }
@@ -439,7 +568,8 @@ public class DBManager extends SQLiteOpenHelper
         Log.i("database", "Creating car_rental database.");
         String qry = "create table tbl_registerUser(username text primary key,password text, " +
                 "usertype text,utaid text,lastname text,firstname text,phone text,email text," +
-                "streetaddress text, city text,state text,zipcode text , Rentalprivilegestatus text )";
+                "streetaddress text, city text,state text,zipcode text , Rentalprivilegestatus text," +
+                "aacmemberId text)";
         db.execSQL(qry);
         qry = "create table tbl_reservation(reservationnumber int primary key,carnumber int," +
                 "carname text,capacity int,gps int,onstar int,siriusxm int,startdatetime text," +

@@ -9,6 +9,7 @@ import org.uta.rental.DBManager;
 import org.uta.rental.Session;
 import org.uta.rental.StringConstants;
 import org.uta.rental.car.Car;
+import org.uta.rental.car.CarStatus;
 import org.uta.rental.car.CarsInformation;
 import org.uta.rental.reservation.Reservation;
 import org.uta.rental.reservation.TotalCostUtility;
@@ -47,10 +48,23 @@ public class RequestedCarDetailsUserController {
         reservation.setSiriusXm(false);
         reservation.setStartDateTime(start);
         reservation.setEndDateTime(end);
-        Session session = new Session(getApplicationContext());
+        Session session = new Session(context.getApplicationContext());
         String userName = session.getValue(StringConstants.USERNAME);
         RegisterUser registerUser = dbManager.findUserByUsername(userName).get();
         reservation.setOwningUsername(userName);
+        reservation.setAaMemberId(registerUser.getAacMemberId());
+
+        Car car = null;
+        for (Car c : dbManager.findCarsByAvailabilityDateAndTime(start)) {
+           if (c.getCarNumber() == carsInformation.getCarNumber()) {
+               car = c;
+               break;
+           }
+        }
+
+        car.setCarStatus(CarStatus.RESERVED);
+        dbManager.saveReservation(reservation);
+        dbManager.saveCar(car);
     }
 }
 

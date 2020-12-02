@@ -1,6 +1,7 @@
 package org.uta.rental.user;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.uta.rental.R;
 import org.uta.rental.car.CarStatus;
 import org.uta.rental.car.CarsInformation;
-import org.uta.rental.car.SearchCarManagerController;
 import org.uta.rental.reservation.TotalCostUtility;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class AdapterCarInformationUser extends RecyclerView.Adapter<AdapterCarInformationUser.ViewHolder> {
@@ -25,6 +26,10 @@ public class AdapterCarInformationUser extends RecyclerView.Adapter<AdapterCarIn
     private RequestCarUserController controller;
 
     private Context context;
+
+    private final LocalDateTime startDateTime;
+
+    private final LocalDateTime endDateTime;
 
     /**
      * Provide a reference to the type of views that you are using
@@ -45,11 +50,14 @@ public class AdapterCarInformationUser extends RecyclerView.Adapter<AdapterCarIn
         }
     }
 
-    public AdapterCarInformationUser(Context context, RecyclerView rv, List<CarsInformation> carsInformations, RequestCarUserController controller) {
+    public AdapterCarInformationUser(Context context, RecyclerView rv, List<CarsInformation> carsInformations, RequestCarUserController controller,
+                                     LocalDateTime startDateTime, LocalDateTime endDateTime) {
         this.context = context;
         this.rv = rv;
         this.carsInformations = carsInformations;
         this.controller = controller;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
     }
 
     // Create new views (invoked by the layout manager)
@@ -76,7 +84,13 @@ public class AdapterCarInformationUser extends RecyclerView.Adapter<AdapterCarIn
             @Override
             public void onClick(View v) {
                 if (rv.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
-                    Toast.makeText(context.getApplicationContext(), "Car: " + carsInformations.get(position).getCarName(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, RequestedCarDetailsUserScreen.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    CarsInformation carsInformation = carsInformations.get(position);
+                    intent.putExtra("CarsInformation", carsInformation);
+                    intent.putExtra("StartTime", startDateTime);
+                    intent.putExtra("EndTime", endDateTime);
+                    context.startActivity(intent);
                 }
             }
         });

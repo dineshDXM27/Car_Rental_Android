@@ -3,19 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".profile.ViewProfile">
+    android:layout_height="match_parent">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backButton">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:background="#DDDADA"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView22"
@@ -40,17 +36,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
         <EditText
-            android:id="@+id/phoneViewProfileET"
+            android:id="@+id/phoneUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toBottomOf="@+id/firstNameViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/firstNameUpdateProfileET" />
 
         <TextView
             android:id="@+id/textView15"
@@ -64,20 +57,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <EditText
-            android:id="@+id/RentalPriviledgeStatusViewProfileET"
+            android:id="@+id/stateUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView23"
-            app:layout_constraintTop_toBottomOf="@+id/zipcodeViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/zipcodeUpdateProfileET" />
 
         <EditText
-            android:id="@+id/roleViewProfileET"
+            android:id="@+id/roleUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
@@ -87,7 +77,7 @@
             android:inputType="none"
             android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/phoneViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/phoneUpdateProfileET" />
 
         <TextView
             android:id="@+id/textView20"
@@ -101,30 +91,25 @@
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <EditText
-            android:id="@+id/aacMemberIdViewProfileET"
+            android:id="@+id/aacMemberIdUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView24"
-            app:layout_constraintTop_toBottomOf="@+id/RentalPriviledgeStatusViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/stateUpdateProfileET" />
 
         <EditText
-            android:id="@+id/passwordViewProfileET"
+            android:id="@+id/passwordUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="44dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
             android:inputType="textPassword"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView26"
-            app:layout_constraintTop_toBottomOf="@+id/userNameViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/userNameUpdateProfileET" />
 
         <TextView
             android:id="@+id/textView11"
@@ -149,17 +134,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/firstNameViewProfileET"
+            android:id="@+id/firstNameUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/lastNameViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/lastNameUpdateProfileET" />
 
         <TextView
             android:id="@+id/textView24"
@@ -172,17 +154,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
         <EditText
-            android:id="@+id/utaidViewProfileET"
+            android:id="@+id/utaidUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/passwordViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordUpdateProfileET" />
 
         <TextView
             android:id="@+id/textView26"
@@ -218,43 +197,34 @@
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
         <EditText
-            android:id="@+id/emailViewProfileET"
+            android:id="@+id/emailUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView19"
-            app:layout_constraintTop_toBottomOf="@+id/roleViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/roleUpdateProfileET" />
 
         <EditText
-            android:id="@+id/lastNameViewProfileET"
+            android:id="@+id/lastNameUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/utaidViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/utaidUpdateProfileET" />
 
         <EditText
-            android:id="@+id/zipcodeViewProfileET"
+            android:id="@+id/zipcodeUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView22"
-            app:layout_constraintTop_toBottomOf="@+id/cityViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/cityUpdateProfileET" />
 
         <TextView
             android:id="@+id/textView17"
@@ -268,30 +238,24 @@
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
         <EditText
-            android:id="@+id/streetAddressViewProfileET"
+            android:id="@+id/streetAddressUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/emailViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/emailUpdateProfileET" />
 
         <EditText
-            android:id="@+id/cityViewProfileET"
+            android:id="@+id/cityUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/streetAddressViewProfileET" />
+            app:layout_constraintTop_toBottomOf="@+id/streetAddressUpdateProfileET" />
 
         <TextView
             android:id="@+id/textView21"
@@ -305,16 +269,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <EditText
-            android:id="@+id/userNameViewProfileET"
+            android:id="@+id/userNameUpdateProfileET"
             android:layout_width="183dp"
             android:layout_height="39dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:clickable="false"
             android:ems="10"
-            android:enabled="false"
-            android:inputType="none"
-            android:textColor="#000000"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -353,7 +314,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="                     View Profile Screen" />
+        app:title="Update Profile Screen" />
 
     <Button
         android:id="@+id/userLogoutBtn"
@@ -362,23 +323,9 @@
         android:background="@android:color/holo_red_dark"
         android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/userScreenToolbar"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011" />
-
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="40dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="250dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toStartOf="@+id/userLogoutBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/abc_vector_test" />
 </androidx.constraintlayout.widget.ConstraintLayout>
