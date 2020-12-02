@@ -81,9 +81,9 @@ public class AdapterAdminSearchUsers extends RecyclerView.Adapter<AdapterAdminSe
 
     @SuppressLint("DefaultLocale")
     private String parseUserDetails(ViewProfile user){
+        String userName = user.getUserName();
         String lastName = user.getLastName();
         String firstName = user.getFirstName();
-        String userName = user.getUserName();
 
         String displayText = "LastName: %s\nFirstName: %s\nUserName: %s\n";
 
