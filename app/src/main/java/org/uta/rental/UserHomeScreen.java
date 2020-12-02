@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.car.RequestCarUserScreen;
 import org.uta.rental.profile.UpdateProfileScreen;
 import org.uta.rental.reservation.ViewReservationsUserScreen;
 
@@ -38,7 +39,7 @@ public class UserHomeScreen extends AppCompatActivity {
         requestCarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //yet to implement
+                startActivity(new Intent(UserHomeScreen.this, RequestCarUserScreen.class));
             }
         });
 

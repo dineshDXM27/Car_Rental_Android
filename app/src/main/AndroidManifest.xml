@@ -20,6 +20,8 @@
         <activity android:name=".AdminMainScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
+        <activity android:name=".car.RequestCarUserScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".UserHomeScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
