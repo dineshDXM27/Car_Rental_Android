@@ -206,10 +206,9 @@ public class DBManager extends SQLiteOpenHelper
     {
         SQLiteDatabase sqldb = this.getReadableDatabase();
 
-//      String query1 =  "update tbl_registerUser set username , password, usertype, utaid, lastname, firstname, phone, email, streetaddress, city, state, zipcode)        values ('username' , 'password', 'usertype', 'utaid', 'lastname', 'firstname', 'phone', 'email', 'streetaddress', 'city', 'state', 'zipcode')";
+
         String query = "update tbl_registerUser set utaid = '" + viewProfile.getUtaID() + "', " +
                 "password = '" + viewProfile.getPassword() + "', " +
-                //"usertype = '" + viewProfile.getRole() + "' " +
                 "utaid = '" + viewProfile.getUtaID() + "', " +
                 "lastname = '" + viewProfile.getLastName() + "', " +
                 "firstname = '" + viewProfile.getFirstName() + "', " +
@@ -221,15 +220,27 @@ public class DBManager extends SQLiteOpenHelper
                 "zipcode = '" + viewProfile.getZipCode() + "', " +
                 "aacmemberId = '" + viewProfile.getAacMemberid() + "' " +
                 "where username = '" + viewProfile.getUserName() + "' ";
-        System.err.println("0809 update profile Db manager L 272 query = "+ query);
         try {
             sqldb.execSQL(query);
         }
         catch (Exception ex){
-            System.err.println("0809 update profile Db manager L 277 exception thrown");
             ex.printStackTrace();
         }
-        System.err.println(viewProfile.getUserName());
+
+    }
+
+    public void admin_change_user_role(ViewProfile viewProfile)
+    {
+        SQLiteDatabase sqldb = this.getReadableDatabase();
+
+        String query = "update tbl_registerUser set usertype = '" + viewProfile.getRole() + "' " +
+                "where username = '" + viewProfile.getUserName() + "' ";
+        try {
+            sqldb.execSQL(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 

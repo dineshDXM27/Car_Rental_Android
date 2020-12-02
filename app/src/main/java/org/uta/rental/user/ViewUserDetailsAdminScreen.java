@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.AdminChangeUserRole;
 import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.R;
 import org.uta.rental.SearchUsers_AdminScreen;
@@ -61,7 +62,7 @@ public class ViewUserDetailsAdminScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ViewUserDetailsAdminScreen.this,
-                        AdminEditProfile.class));
+                        AdminChangeUserRole.class));
             }
         });
     }
