@@ -57,6 +57,8 @@ public class AdapterAdminSearchUsers extends RecyclerView.Adapter<AdapterAdminSe
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+
+
         holder.getTextView().setText(parseUserDetails(users.get(position)));
         holder.textView.setTextSize(22);
         holder.getTextView().setOnClickListener(new View.OnClickListener() {
@@ -81,10 +83,11 @@ public class AdapterAdminSearchUsers extends RecyclerView.Adapter<AdapterAdminSe
     private String parseUserDetails(ViewProfile user){
         String lastName = user.getLastName();
         String firstName = user.getFirstName();
+        String userName = user.getUserName();
 
-        String displayText = "LastName: %s\nFirstName: %s\n";
+        String displayText = "LastName: %s\nFirstName: %s\nUserName: %s\n";
 
-        return String.format(displayText, lastName, firstName);
+        return String.format(displayText, lastName, firstName, userName);
     }
 
 }

@@ -63,6 +63,7 @@
         android:id="@+id/searchUser_usrScreen"
         android:layout_width="104dp"
         android:layout_height="32dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="68dp"
         android:text="@string/lastname"
         android:textSize="20dp"
@@ -87,7 +88,7 @@
         android:layout_width="411dp"
         android:layout_height="473dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBtnUserSearch" />

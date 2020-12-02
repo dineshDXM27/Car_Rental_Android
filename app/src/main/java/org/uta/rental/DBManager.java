@@ -136,8 +136,11 @@ public class DBManager extends SQLiteOpenHelper
         SQLiteDatabase database = this.getReadableDatabase();
         String query = "Select * from tbl_registerUser where lastname = '" + lastName + "'";;
         Cursor cursor = database.rawQuery(query, null);
-        if(cursor.getCount() > 0){
-            cursor.moveToFirst();
+
+        cursor.moveToFirst();
+        System.out.println("Cursor count "+cursor.getCount());
+        int querycount = cursor.getCount();
+        while (querycount!=0) {
             String userName = cursor.getString(0);
             String password = cursor.getString(1);
             String userType = cursor.getString(2);
@@ -163,9 +166,11 @@ public class DBManager extends SQLiteOpenHelper
             user.setCity(city);
             user.setState(state);
             user.setZipCode(zip);
+            user.setRole(userType);
 
             users.add(user);
             cursor.moveToNext();
+            querycount=querycount-1;
         }
 
         Collections.sort(users, new Comparator<ViewProfile>() {
@@ -173,6 +178,9 @@ public class DBManager extends SQLiteOpenHelper
             public int compare(ViewProfile o1, ViewProfile o2) {
                 String o1LName = o1.getLastName();
                 String o2LName = o2.getLastName();
+
+
+
                 return o1LName.compareTo(o2LName);
             }
         });
