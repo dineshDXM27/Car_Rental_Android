@@ -150,6 +150,7 @@ public class DBManager extends SQLiteOpenHelper
             String city = cursor.getString(9);
             String state = cursor.getString(10);
             String zip = cursor.getString(11);
+            String rentalStatus = cursor.getString(12);
 
             ViewProfile user = new ViewProfile();
             user.setUserName(userName);
@@ -163,6 +164,7 @@ public class DBManager extends SQLiteOpenHelper
             user.setCity(city);
             user.setState(state);
             user.setZipCode(zip);
+            user.setRentalprivilegeStatus(rentalStatus);
 
             users.add(user);
             cursor.moveToNext();
