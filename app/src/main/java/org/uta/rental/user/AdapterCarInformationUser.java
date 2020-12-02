@@ -1,4 +1,4 @@
-package org.uta.rental.reservation;
+package org.uta.rental.user;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,23 +7,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.uta.rental.R;
+import org.uta.rental.car.CarStatus;
+import org.uta.rental.car.CarsInformation;
+import org.uta.rental.reservation.TotalCostUtility;
 
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 import java.util.List;
 
-public class AdapterManagerReservation extends RecyclerView.Adapter<AdapterManagerReservation.ViewHolder> {
-    private List<Reservation> reservations;
+public class AdapterCarInformationUser extends RecyclerView.Adapter<AdapterCarInformationUser.ViewHolder> {
+    private List <CarsInformation> carsInformations;
+    private RecyclerView rv;
+    private RequestCarUserController controller;
 
     private Context context;
 
-    private RecyclerView rv;
+    private final LocalDateTime startDateTime;
 
-    private ViewReservationsManagerController controller;
+    private final LocalDateTime endDateTime;
 
     /**
      * Provide a reference to the type of views that you are using
@@ -44,12 +50,14 @@ public class AdapterManagerReservation extends RecyclerView.Adapter<AdapterManag
         }
     }
 
-    public AdapterManagerReservation(RecyclerView rv, List<Reservation> reservations, ViewReservationsManagerController controller,
-                                     Context context) {
-        this.rv = rv;
-        this.reservations = reservations;
-        this.controller = controller;
+    public AdapterCarInformationUser(Context context, RecyclerView rv, List<CarsInformation> carsInformations, RequestCarUserController controller,
+                                     LocalDateTime startDateTime, LocalDateTime endDateTime) {
         this.context = context;
+        this.rv = rv;
+        this.carsInformations = carsInformations;
+        this.controller = controller;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
     }
 
     // Create new views (invoked by the layout manager)
@@ -71,14 +79,17 @@ public class AdapterManagerReservation extends RecyclerView.Adapter<AdapterManag
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        viewHolder.getTextView().setText(reservationToString(reservations.get(position)));
+        viewHolder.getTextView().setText(carInformationToString(carsInformations.get(position)));
         viewHolder.getTextView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rv.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
-                    ViewReservationDetailsManagerController.setReservation(reservations.get(position));
-                    Intent intent = new Intent(context, ViewReservationDetailsManagerScreen.class);
+                    Intent intent = new Intent(context, RequestedCarDetailsUserScreen.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    CarsInformation carsInformation = carsInformations.get(position);
+                    intent.putExtra("CarsInformation", carsInformation);
+                    intent.putExtra("StartTime", startDateTime);
+                    intent.putExtra("EndTime", endDateTime);
                     context.startActivity(intent);
                 }
             }
@@ -88,22 +99,21 @@ public class AdapterManagerReservation extends RecyclerView.Adapter<AdapterManag
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return reservations.size();
+        return carsInformations.size();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private String reservationToString(Reservation reservation) {
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String startTime = timeFormatter.format(reservation.getStartDateTime());
-        String startDate = dateFormatter.format(reservation.getStartDateTime());
-        String endTime = timeFormatter.format(reservation.getEndDateTime());
-        String endDate = dateFormatter.format(reservation.getEndDateTime());
-        String guiString = "Reservation Number: %d\nCar Number: %d\nCar Name: %s\n" +
-                "Capacity: %d\nStart Date: %s\nStart Time: %s\nEnd Date: %s\nEnd Time: %s\n" +
-                "Total Cost: $%.2f\n";
-        return String.format(guiString, reservation.getReservationNumber(), reservation.getCarNumber(),
-                reservation.getCarName(), reservation.getCapacity(), startDate, startTime, endDate,
-                endTime, reservation.calculateTotalCost());
+    private String carInformationToString(CarsInformation carsInformation) {
+        long carNumber = carsInformation.getCarNumber();
+        String carName = carsInformation.getCarName();
+        int capacity = carsInformation.getCapacity();
+        TotalCostUtility.CarType carType = TotalCostUtility.CarType.valueOf(carName
+                .replaceAll(" ", "_").toUpperCase());
+        double weekendRate = TotalCostUtility.getWeekRate(carType);
+        CarStatus carStatus = carsInformation.getCarStatus();
+
+        return String.format("Car Number: %d\nCar Name: %s\nCapacity: %d\nWeekend Rate: $%.2f\n" +
+                "Car Status: %s", carNumber, carName, capacity, weekendRate, carStatus.getStatus());
     }
 }
+

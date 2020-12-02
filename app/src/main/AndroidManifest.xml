@@ -33,6 +33,8 @@
         <activity android:name=".register.RegistrationScreen"
             android:theme="@style/AppTheme.NoActionBar"
             />
+        <activity android:name=".car.RequestCarUserScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".profile.UpdateProfileScreen"
             android:theme="@style/AppTheme.NoActionBar"
@@ -64,6 +66,9 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing"
             />
+
+        <activity android:name=".user.RequestedCarDetailsUserScreen"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".SearchUsers_AdminScreen"

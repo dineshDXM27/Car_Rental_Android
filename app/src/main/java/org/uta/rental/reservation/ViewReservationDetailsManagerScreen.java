@@ -34,7 +34,7 @@ public class ViewReservationDetailsManagerScreen extends AppCompatActivity {
 
 
         RentalManagerReservationDetails reservationDetails = controller.viewReservationDetails();
-        TextView textView = (TextView) findViewById(R.id.reservationDetailText);
+        TextView textView = (TextView) findViewById(R.id.requestedCarDetails);
         textView.setText(reservationDetailsToString(reservationDetails));
         Button logoutBtn = (Button)findViewById(R.id.logoutBtn);
         logoutBtn.setOnClickListener(new View.OnClickListener() {

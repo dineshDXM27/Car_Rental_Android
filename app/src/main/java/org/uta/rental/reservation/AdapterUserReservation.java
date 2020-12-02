@@ -101,7 +101,7 @@ public class AdapterUserReservation extends RecyclerView.Adapter<AdapterUserRese
 
         String guiString = "Reservation Number: %d\nCar Number: %d\nCar Name: %s\n" +
                 "Capacity: %d\nStart Date: %s\nStart Time: %s\nEnd Date: %s\nEnd Time: %s\n" +
-                "Total Cost: %.2f\n";
+                "Total Cost: $%.2f\n";
         return String.format(guiString, reservation.getReservationNumber(), reservation.getCarNumber(),
                 reservation.getCarName(), reservation.getCapacity(), startDate, startTime, endDate,
                 endTime, reservation.calculateTotalCost());
