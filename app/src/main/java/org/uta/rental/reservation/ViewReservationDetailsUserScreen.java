@@ -32,7 +32,7 @@ public class ViewReservationDetailsUserScreen extends AppCompatActivity {
 
         controller = new ViewReservationDetailsUserController(this.getApplicationContext());
 
-        UserReservationDetails userReservationDetails = controller.viewReservationDetails();
+        final UserReservationDetails userReservationDetails = controller.viewReservationDetails();
         TextView textView = (TextView) findViewById(R.id.reservationDetailText);
         textView.setText(reservationDetailsToString(userReservationDetails));
         Button logoutBtn = (Button)findViewById(R.id.logoutBtn);
@@ -75,6 +75,14 @@ public class ViewReservationDetailsUserScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.show();
+            }
+        });
+
+        Button updateButton = (Button) findViewById(R.id.updateButton);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                controller.updateReservation(userReservationDetails);
             }
         });
     }

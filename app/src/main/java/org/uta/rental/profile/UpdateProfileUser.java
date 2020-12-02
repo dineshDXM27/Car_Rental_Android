@@ -1,6 +1,6 @@
-package org.uta.rental;
+package org.uta.rental.profile;
 
-public class UpdateProfileUser extends UpdateProfile{
+public class UpdateProfileUser extends UpdateProfileScreen{
     private int AACMemberstatus;
 
     public int getAACMemberstatus() {

@@ -1,4 +1,6 @@
-package org.uta.rental;
+package org.uta.rental.car;
+
+import org.uta.rental.CarSummary;
 
 public class SearchCarRentalManager extends CarSummary {
     private float rate;

@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.uta.rental.R;
-import org.uta.rental.ViewProfile;
+import org.uta.rental.profile.ViewProfile;
 
 import java.util.List;
 

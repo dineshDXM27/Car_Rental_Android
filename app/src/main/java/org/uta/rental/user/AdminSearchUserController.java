@@ -3,7 +3,7 @@ package org.uta.rental.user;
 import android.content.Context;
 
 import org.uta.rental.DBManager;
-import org.uta.rental.ViewProfile;
+import org.uta.rental.profile.ViewProfile;
 
 import java.util.List;
 

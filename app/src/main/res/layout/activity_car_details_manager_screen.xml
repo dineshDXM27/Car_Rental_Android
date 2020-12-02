@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".reservation.ViewReservationDetailsUserScreen">
+    tools:context=".car.ViewCarDetailsManagerScreen">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/userScreenToolbar"
+        android:id="@+id/screenToolbar"
         android:layout_width="416dp"
         android:layout_height="59dp"
         android:background="?attr/colorPrimary"
@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="                     Reservation Details" />
+        app:title="                     Car Details" />
 
     <Button
         android:id="@+id/logoutBtn"
@@ -27,14 +27,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/vrUserBackButton"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011" />
 
 
     <TextView
-        android:id="@+id/reservationDetailText"
+        android:id="@+id/carDetailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
@@ -42,10 +42,10 @@
         android:text=""
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/screenToolbar" />
 
     <ImageButton
-        android:id="@+id/vrUserBackButton"
+        android:id="@+id/backButton"
         android:layout_width="46dp"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
@@ -53,42 +53,10 @@
         android:layout_marginEnd="260dp"
         android:layout_marginBottom="226dp"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/rvReservations"
-        app:layout_constraintEnd_toStartOf="@+id/viewReservationslogoutBtn"
+        app:layout_constraintBottom_toTopOf="@+id/carDetails"
+        app:layout_constraintEnd_toStartOf="@+id/logoutBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/abc_vector_test" />
-
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="90dp"
-        android:background="@color/colorPrimary"
-        android:text="Cancel Reservation"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateButton" />
-
-    <Button
-        android:id="@+id/updateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="472dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginBottom="14dp"
-        android:background="@color/colorPrimary"
-        android:text="Update Reservation"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/cancelButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userScreenToolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

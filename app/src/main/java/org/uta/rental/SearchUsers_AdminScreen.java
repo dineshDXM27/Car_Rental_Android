@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.uta.rental.profile.ViewProfile;
 import org.uta.rental.user.AdapterAdminSearchUsers;
 import org.uta.rental.user.AdminSearchUserController;
 

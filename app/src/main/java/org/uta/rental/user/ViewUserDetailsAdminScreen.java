@@ -14,7 +14,7 @@ import org.uta.rental.AdminChangeUserRole;
 import org.uta.rental.ApplicationMainScreen;
 import org.uta.rental.R;
 import org.uta.rental.SearchUsers_AdminScreen;
-import org.uta.rental.ViewProfile;
+import org.uta.rental.profile.ViewProfile;
 
 public class ViewUserDetailsAdminScreen extends AppCompatActivity {
 

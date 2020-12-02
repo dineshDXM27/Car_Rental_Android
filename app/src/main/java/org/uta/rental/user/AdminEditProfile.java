@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.uta.rental.AdminMainScreen;
 import org.uta.rental.DBManager;
 import org.uta.rental.R;
-import org.uta.rental.ViewProfile;
+import org.uta.rental.profile.ViewProfile;
 
 
 public class AdminEditProfile extends AppCompatActivity {

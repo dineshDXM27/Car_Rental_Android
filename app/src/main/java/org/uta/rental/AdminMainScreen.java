@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.uta.rental.profile.UpdateProfileScreen;
+
 public class AdminMainScreen extends AppCompatActivity {
 
     @Override
@@ -26,6 +28,7 @@ public class AdminMainScreen extends AppCompatActivity {
         viewMyProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(AdminMainScreen.this, UpdateProfileScreen.class));
             }
         });
 

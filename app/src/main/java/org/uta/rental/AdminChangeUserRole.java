@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.uta.rental.profile.ViewProfile;
 import org.uta.rental.user.AdminEditProfile;
 import org.uta.rental.user.AdminSearchUserDetailsController;
 
